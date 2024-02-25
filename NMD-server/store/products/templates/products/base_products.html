@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    {% block css%}
+
+    {% endblock %}
+    <title>{{title}}</title>
+</head>
+<body>
+   <div class="page">
+       <header class="header">
+           <div class="through-line">
+               <div class="logo">
+                   {% block logo %}
+
+                   {% endblock %}
+               </div>
+               <div class="nav-bar-group">
+               <a href="index.html">
+               <div class="catalogue"><img src="{% static 'images/line.png' %}">
+                </svg>КАТАЛОГ</div>
+               </a>
+               <div class="search">
+                   <form action="/" method="post">
+                       <input class="input" type="search" name="search" placeholder="Поиск">
+                       <svg class="magnifier" width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#C0BFBF"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M11 6C13.7614 6 16 8.23858 16 11M16.6588 16.6549L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                   </form>
+               </div>
+               <div class="icons">
+                   <a href="{% url 'users:profile' %}">
+                       <div class="dropdown">
+                           <svg class="human" fill="#C0BFBF" width="64px" height="64px" viewBox="0 0 200 200" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M169,170.71l-2-4a73.78,73.78,0,0,0-31-32,66.14,66.14,0,0,0,29-54.5,65,65,0,1,0-101,54,73.78,73.78,0,0,0-31,32l-2,4a10.06,10.06,0,0,0,18,9l2-4a55,55,0,0,1,98,0l2,4a10,10,0,0,0,13.5,4.5c5-2,7-8,4.5-13ZM55,80.21a45,45,0,1,1,45,45A44.81,44.81,0,0,1,55,80.21Z"></path></g></svg>
+                           <div class="dropdown-content">
+                               {% if user.is_superuser or user.is_stuff %}
+                                   <div class="drop-row"><a href="{% url 'users:profile' %}">Профиль</a></div>
+                                   <div class="drop-row"><a href="{% url 'admin:index' %}">Admin</a></div>
+                                   <div class="drop-row"><a href="{% url 'users:logout' %}">Выйти</a></div>
+                               {% else %}
+                                   <div class="drop-row"><a href="{% url 'users:profile' %}">Профиль</a></div>
+                                   <div class="drop-row"><a href="{% url 'users:logout' %}">Выйти</a></div>
+                               {% endif %}
+                           </div>
+                       </div>
+                   </a>
+                   <a href="{% url 'products:favorites' %}">
+                          <svg class="heart" fill="#C0BFBF" width="64px" height="64px" viewBox="0 0 200 200" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M171.28,41.69a48.29,48.29,0,0,0-68.5,0l-2.5,3-2.5-2.5a48.29,48.29,0,0,0-68.5,0c-19,18.5-19,49-1,68l50,53a29.92,29.92,0,0,0,43.5,0l50.5-53.5c17.5-19.5,17-49.5-1-68Zm-14,53.5-50.5,53.5a10.26,10.26,0,0,1-14.5,0l-50-53c-10.5-11.5-10.5-29,.5-40s29-11,40.5,0l2.5,2.5c8,8,20.5,8,28,0l2.5-2.5a28.37,28.37,0,0,1,40,0,27.78,27.78,0,0,1,1,39.5Z"></path></g></svg>
+                   </a>
+
+                   <a href="{% url 'products:cart' %}">
+                       <svg class="cart" fill="#C0BFBF" width="64px" height="64px" viewBox="-2 -2 204.00 204.00" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M183.25,52.75a18.22,18.22,0,0,0-7-1h-91c-3.5,0-8-.5-11.5.5a9.64,9.64,0,0,0-7.5,9.5,10,10,0,0,0,10,10h90.5l-8,42a10.22,10.22,0,0,1-10,8h-75a10.66,10.66,0,0,1-10-8l-16-74a20.3,20.3,0,0,0-19.5-16h-7a10,10,0,0,0,0,20h7l16,74c3,14,15,23.5,29.5,23.5h75c12,0,24.5-8,28-19.5,2.5-8,4-17,5.5-25,1.5-8.5,3.5-17,5-25a17.76,17.76,0,0,0,1-5,17,17,0,0,0,.5-5c0-4-2-8-5.5-9Zm-132,108.5a15,15,0,0,0,30,0h0a15,15,0,0,0-30,0Zm90,0a15,15,0,1,0,15-15,15,15,0,0,0-15,15v0Z"></path></g></svg>
+                   </a>
+                   {% if not baskets.total_qty == 0%}
+                        <div class="cart-counter">{{baskets.total_qty}}</div>
+                   {% endif %}
+                   {% if not favorites.total_qty == 0%}
+                        <div class="heart-counter">{{favorites.total_qty}}</div>
+                   {% endif %}
+
+               </div>
+               </div>
+
+           </div>
+       </header>
+       <main class="main">
+
+            {% block content%}
+
+            {% endblock %}
+
+       </main>
+       <footer class="footer">{{footer_1}}<br>{{footer_2}}</footer>
+   </div>
+
+
+<!--	div page end-->
+
+</body>
+</html>

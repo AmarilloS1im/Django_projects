@@ -1,0 +1,20 @@
+{% extends 'users/base_login.html'%}
+
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'registration_confirm.css' %}">
+{% endblock%}
+{% block logo %}
+    <a href="{% url 'users:index' %}">
+        <img src="{% static 'images/logo.png' %}" alt="альтернативный текст">
+    </a>
+{% endblock %}
+
+{% block action_button %}
+    <a href="{% url 'users:index' %}">
+        <button class="btn" type="button">Main page/На главную</button>
+    </a>
+{% endblock %}
+

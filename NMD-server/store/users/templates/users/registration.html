@@ -1,0 +1,37 @@
+{% extends 'users/base_login.html'%}
+
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'registration.css' %}">
+{% endblock %}
+
+{% block logo %}
+    <a href="{% url 'users:index' %}">
+        <img src="{% static 'images/logo.png' %}" alt="альтернативный текст">
+    </a>
+{% endblock %}
+
+{% block action_button %}
+{% if form.errors %}
+<div class="container">
+    <div class="alert alert-dismissible fade in">
+        <a href="#" class="alert-close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>{{form.errors}}</strong>
+    </div>
+</div>
+
+
+{% endif %}
+<form action="{% url 'users:registration' %}" method="post">
+    {% csrf_token %}
+    {{ form.email}}
+    <button class="btn" type="submit">Sing up/Зарегистрироваться</button>
+    <a href="{% url 'users:index'%}">
+        <button class="btn" type="button">Back/Назад</button>
+    </a>
+</form>
+
+
+{% endblock %}

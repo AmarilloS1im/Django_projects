@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    {% block css%}
+
+    {% endblock %}
+    <title>{{title}}</title>
+</head>
+<body>
+   <div class="page">
+       <header class="header">
+           <div class="through-line">
+               <div class="site-info-label">{{header}}</div>
+               <div class="logo">
+                   {% block logo %}
+
+                   {% endblock %}
+               </div>
+           </div>
+       </header>
+       <main class="main">
+           <div class="form">
+               <div class="form-header">{{form_label}}</div>
+               <div class="form-group">
+                   {% block action_button%}
+
+                   {% endblock %}
+               </div>
+           </div>
+
+       </main>
+       <footer class="footer">{{footer_1}}<br>{{footer_2}}</footer>
+   </div>
+
+
+<!--	div page end-->
+
+</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</html>

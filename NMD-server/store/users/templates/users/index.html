@@ -1,0 +1,42 @@
+{% extends 'users/base_login.html'%}
+
+
+{% load static %}
+
+{% block css %}
+
+
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+{% endblock%}
+
+{% block logo %}
+    <a href="{% url 'users:index' %}">
+        <img src="{% static 'images/logo.png' %}" alt="альтернативный текст">
+    </a>
+{% endblock %}
+
+{% block action_button %}
+{% if form.non_field_errors %}
+    <div class="container">
+        <div class="alert alert-dismissible fade in">
+            <a href="#" class="alert-close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>{{form.non_field_errors}}</strong>
+        </div>
+    </div>
+{%endif%}
+<form action="{% url 'users:index' %}" method="post">
+    {% csrf_token %}
+    {{ form.email}}
+    {{ form.password}}
+    <button class="btn" type="submit">Sing in/Вход</button>
+    <a href="{% url 'users:registration'%}">
+        <button class="btn" type="button">Sing up/Регистрация</button>
+    </a>
+    <div checkbox-group>
+        <input class="checkbox" type="checkbox" id="check">
+        <label class="label" for="check">Запомнить меня</label>
+        <a href="{% url 'users:recovery' %}"><span class="under-singup">Забыли пароль?</span></a>
+    </div>
+</form>
+{% endblock %}
+

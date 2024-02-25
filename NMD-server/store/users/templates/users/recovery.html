@@ -1,0 +1,24 @@
+{% extends 'users/base_login.html'%}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'recovery.css' %}">
+{% endblock%}
+
+{% block logo %}
+    <a href="{% url 'users:index' %}">
+        <img src="{% static 'images/logo.png' %}" alt="альтернативный текст">
+    </a>
+{% endblock %}
+
+{% block action_button %}
+    <form action="/" method="post">
+        <input class="input" type="email" name="email" placeholder="Email/Почта">
+        <a href="recover-confirm.html">
+            <button  class="btn" type="button">Recover/Восстановить</button>
+        </a>
+        <a href="{% url 'users:index' %}">
+            <button class="btn" type="button">Back/Назад</button>
+        </a>
+{% endblock %}
