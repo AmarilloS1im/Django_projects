@@ -5,6 +5,7 @@
 
 {% block css%}
     <link rel="stylesheet" href="{% static 'cart.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery-3.7.1.js' %}"></script>
 {% endblock %}
 
 {% block logo %}
@@ -36,13 +37,11 @@
                                    </div>
                                </div>
                                <div class="cart_favorits_and_trash">
-                                   <a class="favorits" href="#">
-                                       <svg class="favorits_icon" viewBox="0 0 24.6 21.1669" fill="none" stroke="#D0CFCF" xmlns="http://www.w3.org/2000/svg" >
-                                       <path id="Vector" d="M12.3 3.06851C11.3732 2.28165 10.2211 1.76352 8.98413 1.5773C7.74722 1.39108 6.47891 1.5448 5.33398 2.01971C4.18903 2.49466 3.21698 3.27029 2.53619 4.25201C1.85544 5.2337 1.49536 6.37912 1.50003 7.54849C1.50003 14.7725 12.3 19.6669 12.3 19.6669C12.3 19.6669 23.1 14.7725 23.1 7.54849C23.1 5.94446 22.4173 4.40616 21.2021 3.27194C19.9868 2.13773 18.3386 1.50046 16.6201 1.50046C15.0216 1.50494 13.4819 2.06381 12.3 3.06851Z"  stroke-opacity="1.000000" stroke-width="3.000000" stroke-linejoin="round"/></svg>
-                                   Избранное
+                                   <a  name='heart_favorites' class="btn_favorites" href="{% url 'products:favorites_add' basket.product.article %}">
+                                   <svg data-is_favorite="{{basket.product.is_favorite}}" class="favorites_heart" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#ababab" width="64px" height="64px" viewBox="0 0 32 32" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16.0298 5.33C17.5998 3.88 19.6898 3 21.9998 3C26.9698 3 30.9998 7.03 30.9998 12C30.9998 20 20.9998 29 15.9998 31C10.9998 29 0.999817 20 0.999817 12C0.999817 7.03 5.02982 3 9.99982 3C12.3098 3 14.4098 3.88 15.9998 5.3L16.0298 5.33Z" ></path> <path d="M16 5.30451C14.407 3.87551 12.309 2.99951 10 2.99951C5.029 2.99951 1 7.02951 1 11.9995C1 19.9995 11 28.9995 16 30.9995C21 28.9995 31 19.9995 31 11.9995C31 7.02951 26.971 2.99951 22 2.99951C18.477 2.99951 15.479 5.05051 14 7.99951M27 11.9998C27 9.23781 24.762 6.99981 22 6.99981"  ></path> </g></svg>
 
+                                       Избранное
                                    </a>
-
                                    <a class="trash" href="{% url 'products:basket_remove' basket.id %}">
                                        <svg class="little_garbage" viewBox="0 0 32 32" fill="#ececec" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M6 12v15c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3V12H6zm6 13a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zM27 6h-6V5c0-1.654-1.346-3-3-3h-4c-1.654 0-3 1.346-3 3v1H5c-1.103 0-2 .897-2 2v1a1 1 0 0 0 1 1h24a1 1 0 0 0 1-1V8c0-1.103-.897-2-2-2zM13 5c0-.551.449-1 1-1h4c.551 0 1 .449 1 1v1h-6V5z"  ></path></svg>
                                    <span class="cart_icons">Удалить</span>
@@ -50,6 +49,22 @@
                                </div>
                             </div>
                     {% endfor %}
+                    <script>
+                        let hearts = document.querySelectorAll('a[name^="heart_favorites"]');
+
+                        for (let heart of hearts) {
+
+                            var heart_child_elem = heart.children[0];
+
+                            if (heart_child_elem.getAttribute('data-is_favorite') == 'True') {
+                              heart_child_elem.setAttribute('class','favorites_heart_checked');
+                              heart.setAttribute('class','btn_favorites_visited');
+                            } else {
+                              heart_child_elem.setAttribute('class','favorites_heart');
+                              heart.setAttribute('class','btn_favorites');
+                            }
+                        };
+                    </script>
                     </div>
         </div>
                    <div class=confirm_order_group>

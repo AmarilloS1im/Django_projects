@@ -13,7 +13,7 @@ def products(request):
         'title': "Магазин",
         'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
         'footer_2': "Копирование материалов запрещено.",
-        'products': Product.objects.all(),
+        'products': Product.objects.all().order_by('article'),
         'sizes': Size.objects.all(),
         'form': form,
         'baskets': baskets,
@@ -101,11 +101,13 @@ def cart(request):
         'sizes': Size.objects.all(),
         'form': form,
         'baskets': baskets,
+        'favorites': Favorites.objects.all(),
     }
     return render(request, 'products/cart.html', context)
 
 
 def favorites(request):
+    baskets = Basket.objects.filter(user=request.user)
     context = {
         'title': "Магазин",
         'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
@@ -113,24 +115,43 @@ def favorites(request):
         'products': Product.objects.all(),
         'sizes': Size.objects.all(),
         'favorites': Favorites.objects.all(),
+        'baskets': baskets,
     }
     return render(request, 'products/favorites.html', context)
 
 
 def favorites_add(request, product_id):
     product = Product.objects.get(article=product_id)
-    print(product)
     favorites = Favorites.objects.filter(user=request.user, product=product)
     if not favorites.exists():
-        Favorites.objects.create(user=request.user, product=product, qty=1)
+        favorite = Favorites.objects.create(user=request.user, product=product, qty=1)
+        product.is_favorite = True
+        product.save(update_fields=["is_favorite"])
+        favorite.save()
     else:
         favorite = Favorites.objects.get(product=product_id)
+        product.is_favorite = False
+        product.save(update_fields=["is_favorite"])
         favorite.delete()
-
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 def favorites_remove(request, favorite_id):
     favorite = Favorites.objects.get(id=favorite_id)
+    product = Product.objects.get(article=favorite.product.article)
+    product.is_favorite = False
+    product.save()
     favorite.delete()
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+def remove_all_user_favorites(request):
+    all_user_favorites = Favorites.objects.filter(user=request.user)
+
+    all_articles=[]
+    for obj in all_user_favorites:
+        all_articles.append(obj.product.article)
+
+    Product.objects.filter(article__in=all_articles).update(is_favorite=False)
+    all_user_favorites.delete()
+
     return HttpResponseRedirect(request.META['HTTP_REFERER'])

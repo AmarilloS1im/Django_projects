@@ -518,7 +518,7 @@ background-color: rgb(192 191 191);
     justify-content: space-between;
 }
 
-.favorits{
+.btn_favorites{
     display: flex;
     color: rgb(225, 225, 225);
     font-family: Montserrat;
@@ -531,36 +531,61 @@ background-color: rgb(192 191 191);
     border: none;
 }
 
-.favorits:hover{
-     transition-duration: 0.3s;
+.btn_favorites:hover{
+    transition-duration: 1.3s;
     color: #bd0d2e;
-    svg {
-      transition-duration: 0.3s;
-      fill: #bd0d2e;
-
-    }
     svg{
         stroke: #bd0d2e;
-        transition-duration: 2s;
+        transition-duration: 1.3s;
     }
+    cursor: pointer;
 
 
+
+}
+
+.btn_favorites_visited{
+    display: flex;
+    color: #bd0d2e;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 17px;
+    letter-spacing: 0%;
+    text-align: center;
+    background-color: white;
+    border: none;
+
+
+}
+
+.favorites_heart{
+    position:relative;
+    top: -7px;
+    left: -3px;
+    display: flex;
+    width: 1.2rem;
+    height: 1.2rem;
+    bottom:1.3rem;
+    cursor: pointer;
+}
+
+.favorites_heart_checked{
+    position:relative;
+    top: -7px;
+    left: -3px;
+    display: flex;
+    width: 1.2rem;
+    height: 1.2rem;
+    bottom:1.3rem;
+
+    stroke: #f3b1b1;
+    fill: #bd0d2e;
     cursor: pointer;
 
 }
 
-.favorits:active{
-     transition-duration: 0.1s;
-    color: #950722;
-    svg {
-      transition-duration: 0.1s;
-      fill: #950722;
-      stroke: #950722;
-    }
-    cursor: pointer;
-}
-
-.favorits_icon{
+.favorites_heart{
     position:relative;
     top: -7px;
     left: -3px;
@@ -626,19 +651,45 @@ background-color: rgb(192 191 191);
     bottom:1.3rem;
 }
 
-.cart-counter{
-    width: 30px;
-    position:relative;
-    top: -65px;
-    left: 154px;
+.heart-counter{
+    width: 1.23rem;
+    height:1.23rem;
 
-    font-size: 22px;
+    justify-content: center;
+    text-align: center;
+    position:absolute;
+    top: 30px;
+    right: 530px;
+    font-weight: bold;
+    font-size: 20px;
+    background: red;
+    font-color: white;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+
+}
+
+.cart-counter{
+    width: 1.23rem;
+    height:1.23rem;
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    position:absolute;
+    top: 30px;
+    right: 470px;
+    font-weight: bold;
+    font-size: 20px;
     background: lightgray;
     font-color: white;
     border-radius: 50%;
     text-align: center;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
 
 }
+
+
 
 .counter {
   position:relative;

@@ -19,6 +19,7 @@ urlpatterns = [
     path('favorites/add/<str:product_id>',login_required(favorites_add),name='favorites_add'),
     path('favorites/',login_required(favorites),name='favorites'),
     path('favorites/remove/<int:favorite_id>/',favorites_remove,name='favorites_remove'),
+    path('favorites/remove/',remove_all_user_favorites,name='remove_all_user_favorites'),
 
 
 

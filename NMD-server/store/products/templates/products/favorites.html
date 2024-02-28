@@ -5,6 +5,7 @@
 
 {% block css%}
 <link rel="stylesheet" href="{% static 'favorites.css' %}">
+<script type="text/javascript" src="{% static 'js/jquery-3.7.1.js' %}"></script>
 {% endblock %}
 
 {% block logo %}
@@ -17,12 +18,13 @@
     {% if favorites %}
         <div class="profile">
                <div class="cart_title"><span class="cart_title_left">Избранные товары</span>
-                   <button class="clean_cart"  type="submit">
+                   <a name="clean_cart" class="clean_cart"  href="{% url 'products:remove_all_user_favorites' %}">
 
                         <svg class="garbage" viewBox="0 0 32 32" fill="#ececec" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M6 12v15c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3V12H6zm6 13a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zM27 6h-6V5c0-1.654-1.346-3-3-3h-4c-1.654 0-3 1.346-3 3v1H5c-1.103 0-2 .897-2 2v1a1 1 0 0 0 1 1h24a1 1 0 0 0 1-1V8c0-1.103-.897-2-2-2zM13 5c0-.551.449-1 1-1h4c.551 0 1 .449 1 1v1h-6V5z"  ></path></svg>
                    Очистить все
-                   </button>
+                   </a>
                </div>
+
                 <div class="scroll_products">
                 {% for favorite in favorites %}
                 <div class="cart_products">
@@ -48,7 +50,7 @@
                    </div>
                    <div class="cart_favorits_and_trash">
 
-                       <a class="trash" href="{% url 'products:favorites_remove' favorite.id %}">
+                       <a id="{{favorite.product.favorite_article}}" name="trash" class="trash" href="{% url 'products:favorites_remove' favorite.id %}">
                            <svg class="little_garbage" viewBox="0 0 32 32" fill="#ececec" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M6 12v15c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3V12H6zm6 13a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zM27 6h-6V5c0-1.654-1.346-3-3-3h-4c-1.654 0-3 1.346-3 3v1H5c-1.103 0-2 .897-2 2v1a1 1 0 0 0 1 1h24a1 1 0 0 0 1-1V8c0-1.103-.897-2-2-2zM13 5c0-.551.449-1 1-1h4c.551 0 1 .449 1 1v1h-6V5z"  ></path></svg>
                        <span class="cart_icons">Удалить</span>
                        </a>
@@ -73,7 +75,6 @@
                         <div class="total_cart_amount"> <span style="float: left">ИТОГО:</span> <span style="float: right">{{favorites.total_sum}} &#x20bd;</span></div>
                         <div class="total_cart_qty"> <span style="float: left">{{favorites.total_qty}} товаров на сумму:</span> <span style="float: right">{{favorites.total_sum}} &#x20bd;</span></div>
                         <div class="total_cart_discount"> <span style="float: left">Сумма скидки</span> <span style="float: right">0 &#x20bd;</span></div>
-                        <button class="btn_buy" type="submit">Оформить заказ</button>
                     </div>
                </div>
     {% else %}
@@ -82,10 +83,10 @@
            </div>
                <div class=profile_cart>
                     <div class="cart_total_info">
-                        <div class="total_cart_amount"> <span style="float: left">ИТОГО:</span> <span style="float: right">4562 руб.</span></div>
-                        <div class="total_cart_qty"> <span style="float: left">5 товаров на сумму:</span> <span style="float: right">4562 руб.</span></div>
-                        <div class="total_cart_discount"> <span style="float: left">Сумма скидки</span> <span style="float: right">0 руб.</span></div>
-                        <button class="btn_buy" type="submit">Оформить заказ</button>
+                        <div class="total_cart_amount"> <span style="float: left">ИТОГО:</span> <span style="float: right">0 &#x20bd;</span></div>
+                        <div class="total_cart_qty"> <span style="float: left">5 товаров на сумму:</span> <span style="float: right">0 &#x20bd;</span></div>
+                        <div class="total_cart_discount"> <span style="float: left">Сумма скидки</span> <span style="float: right">0 &#x20bd;</span></div>
+
                     </div>
                </div>
     {% endif %}
