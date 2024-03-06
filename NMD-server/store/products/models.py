@@ -17,7 +17,8 @@ class Product(models.Model):
     season = models.CharField(max_length=12,null=False)
     color = models.CharField(max_length=24,null=False)
     sizes = models.ForeignKey(to='Size',on_delete=models.CASCADE,to_field='article_size')
-    is_favorite = models.BooleanField(null=False, default=False, blank=False)
+
+
 
     def __str__(self):
         return f"{self.article}"
@@ -65,6 +66,7 @@ class Favorites(models.Model):
     product = models.ForeignKey(to=Product, on_delete=models.CASCADE,to_field='article')
     qty = models.PositiveSmallIntegerField(default=0)
     create_time_stamp = models.DateTimeField(auto_now_add=True)
+    is_favorite = models.BooleanField(null=False, default=False, blank=False)
 
 
 
@@ -74,6 +76,16 @@ class Favorites(models.Model):
 
     def sum(self):
         return self.product.price * self.qty
+
+
+
+
+
+
+
+
+
+
 
 
 

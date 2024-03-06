@@ -7,7 +7,9 @@ from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 
 from django.conf import settings
 from django.core.mail import send_mail
-from products.models import Basket,BasketQuerySet
+from products.models import Basket,BasketQuerySet,Product
+
+
 
 
 def index(request):
@@ -34,7 +36,8 @@ def index(request):
         'form_label': "Authorization/Авторизация",
         'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
         'footer_2': "Копирование материалов запрещено.",
-        'form': form
+        'form': form,
+
     }
     return render(request,'users/index.html',context)
 

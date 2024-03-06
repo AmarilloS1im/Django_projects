@@ -7,3 +7,4 @@ admin.site.register(Favorites)
 
 
 
+
