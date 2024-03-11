@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect,redirect
 from products.models import Product, Size, Basket, BasketQuerySet, FavoritesQuerySet, Favorites
 from products.forms import CheckboxForm
+from products.context_processors import *
+
 
 
 
@@ -11,13 +13,15 @@ from products.forms import CheckboxForm
 
 
 # Create your views here.
-
+class IsChecked():
+    def __init__(self,is_checked=True):
+        self.is_checked = is_checked
 def products(request):
+    is_checked = IsChecked()
+    print(is_checked.is_checked)
     form = CheckboxForm()
     baskets = Basket.objects.filter(user=request.user)
     favorites = Favorites.objects.filter(user=request.user).order_by('product')
-    print(favorites)
-
 
     context = {
         'title': "Магазин",
@@ -31,15 +35,24 @@ def products(request):
 
 
 
-
     }
+
+    context['is_checked'] = is_checked.is_checked
+
+
     return render(request, 'products/products.html', context)
 
 
 def basket_add(request, product_id):
-    form = CheckboxForm()
+    print(request.META['HTTP_REFERER'].split('/'))
+
+
+    # form = CheckboxForm()
     baskets = Basket.objects.filter(user=request.user)
-    favorites = Favorites.objects.filter(user=request.user)
+    favorites = Favorites.objects.filter(user=request.user).order_by('product')
+    product = Product.objects.get(article=product_id)
+
+
 
     context = {
         'title': "Магазин",
@@ -47,17 +60,32 @@ def basket_add(request, product_id):
         'footer_2': "Копирование материалов запрещено.",
         'products': Product.objects.all().order_by('article'),
         'sizes': Size.objects.all(),
-        'form': form,
+        # 'form': form,
         'baskets': baskets,
         'favorites': favorites,
+
     }
 
+    if 'button_favorites' in request.POST:
+        favorite = Favorites.objects.get(user=request.user, product=product_id)
+        context['popup_product'] = favorite.product.article
+        redirect_address = 'products/favorites.html'
+    else:
+        redirect_address = 'products/products.html'
+        context['popup_product'] = product.article
+
+
+
     if request.method == 'POST':
-        product = Product.objects.get(article=product_id)
+        print('post')
         if len(request.POST.getlist('checked_size_id')) < 1:
-            context['popup_product'] = product
-            return render(request, 'products/is_checked_sizes.html', context)
+            is_checked = IsChecked(is_checked=False)
+            context['is_checked'] = is_checked.is_checked
+            return render(request, template_name=redirect_address, context= context)
+
         else:
+            is_checked = IsChecked(is_checked=True)
+            context['is_checked'] = is_checked.is_checked
             for article_size in request.POST.getlist('checked_size_id'):
                 size = Size.objects.get(article_size=article_size)
                 baskets = Basket.objects.filter(user=request.user, product=product, size=size)
@@ -67,10 +95,13 @@ def basket_add(request, product_id):
                     basket = baskets.last()
                     basket.qty += 1
                     basket.save()
-            return HttpResponseRedirect(request.META['HTTP_REFERER'])
+            return render(request, template_name=redirect_address, context= context)
     else:
-        print("NOT POST")
-        return render(request, 'products/products.html', context)
+        is_checked = IsChecked(is_checked=True)
+        context['is_checked'] = is_checked.is_checked
+        print('not post')
+        return render(request, template_name=redirect_address, context= context)
+        # return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 
@@ -125,20 +156,24 @@ def item_info(request, product_id):
 def cart(request):
     form = CheckboxForm()
     baskets = Basket.objects.filter(user=request.user)
+    products = Product.objects.all()
+    favorites  = Favorites.objects.filter(user=request.user).order_by('product')
     context = {
         'title': "Магазин",
         'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
         'footer_2': "Копирование материалов запрещено.",
-        'products': Product.objects.all(),
+        'products':products,
         'sizes': Size.objects.all(),
         'form': form,
         'baskets': baskets,
-        'favorites': Favorites.objects.all(),
+        'favorites': favorites,
     }
     return render(request, 'products/cart.html', context)
 
 
 def favorites(request):
+    is_checked = IsChecked(is_checked=True)
+
     baskets = Basket.objects.filter(user=request.user)
     context = {
         'title': "Магазин",
@@ -148,11 +183,14 @@ def favorites(request):
         'sizes': Size.objects.all(),
         'favorites': Favorites.objects.filter(user=request.user),
         'baskets': baskets,
+        'current_page': 'favorites_page',
     }
+    context['is_checked'] = is_checked.is_checked
     return render(request, 'products/favorites.html', context)
 
 
 def favorites_add(request, product_id):
+
     product = Product.objects.get(article=product_id)
 
 
@@ -180,19 +218,36 @@ def favorites_remove(request, favorite_id):
 
 def remove_all_user_favorites(request):
     all_user_favorites = Favorites.objects.filter(user=request.user)
-
-    all_articles=[]
-    for obj in all_user_favorites:
-        all_articles.append(obj.product.article)
-
-    Product.objects.filter(article__in=all_articles).update(is_favorite=False)
     all_user_favorites.delete()
 
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 def close_popup(request):
+    is_checked = IsChecked()
+    baskets = Basket.objects.filter(user=request.user)
+    favorites = Favorites.objects.filter(user=request.user).order_by('product')
 
-    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+    context = {
+        'title': "Магазин",
+        'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
+        'footer_2': "Копирование материалов запрещено.",
+        'products': Product.objects.all().order_by('article'),
+        'sizes': Size.objects.all(),
+        # 'form': form,
+        'baskets': baskets,
+        'favorites': favorites,
+
+    }
+
+    if 'button_favorites' in request.GET:
+
+        redirect_address = 'products/favorites.html'
+    else:
+        redirect_address = 'products/products.html'
+
+    return render(request, template_name=redirect_address, context=context)
+    # return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 

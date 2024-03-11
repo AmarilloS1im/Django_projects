@@ -7,12 +7,14 @@ from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 
 from django.conf import settings
 from django.core.mail import send_mail
-from products.models import Basket,BasketQuerySet,Product
+from products.models import Basket,BasketQuerySet,Product,SizeSelected
+from products.views import IsChecked
 
 
 
 
 def index(request):
+
     if request.method == 'POST':
         form = UserLoginForm(data=request.POST)
         if form.is_valid():
@@ -39,6 +41,7 @@ def index(request):
         'form': form,
 
     }
+
     return render(request,'users/index.html',context)
 
 def registration(request):

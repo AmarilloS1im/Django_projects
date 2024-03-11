@@ -19,7 +19,6 @@ class Product(models.Model):
     sizes = models.ForeignKey(to='Size',on_delete=models.CASCADE,to_field='article_size')
 
 
-
     def __str__(self):
         return f"{self.article}"
 
@@ -39,6 +38,8 @@ class BasketQuerySet(models.QuerySet):
         return sum(basket.sum() for basket in self)
     def total_qty(self):
         return sum(basket.qty for basket in self)
+
+
 class Basket(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     product = models.ForeignKey(to=Product, on_delete=models.CASCADE,to_field='article')
@@ -49,10 +50,8 @@ class Basket(models.Model):
     objects = BasketQuerySet.as_manager()
     def __str__(self):
         return f"Корзина для {self.user.email} товар {self.product.article},размер {self.size.size_name}"
-
     def sum(self):
         return self.product.price * self.qty
-
 
 class FavoritesQuerySet(models.QuerySet):
     def total_sum(self):
@@ -68,14 +67,21 @@ class Favorites(models.Model):
     create_time_stamp = models.DateTimeField(auto_now_add=True)
     is_favorite = models.BooleanField(null=False, default=False, blank=False)
 
-
-
     objects = FavoritesQuerySet.as_manager()
     def __str__(self):
         return f"Избранные товары для {self.user.email} товар {self.product.article}"
 
     def sum(self):
         return self.product.price * self.qty
+
+class SizeSelected(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    create_time_stamp = models.DateTimeField(auto_now_add=True)
+    is_selected = models.BooleanField(null=False, default=True, blank=False)
+
+
+
+
 
 
 

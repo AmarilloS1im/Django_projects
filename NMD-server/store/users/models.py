@@ -27,3 +27,5 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['username']
 
 
+
+

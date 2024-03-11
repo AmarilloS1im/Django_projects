@@ -1,6 +1,6 @@
-# from products.models import Favorites
-# def get_favorites(request):
-#
-#     favorites = Favorites.objects.filter(user=request.user)
-#     print(favorites)
-#     return {'favorites': favorites}
+# from products.models import Product,Size
+# def context_products(request):
+#     products = Product.objects.all().order_by('article')
+#     sizes = Size.objects.all()
+#     return {'products': products,'sizes':sizes}
+

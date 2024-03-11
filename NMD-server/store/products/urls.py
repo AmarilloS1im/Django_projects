@@ -21,6 +21,8 @@ urlpatterns = [
     path('favorites/remove/<int:favorite_id>/',favorites_remove,name='favorites_remove'),
     path('favorites/remove/',remove_all_user_favorites,name='remove_all_user_favorites'),
     path('',login_required(close_popup), name='close_popup'),
+    path('favorites/',login_required(close_popup), name='close_popup_favorites'),
+
 
 
 
