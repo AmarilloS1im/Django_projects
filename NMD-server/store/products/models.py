@@ -17,11 +17,15 @@ class Product(models.Model):
     season = models.CharField(max_length=12,null=False)
     color = models.CharField(max_length=24,null=False)
     sizes = models.ForeignKey(to='Size',on_delete=models.CASCADE,to_field='article_size')
+    category = models.ForeignKey(to='ProductCategory',on_delete=models.CASCADE,to_field='name')
 
 
     def __str__(self):
         return f"{self.article}"
 
+class ProductCategory(models.Model):
+    name = models.CharField(max_length=12,null=False,unique=True,primary_key=True)
+    discription = models.TextField(null=True, blank=True)
 
 class Size(models.Model):
     article_size = models.CharField(max_length=12,null=False,unique=True,primary_key=True)

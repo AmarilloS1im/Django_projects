@@ -1,54 +1,42 @@
 
 {% load products_tags %}
-<div class="goods">
-<div class="shoe-photo">
-    <a href="{% url 'products:item_info' product.article %}">
-        <img src="{{ product.img.url }}" alt="нет фото">
-    </a>
-    <a name='heart_favorites' class="btn_favorites" href="{% url 'products:favorites_add' product.article %}">
-        <svg data-is_favorite="{% get_favorites filter=request.user filter_2=product%}" class="favorites_heart"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#ababab" width="64px" height="64px"
-             viewBox="0 0 32 32" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-            <g id="SVGRepo_iconCarrier">
-                <path d="M16.0298 5.33C17.5998 3.88 19.6898 3 21.9998 3C26.9698 3 30.9998 7.03 30.9998 12C30.9998 20 20.9998 29 15.9998 31C10.9998 29 0.999817 20 0.999817 12C0.999817 7.03 5.02982 3 9.99982 3C12.3098 3 14.4098 3.88 15.9998 5.3L16.0298 5.33Z"></path>
-                <path d="M16 5.30451C14.407 3.87551 12.309 2.99951 10 2.99951C5.029 2.99951 1 7.02951 1 11.9995C1 19.9995 11 28.9995 16 30.9995C21 28.9995 31 19.9995 31 11.9995C31 7.02951 26.971 2.99951 22 2.99951C18.477 2.99951 15.479 5.05051 14 7.99951M27 11.9998C27 9.23781 24.762 6.99981 22 6.99981"></path>
-            </g>
-        </svg>
-    </a>
-</div>
 
-<a href="{% url 'products:item_info' product.article %}">
-    <div class="price">{{product.price}} руб</div>
-</a>
-<a href="{% url 'products:item_info' product.article %}">
-    <div class="description">{{product.description}}</div>
-</a>
 <div class="sizes-group">
-    <form id="{{product.article}}" action="" method="post">
+    <form action="" method="post">
         {% csrf_token %}
         {% for size in sizes %}
         {% if product.article == size.to_article %}
         <label>
-            <input id="{{size}}" class="size_checkbox" type="checkbox" name="checked_size_id" value="{{size}}">
+            <input data="{{product.article}}" class="size_checkbox" type="checkbox"
+                   name="checked_size_id"
+                   value="{{size}}">
             <span class="title_checkbox">{{size.size_name}}</span>
         </label>
         {% endif %}
         {% endfor %}
-    </form>
-</div>
 
-<button form="{{product.article}}" formaction="{% url 'products:basket_add' product.article %}" class="btn"
-        type="submit">
-    <svg class="button-cart" fill="#C0BFBF" width="64px" height="64px" viewBox="-2 -2 204.00 204.00"
-         data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-        <g id="SVGRepo_iconCarrier"><title></title>
-            <path d="M183.25,52.75a18.22,18.22,0,0,0-7-1h-91c-3.5,0-8-.5-11.5.5a9.64,9.64,0,0,0-7.5,9.5,10,10,0,0,0,10,10h90.5l-8,42a10.22,10.22,0,0,1-10,8h-75a10.66,10.66,0,0,1-10-8l-16-74a20.3,20.3,0,0,0-19.5-16h-7a10,10,0,0,0,0,20h7l16,74c3,14,15,23.5,29.5,23.5h75c12,0,24.5-8,28-19.5,2.5-8,4-17,5.5-25,1.5-8.5,3.5-17,5-25a17.76,17.76,0,0,0,1-5,17,17,0,0,0,.5-5c0-4-2-8-5.5-9Zm-132,108.5a15,15,0,0,0,30,0h0a15,15,0,0,0-30,0Zm90,0a15,15,0,1,0,15-15,15,15,0,0,0-15,15v0Z"></path>
-        </g>
-    </svg>
-    В корзину
-</button>
-</div>
+        <button data="{{product.article}}" name="btn2"
+                formaction="{% url 'products:basket_add' product.article  %}"
+                class="btn"
+                type="submit">
+            <svg class="button-cart" fill="#C0BFBF" width="64px" height="64px"
+                 viewBox="-2 -2 204.00 204.00"
+                 data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                   stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier"><title></title>
+                    <path d="M183.25,52.75a18.22,18.22,0,0,0-7-1h-91c-3.5,0-8-.5-11.5.5a9.64,9.64,0,0,0-7.5,9.5,10,10,0,0,0,10,10h90.5l-8,42a10.22,10.22,0,0,1-10,8h-75a10.66,10.66,0,0,1-10-8l-16-74a20.3,20.3,0,0,0-19.5-16h-7a10,10,0,0,0,0,20h7l16,74c3,14,15,23.5,29.5,23.5h75c12,0,24.5-8,28-19.5,2.5-8,4-17,5.5-25,1.5-8.5,3.5-17,5-25a17.76,17.76,0,0,0,1-5,17,17,0,0,0,.5-5c0-4-2-8-5.5-9Zm-132,108.5a15,15,0,0,0,30,0h0a15,15,0,0,0-30,0Zm90,0a15,15,0,1,0,15-15,15,15,0,0,0-15,15v0Z"></path>
+                </g>
+            </svg>
+            В корзину
+        </button>
+
+    </form>
+
+
+
+
+
+
+
