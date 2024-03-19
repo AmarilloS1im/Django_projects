@@ -8,7 +8,7 @@ from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from django.conf import settings
 from django.core.mail import send_mail
 from products.models import Basket,BasketQuerySet,Product,SizeSelected
-from products.views import IsChecked
+
 
 
 

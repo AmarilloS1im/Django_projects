@@ -37,7 +37,7 @@
                         {% for size in sizes %}
                             {% if favorite.product.article == size.to_article %}
                                 <label>
-                                    <input data="{{favorite.product.article}}" id="{{size}}" class="size_checkbox" type="checkbox"  name="checked_size_id" value="{{size}}"  >
+                                    <input data="{{favorite.product.article}}"  class="size_checkbox" type="checkbox"  name="checked_size_id" value="{{size}}"  >
                                     <span class="title_checkbox"> {{size.size_name}}</span>
                                 </label>
                             {%else%}
@@ -48,13 +48,12 @@
 
                    </div>
                    <div class="cart_favorits_and_trash">
-
                        <a id="{{favorite.product.favorite_article}}" name="trash" class="trash" href="{% url 'products:favorites_remove' favorite.id  %}">
                            <svg class="little_garbage" viewBox="0 0 32 32" fill="#ececec" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M6 12v15c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3V12H6zm6 13a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zM27 6h-6V5c0-1.654-1.346-3-3-3h-4c-1.654 0-3 1.346-3 3v1H5c-1.103 0-2 .897-2 2v1a1 1 0 0 0 1 1h24a1 1 0 0 0 1-1V8c0-1.103-.897-2-2-2zM13 5c0-.551.449-1 1-1h4c.551 0 1 .449 1 1v1h-6V5z"  ></path></svg>
                        <span class="cart_icons">Удалить</span>
                        </a>
                    </div>
-                   <button data="{{favorite.product.article}}" name="btn"  form="{{favorite.product.article}}" formaction="{% url 'products:basket_add' favorite.product.article %}" class="btn_favorites_to_cart" type="submit">
+                   <button form="{{favorite.product.article}}" data="{{favorite.product.article}}" name="btn"   formaction="{% url 'products:basket_add' favorite.product.article %}" class="btn_favorites_to_cart" type="submit">
                         <svg  fill="#fff" width="35px" height="35px"  viewBox="-2 -2 204.00 204.00"
                              data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -65,14 +64,11 @@
                         </svg>
                         В корзину
                     </button>
-                </div>
+
+                    {% include "products/popup.html" with fav=True  %}
+
                 {% endfor %}
                 </div>
-
-            {% include "products/popup.html"  %}
-
-
-
            </div>
                <div class=profile_cart>
                     <div class="cart_total_info">
@@ -95,37 +91,56 @@
                </div>
 
 
-   <script>
-        let popup = document.querySelectorAll(".popup");
-        let btns = document.querySelectorAll('button[name^="btn"]');
+<script>
+        let popups = document.querySelectorAll(".popup");
+        let btns = document.querySelectorAll('button[name="btn"]');
+        let popups_close = document.querySelectorAll(".popup_close");
+        console.log(btns);
 
-        for (let btn of btns) {
+        for ( let index = 0; index < btns.length; index++){
+            let btn = btns[index];
+            let popup_close = popups_close[index];
+            let popup = popups[index];
+
           btn.addEventListener("click", function () {
-
             let checkboxes = document.querySelectorAll('input[name^="checked_size_id"]');
             var is_checked = 0;
 
-            for (let checkbox of checkboxes) {
-              console.log(checkbox.getAttribute('id'))
-              if (checkbox.checked && checkbox.getAttribute('data') ===btn.getAttribute('data')) {
 
+            for (let checkbox of checkboxes) {
+              if (checkbox.checked && checkbox.getAttribute('data') ===btn.getAttribute('data')) {
                 is_checked = 1;
                 break;
               } }
 
             if(is_checked === 0){
                 event.preventDefault()
-                popup[0].style.display = 'block';
-                console.log("NOT");
+                popup.style.display = 'block';
+
               }
-
           });
-           function popupClose() {
-             popup[0].style.display = 'none';
+            popup_close.addEventListener("click", function () {
+              popup.style.display = 'none';
+          });
 
-           };}
+        };
+        function isChecked() {
+             let popup_checked = 0;
+             let popup_checkboxes = document.querySelectorAll('input[name="checked_size_id"]');
+             for (let popup_checkbox of popup_checkboxes){
+                if (popup_checkbox.checked){
+                    popup_checked = 1;
+                    break;
+                }
+             }
+             if (popup_checked === 0) {
+                event.preventDefault()
+             }
 
+          }
     </script>
+
+
 
 {% endblock %}
 

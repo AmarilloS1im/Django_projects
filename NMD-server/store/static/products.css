@@ -834,3 +834,10 @@ a {
 
 
 }
+
+
+.filter_link{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}

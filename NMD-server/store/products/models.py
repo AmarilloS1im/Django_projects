@@ -25,7 +25,7 @@ class Product(models.Model):
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=12,null=False,unique=True,primary_key=True)
-    discription = models.TextField(null=True, blank=True)
+    userfrendly_name = models.TextField(null=True, blank=True)
 
 class Size(models.Model):
     article_size = models.CharField(max_length=12,null=False,unique=True,primary_key=True)

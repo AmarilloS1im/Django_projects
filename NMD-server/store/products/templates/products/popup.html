@@ -1,50 +1,84 @@
-
-
 <!--popup block-->
-        <div class="popup">
-            <div class="popup_body">
-                <div class="popup_content">
-                    <a  class="popup_close" href="#">Закрыть</a>
-                    <div class="popup_title"> Выберите размер</div>
-                    <div class="popup_text">
-                        <div class="sizes-label">
-                            Размеры
-                        </div>
-
-
-
-                        <form action="" method="post">
-                            {% csrf_token %}
-                            {% for size in sizes %}
-                            {% if product.article == size.to_article %}
-                            <label>
-                                <input data="{{product.article}}" class="size_checkbox" type="checkbox"
-                                       name="checked_size_id" value="{{size}}">
-                                <span class="title_checkbox">{{size.size_name}}</span>
-                            </label>
-                            {% endif %}
-                            {% endfor %}
-                            <button data="{{product.article}}" name="btn"
-                                    formaction="{% url 'products:basket_add' product.article  %}" class="btn"
-                                    type="submit">
-                                <svg class="button-cart" fill="#C0BFBF" width="64px" height="64px"
-                                     viewBox="-2 -2 204.00 204.00"
-                                     data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
-                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                    <g id="SVGRepo_iconCarrier"><title></title>
-                                        <path d="M183.25,52.75a18.22,18.22,0,0,0-7-1h-91c-3.5,0-8-.5-11.5.5a9.64,9.64,0,0,0-7.5,9.5,10,10,0,0,0,10,10h90.5l-8,42a10.22,10.22,0,0,1-10,8h-75a10.66,10.66,0,0,1-10-8l-16-74a20.3,20.3,0,0,0-19.5-16h-7a10,10,0,0,0,0,20h7l16,74c3,14,15,23.5,29.5,23.5h75c12,0,24.5-8,28-19.5,2.5-8,4-17,5.5-25,1.5-8.5,3.5-17,5-25a17.76,17.76,0,0,0,1-5,17,17,0,0,0,.5-5c0-4-2-8-5.5-9Zm-132,108.5a15,15,0,0,0,30,0h0a15,15,0,0,0-30,0Zm90,0a15,15,0,1,0,15-15,15,15,0,0,0-15,15v0Z"></path>
-                                    </g>
-                                </svg>
-                                В корзину
-                            </button>
-                        </form>
-                    </div>
+<div class="popup">
+    <div class="popup_body">
+        <div class="popup_content">
+            <a class="popup_close" href="#">Закрыть</a>
+            <div class="popup_title"> Выберите размер</div>
+            <div class="popup_text">
+                <div class="sizes-label">
+                    Размеры
                 </div>
+
+                {% if not fav %}
+
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% for size in sizes %}
+                    {% if product.article == size.to_article %}
+                    <label>
+                        <input data="{{product.article}}" class="size_checkbox" type="checkbox"
+                               name="checked_size_id"
+                               value="{{size}}">
+                        <span class="title_checkbox">{{size.size_name}}</span>
+                    </label>
+                    {% endif %}
+                    {% endfor %}
+                    <button onclick="isChecked()" data="{{product.article}}" name="btn2"
+                            formaction="{% url 'products:basket_add' product.article  %}" class="btn"
+                            type="submit">
+                        <svg class="button-cart" fill="#C0BFBF" width="64px" height="64px"
+                             viewBox="-2 -2 204.00 204.00"
+                             data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                               stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier"><title></title>
+                                <path d="M183.25,52.75a18.22,18.22,0,0,0-7-1h-91c-3.5,0-8-.5-11.5.5a9.64,9.64,0,0,0-7.5,9.5,10,10,0,0,0,10,10h90.5l-8,42a10.22,10.22,0,0,1-10,8h-75a10.66,10.66,0,0,1-10-8l-16-74a20.3,20.3,0,0,0-19.5-16h-7a10,10,0,0,0,0,20h7l16,74c3,14,15,23.5,29.5,23.5h75c12,0,24.5-8,28-19.5,2.5-8,4-17,5.5-25,1.5-8.5,3.5-17,5-25a17.76,17.76,0,0,0,1-5,17,17,0,0,0,.5-5c0-4-2-8-5.5-9Zm-132,108.5a15,15,0,0,0,30,0h0a15,15,0,0,0-30,0Zm90,0a15,15,0,1,0,15-15,15,15,0,0,0-15,15v0Z"></path>
+                            </g>
+                        </svg>
+                        В корзину
+                    </button>
+                </form>
+
+                {% else %}
+
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% for size in sizes %}
+                    {% if favorite.product.article == size.to_article %}
+                    <label>
+                        <input data="{{favorite.product.article}}" class="size_checkbox" type="checkbox"
+                               name="checked_size_id"
+                               value="{{size}}">
+                        <span class="title_checkbox">{{size.size_name}}</span>
+                    </label>
+                    {% endif %}
+                    {% endfor %}
+
+                    <button onclick="isChecked()" data="{{favorite.product.article}}" name="btn2"
+                            formaction="{% url 'products:basket_add' favorite.product.article  %}" class="btn"
+                            type="submit">
+                        <svg class="button-cart" fill="#C0BFBF" width="64px" height="64px"
+                             viewBox="-2 -2 204.00 204.00"
+                             data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                               stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier"><title></title>
+                                <path d="M183.25,52.75a18.22,18.22,0,0,0-7-1h-91c-3.5,0-8-.5-11.5.5a9.64,9.64,0,0,0-7.5,9.5,10,10,0,0,0,10,10h90.5l-8,42a10.22,10.22,0,0,1-10,8h-75a10.66,10.66,0,0,1-10-8l-16-74a20.3,20.3,0,0,0-19.5-16h-7a10,10,0,0,0,0,20h7l16,74c3,14,15,23.5,29.5,23.5h75c12,0,24.5-8,28-19.5,2.5-8,4-17,5.5-25,1.5-8.5,3.5-17,5-25a17.76,17.76,0,0,0,1-5,17,17,0,0,0,.5-5c0-4-2-8-5.5-9Zm-132,108.5a15,15,0,0,0,30,0h0a15,15,0,0,0-30,0Zm90,0a15,15,0,1,0,15-15,15,15,0,0,0-15,15v0Z"></path>
+                            </g>
+                        </svg>
+                        В корзину
+                    </button>
+                </form>
+
+                {% endif %}
             </div>
         </div>
     </div>
+</div>
+</div>
 
-    <!--end popup block-->
+<!--end popup block-->
 
 
