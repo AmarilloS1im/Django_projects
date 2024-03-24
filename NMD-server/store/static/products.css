@@ -361,6 +361,7 @@ body{
 
 .content{
     width: 1253px;
+    height: 480px;
     display: flex;
     margin: 0 auto;
 }
@@ -378,11 +379,20 @@ body{
     margin: 17px auto;
 }
 
+.filter_group{
+    width: 100%;
+    height: 480px;
+    flex-shrink: 0
 
+
+    margin-top: 7px;
+    margin-right: 13px;
+
+}
 
 .filter{
-    width: 25%;
-    height: 401px;
+    width: 100%;
+    height: 358px;
     flex-shrink: 0
     border-collapse: collapse;
     border-radius: 5px;
@@ -417,7 +427,7 @@ body{
 }
 
 .checkbox{
-    display: flex;
+    display: inline;
     width: 15px;
     height: 16px;
     padding: 10px;
@@ -430,11 +440,14 @@ body{
     border: 3px solid #C0BFBF;
     background: #FFF;
 
+    vertical-align:sub;
+    margin-left: 10px;
+
 
 }
 
 .label{
-    display: flex;
+    display: inline-block;
     width: 234px;
     height: 11px;
     flex-direction: column;
@@ -449,8 +462,10 @@ body{
     line-height: normal;
     letter-spacing: -0.2px;
 
-    margin-top: 6px;
+    margin-top: 4px;
     margin-left: 6px;
+
+    vertical-align:top;
 
 }
 
@@ -466,7 +481,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     width: 75%;
-    height: 410px;
+    height: 480px;
     flex-shrink: 0;
     overflow-x: hidden;
     overflow-y: auto;
@@ -475,7 +490,7 @@ body{
 
 .goods{
     width: 280px;
-    height: 402px;
+    height: 455px;
     flex-shrink: 0;
 
     border-radius: 5px;
@@ -483,6 +498,7 @@ body{
 
     margin: 7px;
     margin-left: 18px;
+    margin-bottom:15px;
 
 }
 
@@ -601,10 +617,11 @@ FAVORITES
 
 .shoe-photo{
     width: 240px;
-    height: 220px;
+    height: 200px;
     flex-shrink: 0;
 
     margin: 10px 23px;
+    margin-bottom:60px;
 
 }
 
@@ -644,8 +661,9 @@ FAVORITES
     fill: red;
 }
 
-.price{
-    width: 240px;
+.price_group{
+width: 240px;
+    height: 50px;
     flex-shrink: 0;
 
     color: #000;
@@ -658,10 +676,26 @@ FAVORITES
     margin-left: 23px;
 }
 
+.price{
+    width: 240px;
+    height: 40px;
+    flex-shrink: 0;
+
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: left;
+    margin-left: 23px;
+
+}
+
 .description{
     display: flex;
     width: 240px;
-    height: 59px;
+    height: 55px;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
@@ -686,7 +720,7 @@ FAVORITES
     display: flex;
     flex-wrap: wrap;
     width: 240px;
-    height: 25px;
+    height: 35px;
     flex-shrink: 0;
 
     margin-left: 19px;
@@ -840,4 +874,43 @@ a {
     color: black;
     text-decoration: none;
     font-weight: bold;
+}
+
+.filter_buttons_group{
+
+}
+
+.btn_filter{
+    display: flex;
+    width: 318px;
+    height: 34px;
+    padding: 2px 30px;
+    justify-content: center;
+    align-items: justify;
+    flex-shrink: 0;
+
+    border-radius: 5px;
+    background: #BC0D2E;
+
+    color: #C0BFBF;
+
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    margin: 10px 0px;
+
+    outline:none;
+    border:none;
+}
+
+.btn_filter:hover{
+    background: #9c0925;
+}
+
+.btn_filter:active{
+    background: #790218;
 }

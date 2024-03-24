@@ -5,26 +5,43 @@ from users.models import User
 
 
 
+
 class Product(models.Model):
     article = models.CharField(max_length=12,null=False,blank=False,unique=True,primary_key=True)
     model_name = models.CharField(max_length=12,null=False,blank=False)
-    model_type = models.CharField(max_length=12,null=False,blank=False)
     img = models.ImageField(upload_to='products_images')
     price = models.DecimalField(max_digits=9,decimal_places=2)
     description = models.TextField(null=True,blank=True)
-    gender = models.CharField(max_length=12,null=False,blank=False)
-    is_child = models.BooleanField(null=False)
-    season = models.CharField(max_length=12,null=False)
     color = models.CharField(max_length=24,null=False)
     sizes = models.ForeignKey(to='Size',on_delete=models.CASCADE,to_field='article_size')
     category = models.ForeignKey(to='ProductCategory',on_delete=models.CASCADE,to_field='name')
+    product_type = models.ForeignKey(to='ProductType', on_delete=models.CASCADE, to_field='name')
+    gender =  models.ForeignKey(to='ProductGender', on_delete=models.CASCADE, to_field='name')
+    season = models.ForeignKey(to='ProductSeason', on_delete=models.CASCADE, to_field='name')
+    age = models.ForeignKey(to='ProductAge', on_delete=models.CASCADE, to_field='name')
 
 
     def __str__(self):
         return f"{self.article}"
 
+class ProductAge(models.Model):
+    name = models.CharField(max_length=12, null=False, unique=True, primary_key=True)
+    userfrendly_name = models.TextField(null=True, blank=True)
+
+class ProductSeason(models.Model):
+    name = models.CharField(max_length=12, null=False, unique=True, primary_key=True)
+    userfrendly_name = models.TextField(null=True, blank=True)
+
+class ProductGender(models.Model):
+    name = models.CharField(max_length=12, null=False, unique=True, primary_key=True)
+    userfrendly_name = models.TextField(null=True, blank=True)
+
 class ProductCategory(models.Model):
     name = models.CharField(max_length=12,null=False,unique=True,primary_key=True)
+    userfrendly_name = models.TextField(null=True, blank=True)
+
+class ProductType(models.Model):
+    name = models.CharField(max_length=12, null=False, unique=True, primary_key=True)
     userfrendly_name = models.TextField(null=True, blank=True)
 
 class Size(models.Model):

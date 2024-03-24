@@ -1,12 +1,9 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect,redirect
-from products.models import Product, Size, Basket, BasketQuerySet, FavoritesQuerySet, Favorites,ProductCategory
+from products.models import *
 from products.forms import CheckboxForm
 from products.context_processors import *
-
-
-
-
-
+from django.shortcuts import render
+from django.db.models import Q
 
 
 
@@ -14,16 +11,62 @@ from products.context_processors import *
 
 # Create your views here.
 
-def products(request, category_name=None):
 
+
+
+
+def reset_filters(request):
+    print('reset')
+    request.session['filters']=[]
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+def products(request):
+    filter_dict={'category__in':['Shoe','clothes'],'product_type__in':['Boots','Longboots','Short_boots','Pullover'],
+                 'gender__in': ['Male', 'Female'],'season__in':['Winter'],'age__in':['Adult','Child'],
+                 }
+
+
+
+    filters = request.POST.getlist('filter_id')
+    print(filters)
+    if len(filters)>0:
+        filter_param_list = []
+        for items in filters:
+            for k,v in filter_dict.items():
+                if items in filter_dict[k]:
+                    filter_param_list.append(k)
+                    break
+    else:
+        if request.session['filters']:
+            filter_param_list = []
+            for items in request.session['filters']:
+                for k, v in filter_dict.items():
+                    if items in filter_dict[k]:
+                        filter_param_list.append(k)
+                        break
+        else:
+            pass
+
+
+    if len(filters)> 0:
+        request.session['filters'] = filters
+        current_filters = request.session['filters']
+        param_dict = {}
+        for param_name in filter_param_list:
+            param_dict[param_name]=current_filters
+        products = Product.objects.filter(**param_dict).order_by('article')
+    else:
+        if request.session['filters']:
+            current_filters = request.session['filters']
+            param_dict = {}
+            for param_name in filter_param_list:
+                param_dict[param_name] = current_filters
+            products = Product.objects.filter(**param_dict).order_by('article')
+        else:
+            products = Product.objects.all().order_by('article')
     baskets = Basket.objects.filter(user=request.user)
     favorites = Favorites.objects.filter(user=request.user).order_by('product')
-    if category_name:
-        category = ProductCategory.objects.get(name=category_name)
-        products = Product.objects.filter(category=category).order_by('article')
-    else:
-        products = Product.objects.all().order_by('article')
-
     context = {
         'title': "Магазин",
         'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
@@ -32,13 +75,17 @@ def products(request, category_name=None):
         'sizes': Size.objects.all(),
         'baskets': baskets,
         'favorites': favorites,
-        'categories':ProductCategory.objects.all()
+        'categories': ProductCategory.objects.all(),
+        'product_types': ProductType.objects.all(),
+        'genders': ProductGender.objects.all(),
+        'ages': ProductAge.objects.all(),
+        'seasons': ProductSeason.objects.all(),
     }
 
-
-
-
     return render(request, 'products/products.html', context)
+
+
+
 
 
 def basket_add(request, product_id):

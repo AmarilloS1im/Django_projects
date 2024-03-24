@@ -1,5 +1,4 @@
 from django import template
-from products.models import *
 from products.views import *
 
 
@@ -19,12 +18,7 @@ def get_favorites(filter=None,filter_2=None):
 
 
 
-# @register.inclusion_tag('products/size_form.html',takes_context=True)
-# def form_data(context,filter=None,product_article=None):
-#     if filter is True:
-#         return {'form_data':True, 'product_article':product_article,'sizes':context['sizes']}
-#     else:
-#         return {'form_data':False,'product_article':"",'sizes':context['sizes']}
+
 
 
 

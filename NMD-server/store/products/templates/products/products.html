@@ -26,85 +26,70 @@
 
 <div class="content">
 
+    <div class="filter_group">
 
     <div class="filter">
 
-        <div class="filter-header">Категория</div>
-        {%for category in categories%}
         <div class="filter-group">
 
-<!--            <form id="1" action="" method="post">-->
-<!--                {% csrf_token %}-->
-<!--                <input name="chose_cat" id="{{category.name}}" value="{{category.name}}" class="checkbox"-->
-<!--                       type="checkbox">-->
-<!--                <label class="label" for="{{category.name}}">{{category.userfrendly_name}}</label>-->
-<!--            </form>-->
+            <form id="1" action="" method="post">
+                {% csrf_token %}
+                <div class="filter-header">КАТЕГОРИЯ ТОВАРА</div>
+                {%for category in categories%}
 
-<!--            <button form="1" formaction="{% url 'products:category' category.name %}" class="btn"-->
-<!--                    type="submit">-->
-<!--                Применить-->
-<!--            </button>-->
-            <a class="filter_link" href="{% url 'products:category' category.name %}">{{category.userfrendly_name}}</a>
+                <input  value="{{category.name}}" class="checkbox"
+                       type="checkbox" name="filter_id" id="{{category.name}}" >
+                <label class="label" for="{{category.name}}">{{category.userfrendly_name}}</label>
 
 
-        </div>
-        {% endfor %}
+                 {% endfor %}
 
+                <div class="filter-header">ВИД ТОВАРА</div>
+                 {% for product_type in product_types %}
+                     <input  value="{{product_type.name}}" class="checkbox"
+                       type="checkbox" name="filter_id" id="{{product_type.name}}" >
+                    <label class="label" for="{{product_type.name}}">{{product_type.userfrendly_name}}</label>
+                 {% endfor %}
 
-        <div class="filter-header">ВИД ОБУВИ</div>
-        <div class="filter-group">
-            <input class="checkbox" type="checkbox" id="boots">
-            <label class="label" for="boots">Ботинки</label>
-        </div>
-        <div class="filter-group">
-            <input class="checkbox" type="checkbox" id="jackboots">
-            <label class="label" for="jackboots">Сапоги</label>
-        </div>
-        <div class="filter-group">
-            <input class="checkbox" type="checkbox" id="half-jackboots">
-            <label class="label" for="half-jackboots">Полусапоги</label>
-        </div>
-        <div class="filter-group">
-            <input class="checkbox" type="checkbox" id="half-boots">
-            <label class="label" for="half-boots">Полуботинки</label>
-        </div>
-        <div class="filter-header">ПОЛ</div>
-        <div class="filter-group">
-            <input class="checkbox" type="checkbox" id="man">
-            <label class="label" for="man">Мужской</label>
-        </div>
-        <div class="filter-group">
-            <input class="checkbox" type="checkbox" id="woman">
-            <label class="label" for="woman">Женский</label>
-        </div>
-        <div class="filter-group">
-            <input class="checkbox" type="checkbox" id="girl">
-            <label class="label" for="girl">Девочка</label>
-        </div>
-        <div class="filter-group">
-            <input class="checkbox" type="checkbox" id="boy">
-            <label class="label" for="boy">Мальчик</label>
+                <div class="filter-header">ПОЛ</div>
+                 {% for gender in genders %}
+                     <input  value="{{gender.name}}" class="checkbox"
+                       type="checkbox" name="filter_id" id="{{gender.name}}" >
+                    <label class="label" for="{{gender.name}}">{{gender.userfrendly_name}}</label>
+                 {% endfor %}
+
+                <div class="filter-header">ВОЗАРАСТ</div>
+                 {% for age in ages %}
+                     <input  value="{{age.name}}" class="checkbox"
+                       type="checkbox" name="filter_id" id="{{age.name}}" >
+                    <label class="label" for="{{age.name}}">{{age.userfrendly_name}}</label>
+                 {% endfor %}
+
+                <div class="filter-header">СЕЗОН</div>
+                 {% for season in seasons %}
+                     <input  value="{{season.name}}" class="checkbox"
+                       type="checkbox" name="filter_id" id="{{season.name}}" >
+                    <label class="label" for="{{season.name}}">{{season.userfrendly_name}}</label>
+                 {% endfor %}
+
+            </form>
         </div>
 
-        <div class="filter-header">СЕЗОН</div>
-        <div class="filter-group">
-            <input class="checkbox" type="checkbox" id="winter">
-            <label class="label" for="winter">Зима</label>
-        </div>
-        <div class="filter-group">
-            <input class="checkbox" type="checkbox" id="spring">
-            <label class="label" for="spring">Весна</label>
-        </div>
-        <div class="filter-group">
-            <input class="checkbox" type="checkbox" id="summer">
-            <label class="label" for="summer">Лето</label>
-        </div>
-        <div class="filter-group">
-            <input class="checkbox" type="checkbox" id="fall">
-            <label class="label" for="fall">Осень</label>
-        </div>
 
     </div>
+          <div class="filter_buttons_group">
+        <button form="1" formaction="{% url 'products:products' %}" class="btn_filter"
+                type="submit">
+            Применить фильтры
+        </button>
+        <a href="{% url 'products:reset_filters' %}" class="btn_filter">Сбросить фильтры</a>
+    </div>
+        </div>
+
+
+
+
+
 
 
     <div class="goods-group">
@@ -131,12 +116,14 @@
                 </a>
             </div>
 
-            <a href="{% url 'products:item_info' product.article %}">
-                <div class="price">{{product.price}} руб</div>
-            </a>
+
+
+
+            <div class="price">{{product.price}} руб</div>
             <a href="{% url 'products:item_info' product.article %}">
                 <div class="description">{{product.description}}</div>
             </a>
+
 
             <div class="sizes-group">
                 <form id="{{product.article}}" action="" method="post">
@@ -168,6 +155,7 @@
             </button>
             {% include 'products/popup.html'%}
             {% endfor %}
+
 
 
             <script>

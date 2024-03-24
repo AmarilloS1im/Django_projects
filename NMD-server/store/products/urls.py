@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 app_name = 'products'
 urlpatterns = [
     path('',login_required(products), name='products'),
-    path('category/<slug:category_name>',login_required(products), name='category'),
+    path('reset/',login_required(reset_filters), name='reset_filters'),
     path('item_info/<str:product_id>', login_required(item_info), name='item_info'),
     path('baskets/add/<str:product_id>/',basket_add, name='basket_add'),
     path('baskets/remove/<int:basket_id>',basket_remove,name='basket_remove'),
@@ -19,6 +19,7 @@ urlpatterns = [
     path('favorites/',login_required(favorites),name='favorites'),
     path('favorites/remove/<int:favorite_id>/',favorites_remove,name='favorites_remove'),
     path('favorites/remove/',remove_all_user_favorites,name='remove_all_user_favorites'),
+
 
 ]
 
