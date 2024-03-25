@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 app_name = 'products'
 urlpatterns = [
     path('',login_required(products), name='products'),
+    path('page/<int:page>/',login_required(products), name='paginator'),
     path('reset/',login_required(reset_filters), name='reset_filters'),
     path('item_info/<str:product_id>', login_required(item_info), name='item_info'),
     path('baskets/add/<str:product_id>/',basket_add, name='basket_add'),

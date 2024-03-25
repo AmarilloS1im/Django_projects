@@ -82,7 +82,7 @@
                 type="submit">
             Применить фильтры
         </button>
-        <a href="{% url 'products:reset_filters' %}" class="btn_filter">Сбросить фильтры</a>
+        <a onclick="resetFilters()" href="{% url 'products:reset_filters' %}" class="btn_filter">Сбросить фильтры</a>
     </div>
         </div>
 
@@ -153,8 +153,22 @@
                 </svg>
                 В корзину
             </button>
+
             {% include 'products/popup.html'%}
             {% endfor %}
+            <div class="pagination">
+              <a class="{% if not products.has_previous %} disabled {% endif %}"
+                 href="{% if products.has_previous %} {% url 'products:paginator' products.previous_page_number %} {% else %} # {% endif%}"  >
+                  &laquo;Предыдущая
+              </a>
+                {% for page in products.paginator.page_range %}
+                    <a href="{% url  'products:paginator' page %}">{{page}}</a>
+                {% endfor %}
+              <a class="{% if not products.has_next %} disabled {% endif %}"
+                 href="{% if products.has_next %} {% url 'products:paginator' products.next_page_number %} {% else %} # {% endif%}">
+                  Следующая&raquo;
+              </a>
+            </div>
 
 
 
@@ -220,6 +234,34 @@
                       heart_child_elem.setAttribute('class','favorites_heart');
                     }
                 };
+            </script>
+
+            <script>
+
+                let checkbox_inputs = document.querySelectorAll('input[name^="filter_id"]');
+
+                for (let checkbox_input of checkbox_inputs) {
+                       let checkbox_id = checkbox_input.getAttribute('id')
+                       checkbox_input.addEventListener("change", function() {
+                            if (checkbox_input.checked) {
+                                localStorage.setItem(checkbox_id, "checked");
+                             } else {
+                                localStorage.removeItem(checkbox_id)}});
+
+
+                         if (localStorage.getItem(checkbox_id) === "checked") {
+                                checkbox_input.checked = true;
+                      }};
+
+
+                function resetFilters() {
+                     for (let checkbox_input of checkbox_inputs) {
+                       let checkbox_id = checkbox_input.getAttribute('id')
+                       localStorage.removeItem(checkbox_id)
+
+                       }
+
+                   };
             </script>
 
             {% endblock %}

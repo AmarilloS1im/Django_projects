@@ -3,7 +3,7 @@ from products.models import *
 from products.forms import CheckboxForm
 from products.context_processors import *
 from django.shortcuts import render
-from django.db.models import Q
+from django.core.paginator import Paginator
 
 
 
@@ -21,7 +21,7 @@ def reset_filters(request):
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
-def products(request):
+def products(request,page=1):
     filter_dict={'category__in':['Shoe','clothes'],'product_type__in':['Boots','Longboots','Short_boots','Pullover'],
                  'gender__in': ['Male', 'Female'],'season__in':['Winter'],'age__in':['Adult','Child'],
                  }
@@ -67,11 +67,14 @@ def products(request):
             products = Product.objects.all().order_by('article')
     baskets = Basket.objects.filter(user=request.user)
     favorites = Favorites.objects.filter(user=request.user).order_by('product')
+
+    paginator = Paginator(products,per_page=3)
+    products_paginator = paginator.page(page)
     context = {
         'title': "Магазин",
         'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
         'footer_2': "Копирование материалов запрещено.",
-        'products': products,
+        'products': products_paginator,
         'sizes': Size.objects.all(),
         'baskets': baskets,
         'favorites': favorites,
