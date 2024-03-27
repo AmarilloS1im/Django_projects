@@ -22,9 +22,10 @@ def reset_filters(request):
 
 
 def products(request,page=1):
-    filter_dict={'category__in':['Shoe','clothes'],'product_type__in':['Boots','Longboots','Short_boots','Pullover'],
-                 'gender__in': ['Male', 'Female'],'season__in':['Winter'],'age__in':['Adult','Child'],
-                 }
+    filter_dict={'category__in':['Shoe','Clothes'],'product_type__in':
+        ['Boots','Longboots','Short_boots','Pullover','Sneakers'],
+        'gender__in': ['Male', 'Female'],'season__in':['Winter','Summer'],'age__in':['Adult','Child'],
+        }
 
 
 
@@ -149,13 +150,21 @@ def remove_all_user_baskets(request):
 
 
 def item_info(request, product_id):
+
     product = Product.objects.get(article=product_id)
+    products = Product.objects.filter(model_group=product.model_group)
+    baskets = Basket.objects.filter(user=request.user)
+    favorites = Favorites.objects.filter(user=request.user).order_by('product')
     context = {
         'title': "Магазин",
         'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
         'footer_2': "Копирование материалов запрещено.",
         'product': product,
+        'products': products,
         'sizes': Size.objects.all(),
+        'baskets': baskets,
+        'favorites': favorites,
+
     }
     return render(request, 'products/item_info.html', context)
 

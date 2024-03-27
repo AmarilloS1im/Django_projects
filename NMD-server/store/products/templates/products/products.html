@@ -97,7 +97,7 @@
         <div class="goods">
             <div class="shoe-photo">
                 <a href="{% url 'products:item_info' product.article %}">
-                    <img src="{{ product.img.url }}" alt="нет фото">
+                    <img src="{{ product.img.url }}" alt="нет фото" width="256" height="256">
                 </a>
                 <a name='heart_favorites' class="btn_favorites"
                    href="{% url 'products:favorites_add' product.article %}">

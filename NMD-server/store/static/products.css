@@ -19,7 +19,7 @@ body{
 
 .page{
     margin: 0;
-    width: auto;
+    width: 73.5rem;
     height: 100vh;
     background: #fff;
 }
@@ -771,11 +771,49 @@ width: 240px;
     border:none;
 }
 
+
+
 .btn:hover{
     background: #9c0925;
 }
 
 .btn:active{
+    background: #790218;
+}
+
+.btn_popup{
+    display: flex;
+    width: 240px;
+    height: 34px;
+    padding: 2px 39px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    border-radius: 5px;
+    background: #BC0D2E;
+
+    color: #C0BFBF;
+
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    margin-left: 23px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    outline:none;
+    border:none;
+}
+.btn_popup:hover{
+    background: #9c0925;
+}
+
+.btn_popup:active{
     background: #790218;
 }
 
