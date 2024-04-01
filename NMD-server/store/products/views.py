@@ -28,65 +28,89 @@ def products(request,page=1):
         }
 
 
-
-    filters = request.POST.getlist('filter_id')
-    print(filters)
-    if len(filters)>0:
-        filter_param_list = []
-        for items in filters:
-            for k,v in filter_dict.items():
-                if items in filter_dict[k]:
-                    filter_param_list.append(k)
-                    break
-    else:
-        if request.session['filters']:
+    if request.method == 'POST':
+        filters = request.POST.getlist('filter_id')
+        print(filters)
+        if len(filters)>0:
             filter_param_list = []
-            for items in request.session['filters']:
-                for k, v in filter_dict.items():
+            for items in filters:
+                for k,v in filter_dict.items():
                     if items in filter_dict[k]:
                         filter_param_list.append(k)
                         break
         else:
-            pass
+            if request.session['filters']:
+                filter_param_list = []
+                for items in request.session['filters']:
+                    for k, v in filter_dict.items():
+                        if items in filter_dict[k]:
+                            filter_param_list.append(k)
+                            break
+            else:
+                pass
 
 
-    if len(filters)> 0:
-        request.session['filters'] = filters
-        current_filters = request.session['filters']
-        param_dict = {}
-        for param_name in filter_param_list:
-            param_dict[param_name]=current_filters
-        products = Product.objects.filter(**param_dict).order_by('article')
-    else:
-        if request.session['filters']:
+        if len(filters)> 0:
+            request.session['filters'] = filters
             current_filters = request.session['filters']
             param_dict = {}
             for param_name in filter_param_list:
-                param_dict[param_name] = current_filters
+                param_dict[param_name]=current_filters
             products = Product.objects.filter(**param_dict).order_by('article')
         else:
-            products = Product.objects.all().order_by('article')
-    baskets = Basket.objects.filter(user=request.user)
-    favorites = Favorites.objects.filter(user=request.user).order_by('product')
+            if request.session['filters']:
+                current_filters = request.session['filters']
+                param_dict = {}
+                for param_name in filter_param_list:
+                    param_dict[param_name] = current_filters
+                products = Product.objects.filter(**param_dict).order_by('article')
+            else:
+                products = Product.objects.all().order_by('article')
+        baskets = Basket.objects.filter(user=request.user)
+        favorites = Favorites.objects.filter(user=request.user).order_by('product')
 
-    paginator = Paginator(products,per_page=3)
-    products_paginator = paginator.page(page)
-    context = {
-        'title': "Магазин",
-        'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
-        'footer_2': "Копирование материалов запрещено.",
-        'products': products_paginator,
-        'sizes': Size.objects.all(),
-        'baskets': baskets,
-        'favorites': favorites,
-        'categories': ProductCategory.objects.all(),
-        'product_types': ProductType.objects.all(),
-        'genders': ProductGender.objects.all(),
-        'ages': ProductAge.objects.all(),
-        'seasons': ProductSeason.objects.all(),
-    }
+        paginator = Paginator(products, per_page=3)
+        products_paginator = paginator.page(page)
+        context = {
+            'title': "Магазин",
+            'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
+            'footer_2': "Копирование материалов запрещено.",
+            'products': products_paginator,
+            'sizes': Size.objects.all(),
+            'baskets': baskets,
+            'favorites': favorites,
+            'categories': ProductCategory.objects.all(),
+            'product_types': ProductType.objects.all(),
+            'genders': ProductGender.objects.all(),
+            'ages': ProductAge.objects.all(),
+            'seasons': ProductSeason.objects.all(),
+        }
 
-    return render(request, 'products/products.html', context)
+        return render(request, 'products/products.html', context)
+    else:
+        products = Product.objects.all().order_by('article')
+        baskets = Basket.objects.filter(user=request.user)
+        favorites = Favorites.objects.filter(user=request.user).order_by('product')
+        paginator = Paginator(products, per_page=3)
+        products_paginator = paginator.page(page)
+        context = {
+            'title': "Магазин",
+            'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
+            'footer_2': "Копирование материалов запрещено.",
+            'products': products_paginator,
+            'sizes': Size.objects.all(),
+            'baskets': baskets,
+            'favorites': favorites,
+            'categories': ProductCategory.objects.all(),
+            'product_types': ProductType.objects.all(),
+            'genders': ProductGender.objects.all(),
+            'ages': ProductAge.objects.all(),
+            'seasons': ProductSeason.objects.all(),
+        }
+
+        return render(request, 'products/products.html', context)
+
+
 
 
 

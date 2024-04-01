@@ -10,136 +10,150 @@
 
 {% block logo %}
 <a href="{% url 'products:products' %}">
-    <img src="{% static 'images/logo.png' %}" alt="альтернативный текст">
+    <img  src="{% static 'images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="85px">
 </a>
 {% endblock %}
 
 {% block content%}
 
-        <div class="profile">
-               <div class="cart_title"><span class="cart_title_left">Избранные товары</span>
-                   <a name="clean_cart" class="clean_cart"  href="{% url 'products:remove_all_user_favorites' %}">
-
-                        <svg class="garbage" viewBox="0 0 32 32" fill="#ececec" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M6 12v15c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3V12H6zm6 13a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zM27 6h-6V5c0-1.654-1.346-3-3-3h-4c-1.654 0-3 1.346-3 3v1H5c-1.103 0-2 .897-2 2v1a1 1 0 0 0 1 1h24a1 1 0 0 0 1-1V8c0-1.103-.897-2-2-2zM13 5c0-.551.449-1 1-1h4c.551 0 1 .449 1 1v1h-6V5z"  ></path></svg>
-                   Очистить все
-                   </a>
-               </div>
-
-                <div class="scroll_products">
-                {% for favorite in favorites %}
-                <div class="cart_products">
-                   <div class="cart_img"><img width="135px" height="135px"  src="{{favorite.product.img.url}}"></div>
-                   <div class="cart_info"><span style="float: left">{{favorite.product.model_name}}</span> <span style="float: right">{{favorite.product.price}} &#x20bd;</span></div>
-                    <div class="cart_info2"><span style="float: left">Размеры:</span>
-                    <div class="sizes-group">
-                    <form id="{{favorite.product.article}}" action="" method="post">
-                        {% csrf_token %}
-                        {% for size in sizes %}
-                            {% if favorite.product.article == size.to_article %}
-                                <label>
-                                    <input data="{{favorite.product.article}}"  class="size_checkbox" type="checkbox"  name="checked_size_id" value="{{size}}"  >
-                                    <span class="title_checkbox"> {{size.size_name}}</span>
-                                </label>
-                            {%else%}
-                            {%endif%}
-                        {% endfor %}
-                    </form>
+<div class="favorites-list">
+    <div class="cart_title">Избранные товары
+        <a name="clean_cart" class="clean_cart" href="{% url 'products:remove_all_user_favorites' %}">
+            <svg class="garbage" viewBox="0 0 32 32" fill="#ececec" xml:space="preserve"
+                 xmlns="http://www.w3.org/2000/svg"><path d="M6 12v15c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3V12H6zm6 13a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zM27 6h-6V5c0-1.654-1.346-3-3-3h-4c-1.654 0-3 1.346-3 3v1H5c-1.103 0-2 .897-2 2v1a1 1 0 0 0 1 1h24a1 1 0 0 0 1-1V8c0-1.103-.897-2-2-2zM13 5c0-.551.449-1 1-1h4c.551 0 1 .449 1 1v1h-6V5z"  ></path></svg>
+            Очистить все
+        </a>
+    </div>
+    <div class="scroll_products">
+        {% for favorite in favorites %}
+        <div class="favorites-list-products">
+            <div class="cart_img"><img width="135px" height="135px" src="{{favorite.product.img.url}}"></div>
+            <div class="cart_info">{{favorite.product.model_name}} <span>{{favorite.product.price}} &#x20bd;</span>
+                <div class="sizes-group">
+                    <span>Размеры:</span>
+                    <span class="sizes">
+                            <form id="{{favorite.product.article}}" action="" method="post">
+                                {% csrf_token %}
+                                {% for size in sizes %}
+                                    {% if favorite.product.article == size.to_article %}
+                                        <label>
+                                            <input data="{{favorite.product.article}}" class="size_checkbox"
+                                                   type="checkbox" name="checked_size_id" value="{{size}}">
+                                            <span class="title_checkbox"> {{size.size_name}}</span>
+                                        </label>
+                                    {%else%}
+                                    {%endif%}
+                                {% endfor %}
+                            </form>
+                           </span>
                 </div>
+            </div>
+            <div class="favorites-trash-group">
+                <a class="favorites-trash" id="{{favorite.product.favorite_article}}" name="trash"
+                   href="{% url 'products:favorites_remove' favorite.id  %}">
+                    <svg class="little_garbage" viewBox="0 0 32 32" fill="#ececec" xml:space="preserve"
+                         xmlns="http://www.w3.org/2000/svg"><path d="M6 12v15c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3V12H6zm6 13a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zM27 6h-6V5c0-1.654-1.346-3-3-3h-4c-1.654 0-3 1.346-3 3v1H5c-1.103 0-2 .897-2 2v1a1 1 0 0 0 1 1h24a1 1 0 0 0 1-1V8c0-1.103-.897-2-2-2zM13 5c0-.551.449-1 1-1h4c.551 0 1 .449 1 1v1h-6V5z"  ></path></svg>
+                    Удалить
+                </a>
+            </div>
+            <button form="{{favorite.product.article}}" data="{{favorite.product.article}}" name="btn"
+                    formaction="{% url 'products:basket_add' favorite.product.article %}" class="btn_favorites_to_cart"
+                    type="submit">
+                <svg fill="#fff" width="35px" height="35px" viewBox="-2 -2 204.00 204.00"
+                     data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier"><title></title>
+                        <path d="M183.25,52.75a18.22,18.22,0,0,0-7-1h-91c-3.5,0-8-.5-11.5.5a9.64,9.64,0,0,0-7.5,9.5,10,10,0,0,0,10,10h90.5l-8,42a10.22,10.22,0,0,1-10,8h-75a10.66,10.66,0,0,1-10-8l-16-74a20.3,20.3,0,0,0-19.5-16h-7a10,10,0,0,0,0,20h7l16,74c3,14,15,23.5,29.5,23.5h75c12,0,24.5-8,28-19.5,2.5-8,4-17,5.5-25,1.5-8.5,3.5-17,5-25a17.76,17.76,0,0,0,1-5,17,17,0,0,0,.5-5c0-4-2-8-5.5-9Zm-132,108.5a15,15,0,0,0,30,0h0a15,15,0,0,0-30,0Zm90,0a15,15,0,1,0,15-15,15,15,0,0,0-15,15v0Z"></path>
+                    </g>
+                </svg>
+                В корзину
+            </button>
+            {% include "products/popup.html" with fav=True %}
+            {% endfor %}
+        </div>
+    </div>
 
-                   </div>
-                   <div class="cart_favorits_and_trash">
-                       <a id="{{favorite.product.favorite_article}}" name="trash" class="trash" href="{% url 'products:favorites_remove' favorite.id  %}">
-                           <svg class="little_garbage" viewBox="0 0 32 32" fill="#ececec" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M6 12v15c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3V12H6zm6 13a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zM27 6h-6V5c0-1.654-1.346-3-3-3h-4c-1.654 0-3 1.346-3 3v1H5c-1.103 0-2 .897-2 2v1a1 1 0 0 0 1 1h24a1 1 0 0 0 1-1V8c0-1.103-.897-2-2-2zM13 5c0-.551.449-1 1-1h4c.551 0 1 .449 1 1v1h-6V5z"  ></path></svg>
-                       <span class="cart_icons">Удалить</span>
-                       </a>
-                   </div>
-                   <button form="{{favorite.product.article}}" data="{{favorite.product.article}}" name="btn"   formaction="{% url 'products:basket_add' favorite.product.article %}" class="btn_favorites_to_cart" type="submit">
-                        <svg  fill="#fff" width="35px" height="35px"  viewBox="-2 -2 204.00 204.00"
-                             data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                            <g id="SVGRepo_iconCarrier"><title></title>
-                                <path d="M183.25,52.75a18.22,18.22,0,0,0-7-1h-91c-3.5,0-8-.5-11.5.5a9.64,9.64,0,0,0-7.5,9.5,10,10,0,0,0,10,10h90.5l-8,42a10.22,10.22,0,0,1-10,8h-75a10.66,10.66,0,0,1-10-8l-16-74a20.3,20.3,0,0,0-19.5-16h-7a10,10,0,0,0,0,20h7l16,74c3,14,15,23.5,29.5,23.5h75c12,0,24.5-8,28-19.5,2.5-8,4-17,5.5-25,1.5-8.5,3.5-17,5-25a17.76,17.76,0,0,0,1-5,17,17,0,0,0,.5-5c0-4-2-8-5.5-9Zm-132,108.5a15,15,0,0,0,30,0h0a15,15,0,0,0-30,0Zm90,0a15,15,0,1,0,15-15,15,15,0,0,0-15,15v0Z"></path>
-                            </g>
-                        </svg>
-                        В корзину
-                    </button>
 
-                    {% include "products/popup.html" with fav=True  %}
+    {% if favorites%}
+<div class=profile_cart>
+    <div class="cart_total_info">
+        <div class="total_cart_amount"><span style="float: left">ИТОГО:</span> <span style="float: right">{{favorites.total_sum}} &#x20bd;</span>
+        </div>
+        <div class="total_cart_qty"><span style="float: left">{{favorites.total_qty}} товаров на сумму:</span>
+            <span style="float: right">{{favorites.total_sum}} &#x20bd;</span></div>
+        <div class="total_cart_discount"><span style="float: left">Сумма скидки</span> <span
+                style="float: right">0 &#x20bd;</span></div>
+    </div>
+</div>
+{% else%}
 
-                {% endfor %}
-                </div>
-           </div>
-               <div class=profile_cart>
-                    <div class="cart_total_info">
-                        <div class="total_cart_amount"> <span style="float: left">ИТОГО:</span> <span style="float: right">{{favorites.total_sum}} &#x20bd;</span></div>
-                        <div class="total_cart_qty"> <span style="float: left">{{favorites.total_qty}} товаров на сумму:</span> <span style="float: right">{{favorites.total_sum}} &#x20bd;</span></div>
-                        <div class="total_cart_discount"> <span style="float: left">Сумма скидки</span> <span style="float: right">0 &#x20bd;</span></div>
-                    </div>
-               </div>
+    <div class="no_goods_message">У вас нет избранных товаров</div>
+    <div class=profile_cart>
+        <div class="cart_total_info">
+            <div class="total_cart_amount"><span style="float: left">ИТОГО:</span> <span style="float: right">0 &#x20bd;</span>
+            </div>
+            <div class="total_cart_qty"><span style="float: left">5 товаров на сумму:</span> <span
+                    style="float: right">0 &#x20bd;</span></div>
+            <div class="total_cart_discount"><span style="float: left">Сумма скидки</span> <span
+                    style="float: right">0 &#x20bd;</span></div>
 
-        <div class="profile">
-               <div class="no_goods_message">У вас нет избранных товаров</div>
-           </div>
-               <div class=profile_cart>
-                    <div class="cart_total_info">
-                        <div class="total_cart_amount"> <span style="float: left">ИТОГО:</span> <span style="float: right">0 &#x20bd;</span></div>
-                        <div class="total_cart_qty"> <span style="float: left">5 товаров на сумму:</span> <span style="float: right">0 &#x20bd;</span></div>
-                        <div class="total_cart_discount"> <span style="float: left">Сумма скидки</span> <span style="float: right">0 &#x20bd;</span></div>
+        </div>
+    </div>
+{% endif%}
 
-                    </div>
-               </div>
+</div>
+
 
 
 <script>
-        let popups = document.querySelectorAll(".popup");
-        let btns = document.querySelectorAll('button[name="btn"]');
-        let popups_close = document.querySelectorAll(".popup_close");
-        console.log(btns);
+    let popups = document.querySelectorAll(".popup");
+    let btns = document.querySelectorAll('button[name="btn"]');
+    let popups_close = document.querySelectorAll(".popup_close");
+    console.log(btns);
 
-        for ( let index = 0; index < btns.length; index++){
-            let btn = btns[index];
-            let popup_close = popups_close[index];
-            let popup = popups[index];
+    for ( let index = 0; index < btns.length; index++){
+        let btn = btns[index];
+        let popup_close = popups_close[index];
+        let popup = popups[index];
 
-          btn.addEventListener("click", function () {
-            let checkboxes = document.querySelectorAll('input[name^="checked_size_id"]');
-            var is_checked = 0;
+      btn.addEventListener("click", function () {
+        let checkboxes = document.querySelectorAll('input[name^="checked_size_id"]');
+        var is_checked = 0;
 
 
-            for (let checkbox of checkboxes) {
-              if (checkbox.checked && checkbox.getAttribute('data') ===btn.getAttribute('data')) {
-                is_checked = 1;
-                break;
-              } }
+        for (let checkbox of checkboxes) {
+          if (checkbox.checked && checkbox.getAttribute('data') ===btn.getAttribute('data')) {
+            is_checked = 1;
+            break;
+          } }
 
-            if(is_checked === 0){
-                event.preventDefault()
-                popup.style.display = 'block';
-
-              }
-          });
-            popup_close.addEventListener("click", function () {
-              popup.style.display = 'none';
-          });
-
-        };
-        function isChecked() {
-             let popup_checked = 0;
-             let popup_checkboxes = document.querySelectorAll('input[name="checked_size_id"]');
-             for (let popup_checkbox of popup_checkboxes){
-                if (popup_checkbox.checked){
-                    popup_checked = 1;
-                    break;
-                }
-             }
-             if (popup_checked === 0) {
-                event.preventDefault()
-             }
+        if(is_checked === 0){
+            event.preventDefault()
+            popup.style.display = 'block';
 
           }
-    </script>
+      });
+        popup_close.addEventListener("click", function () {
+          popup.style.display = 'none';
+      });
 
+    };
+    function isChecked() {
+         let popup_checked = 0;
+         let popup_checkboxes = document.querySelectorAll('input[name="checked_size_id"]');
+         for (let popup_checkbox of popup_checkboxes){
+            if (popup_checkbox.checked){
+                popup_checked = 1;
+                break;
+            }
+         }
+         if (popup_checked === 0) {
+            event.preventDefault()
+         }
+
+      }
+</script>
 
 
 {% endblock %}
