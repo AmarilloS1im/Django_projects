@@ -73,43 +73,32 @@
             {% endfor %}
         </div>
     </div>
-
-
     {% if favorites%}
-<div class=profile_cart>
-    <div class="cart_total_info">
-        <div class="total_cart_amount"><span style="float: left">ИТОГО:</span> <span style="float: right">{{favorites.total_sum}} &#x20bd;</span>
-        </div>
-        <div class="total_cart_qty"><span style="float: left">{{favorites.total_qty}} товаров на сумму:</span>
-            <span style="float: right">{{favorites.total_sum}} &#x20bd;</span></div>
-        <div class="total_cart_discount"><span style="float: left">Сумма скидки</span> <span
-                style="float: right">0 &#x20bd;</span></div>
-    </div>
-</div>
-{% else%}
+    <div class=in-cart-block>
+        <div class="cart-total-info">
 
-    <div class="no_goods_message">У вас нет избранных товаров</div>
-    <div class=profile_cart>
-        <div class="cart_total_info">
-            <div class="total_cart_amount"><span style="float: left">ИТОГО:</span> <span style="float: right">0 &#x20bd;</span>
-            </div>
-            <div class="total_cart_qty"><span style="float: left">5 товаров на сумму:</span> <span
-                    style="float: right">0 &#x20bd;</span></div>
-            <div class="total_cart_discount"><span style="float: left">Сумма скидки</span> <span
-                    style="float: right">0 &#x20bd;</span></div>
-
+            <div class="total-cart-qty"><span>Количество:</span>{{favorites.total_qty}} шт.</div>
+            <div class="total-cart-amount-no-discount"><span>На сумму: </span>{{favorites.total_sum}} &#x20bd;</div>
+            <div class="total-cart-discount"><span>Сумма скидки</span> 0 &#x20bd;</span></div>
+            <div class="total-cart-amount"><span>ИТОГО:</span> {{favorites.total_sum}} &#x20bd;</div>
         </div>
     </div>
-{% endif%}
-
+    {% else%}
+    <div class=in-cart-block>
+        <div class="no_goods_message">У вас нет избранных товаров</div>
+        <div class="cart-total-info">
+            <div class="total-cart-qty"><span>Количество:</span>0 шт.</div>
+            <div class="total-cart-amount-no-discount"><span>На сумму: </span>0 &#x20bd;</div>
+            <div class="total-cart-discount"><span>Сумма скидки</span> 0 &#x20bd;</span></div>
+            <div class="total-cart-amount"><span>ИТОГО:</span> 0 &#x20bd;</div>
+        </div>
+    </div>
+    {% endif%}
 </div>
-
-
-
 <script>
     let popups = document.querySelectorAll(".popup");
     let btns = document.querySelectorAll('button[name="btn"]');
-    let popups_close = document.querySelectorAll(".popup_close");
+    let popups_close = document.querySelectorAll(".popup-close");
     console.log(btns);
 
     for ( let index = 0; index < btns.length; index++){
@@ -151,11 +140,8 @@
          if (popup_checked === 0) {
             event.preventDefault()
          }
-
       }
 </script>
-
-
 {% endblock %}
 
 

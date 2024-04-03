@@ -30,7 +30,6 @@ def products(request,page=1):
 
     if request.method == 'POST':
         filters = request.POST.getlist('filter_id')
-        print(filters)
         if len(filters)>0:
             filter_param_list = []
             for items in filters:
@@ -38,34 +37,35 @@ def products(request,page=1):
                     if items in filter_dict[k]:
                         filter_param_list.append(k)
                         break
-        else:
-            if request.session['filters']:
-                filter_param_list = []
-                for items in request.session['filters']:
-                    for k, v in filter_dict.items():
-                        if items in filter_dict[k]:
-                            filter_param_list.append(k)
-                            break
-            else:
-                pass
-
-
-        if len(filters)> 0:
             request.session['filters'] = filters
             current_filters = request.session['filters']
             param_dict = {}
             for param_name in filter_param_list:
-                param_dict[param_name]=current_filters
+                param_dict[param_name] = current_filters
             products = Product.objects.filter(**param_dict).order_by('article')
+
         else:
-            if request.session['filters']:
-                current_filters = request.session['filters']
-                param_dict = {}
-                for param_name in filter_param_list:
-                    param_dict[param_name] = current_filters
-                products = Product.objects.filter(**param_dict).order_by('article')
+            if 'filters' in request.session:
+                if request.session['filters']:
+                    print('ok')
+                    filter_param_list = []
+                    for items in request.session['filters']:
+                        for k, v in filter_dict.items():
+                            if items in filter_dict[k]:
+                                filter_param_list.append(k)
+                                break
+                    current_filters = request.session['filters']
+                    param_dict = {}
+                    for param_name in filter_param_list:
+                        param_dict[param_name] = current_filters
+                    products = Product.objects.filter(**param_dict).order_by('article')
+                else:
+                    pass
             else:
-                products = Product.objects.all().order_by('article')
+                return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+
         baskets = Basket.objects.filter(user=request.user)
         favorites = Favorites.objects.filter(user=request.user).order_by('product')
 

@@ -26,7 +26,7 @@
 
 <div class="content">
 
-    <div class="filter_group">
+    <div class="filter-group">
 
     <div class="filter">
 
@@ -131,17 +131,17 @@
                     {% for size in sizes %}
                     {% if product.article == size.to_article %}
                     <label>
-                        <input data="{{product.article}}" class="size_checkbox" type="checkbox" name="checked_size_id"
+                        <input class="size-checkbox" data="{{product.article}}"  type="checkbox" name="checked_size_id"
                                value="{{size}}">
-                        <span class="title_checkbox">{{size.size_name}}</span>
+                        <div class="title-checkbox">{{size.size_name}}</div>
                     </label>
                     {% endif %}
                     {% endfor %}
                 </form>
 
             </div>
-            <button form="{{product.article}}" data="{{product.article}}" name="btn"
-                    formaction="{% url 'products:basket_add' product.article  %}" class="btn"
+            <button class="btn" form="{{product.article}}" data="{{product.article}}" name="btn"
+                    formaction="{% url 'products:basket_add' product.article  %}"
                     type="submit">
                 <svg class="button-cart" fill="#C0BFBF" width="64px" height="64px" viewBox="-2 -2 204.00 204.00"
                      data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
@@ -175,7 +175,7 @@
             <script>
                 let popups = document.querySelectorAll(".popup");
                 let btns = document.querySelectorAll('button[name="btn"]');
-                let popups_close = document.querySelectorAll(".popup_close");
+                let popups_close = document.querySelectorAll(".popup-close");
                 console.log(btns);
 
                 for ( let index = 0; index < btns.length; index++){
