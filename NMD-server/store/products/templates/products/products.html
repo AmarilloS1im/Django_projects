@@ -37,7 +37,7 @@
                 <div class="filter-header">КАТЕГОРИЯ ТОВАРА</div>
                 {%for category in categories%}
 
-                <input  value="{{category.name}}" class="checkbox"
+                <input class="checkbox"  value="{{category.name}}"
                        type="checkbox" name="filter_id" id="{{category.name}}" >
                 <label class="label" for="{{category.name}}">{{category.userfrendly_name}}</label>
 
@@ -46,28 +46,28 @@
 
                 <div class="filter-header">ВИД ТОВАРА</div>
                  {% for product_type in product_types %}
-                     <input  value="{{product_type.name}}" class="checkbox"
+                     <input class="checkbox" value="{{product_type.name}}"
                        type="checkbox" name="filter_id" id="{{product_type.name}}" >
                     <label class="label" for="{{product_type.name}}">{{product_type.userfrendly_name}}</label>
                  {% endfor %}
 
                 <div class="filter-header">ПОЛ</div>
                  {% for gender in genders %}
-                     <input  value="{{gender.name}}" class="checkbox"
+                     <input class="checkbox" value="{{gender.name}}"
                        type="checkbox" name="filter_id" id="{{gender.name}}" >
                     <label class="label" for="{{gender.name}}">{{gender.userfrendly_name}}</label>
                  {% endfor %}
 
                 <div class="filter-header">ВОЗАРАСТ</div>
                  {% for age in ages %}
-                     <input  value="{{age.name}}" class="checkbox"
+                     <input class="checkbox" value="{{age.name}}"
                        type="checkbox" name="filter_id" id="{{age.name}}" >
                     <label class="label" for="{{age.name}}">{{age.userfrendly_name}}</label>
                  {% endfor %}
 
                 <div class="filter-header">СЕЗОН</div>
                  {% for season in seasons %}
-                     <input  value="{{season.name}}" class="checkbox"
+                     <input class="checkbox"  value="{{season.name}}"
                        type="checkbox" name="filter_id" id="{{season.name}}" >
                     <label class="label" for="{{season.name}}">{{season.userfrendly_name}}</label>
                  {% endfor %}
@@ -78,19 +78,13 @@
 
     </div>
           <div class="filter_buttons_group">
-        <button form="1" formaction="{% url 'products:products' %}" class="btn_filter"
-                type="submit">
-            Применить фильтры
-        </button>
-        <a onclick="resetFilters()" href="{% url 'products:reset_filters' %}" class="btn_filter">Сбросить фильтры</a>
+            <button form="1" formaction="{% url 'products:products' %}" class="btn_filter"
+                    type="submit">
+                Применить фильтры
+            </button>
+            <a class="btn_filter" onclick="resetFilters()" href="{% url 'products:reset_filters' %}" >Сбросить фильтры</a>
+          </div>
     </div>
-        </div>
-
-
-
-
-
-
 
     <div class="goods-group">
         {% for product in products %}
@@ -99,10 +93,9 @@
                 <a href="{% url 'products:item_info' product.article %}">
                     <img src="{{ product.img.url }}" alt="нет фото" width="256" height="256">
                 </a>
-                <a name='heart_favorites' class="btn_favorites"
+                <a class="btn_favorites" name='heart_favorites'
                    href="{% url 'products:favorites_add' product.article %}">
-                    <svg data-is_favorite="{% get_favorites filter=request.user filter_2=product%}"
-                         class="favorites_heart"
+                    <svg class="favorites_heart" data-is_favorite="{% get_favorites filter=request.user filter_2=product%}"
                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#ababab" width="64px"
                          height="64px"
                          viewBox="0 0 32 32" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
@@ -115,16 +108,10 @@
                     </svg>
                 </a>
             </div>
-
-
-
-
             <div class="price">{{product.price}} руб</div>
             <a href="{% url 'products:item_info' product.article %}">
                 <div class="description">{{product.description}}</div>
             </a>
-
-
             <div class="sizes-group">
                 <form id="{{product.article}}" action="" method="post">
                     {% csrf_token %}
@@ -138,7 +125,6 @@
                     {% endif %}
                     {% endfor %}
                 </form>
-
             </div>
             <button class="btn" form="{{product.article}}" data="{{product.article}}" name="btn"
                     formaction="{% url 'products:basket_add' product.article  %}"
@@ -169,8 +155,6 @@
                   Следующая&raquo;
               </a>
             </div>
-
-
 
             <script>
                 let popups = document.querySelectorAll(".popup");
