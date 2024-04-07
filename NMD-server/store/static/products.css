@@ -623,7 +623,7 @@ input[type=checkbox]:checked + label {
 }
 
 .size-checkbox[type="checkbox"]:hover + .title-checkbox {
-    border-radius: 5px;
+    border-radius: .25rem;
     background: #FFF;
     box-shadow: 0 -.2rem .35rem 0 rgba(0, 0, 0, 0.07), 0 .2rem .2rem 0 rgba(0, 0, 0, 0.38);
 }

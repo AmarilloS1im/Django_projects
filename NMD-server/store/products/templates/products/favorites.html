@@ -24,22 +24,23 @@
             Очистить все
         </a>
     </div>
-    <div class="scroll_products">
+    <div class="scroll-products">
         {% for favorite in favorites %}
         <div class="favorites-list-products">
-            <div class="cart_img"><img width="135px" height="135px" src="{{favorite.product.img.url}}"></div>
-            <div class="cart_info">{{favorite.product.model_name}} <span>{{favorite.product.price}} &#x20bd;</span>
+            <div class="cart-img"><img width="135px" height="135px" src="{{favorite.product.img.url}}"></div>
+            <div class="cart-info">{{favorite.product.model_name}} <span>{{favorite.product.price}} &#x20bd;</span>
+                <div>Размеры:</div>
                 <div class="sizes-group">
-                    <span>Размеры:</span>
+
                     <span class="sizes">
                             <form id="{{favorite.product.article}}" action="" method="post">
                                 {% csrf_token %}
                                 {% for size in sizes %}
                                     {% if favorite.product.article == size.to_article %}
                                         <label>
-                                            <input data="{{favorite.product.article}}" class="size_checkbox"
+                                            <input class="size-checkbox" data="{{favorite.product.article}}"
                                                    type="checkbox" name="checked_size_id" value="{{size}}">
-                                            <span class="title_checkbox"> {{size.size_name}}</span>
+                                            <span class="title-checkbox"> {{size.size_name}}</span>
                                         </label>
                                     {%else%}
                                     {%endif%}
@@ -56,10 +57,10 @@
                     Удалить
                 </a>
             </div>
-            <button form="{{favorite.product.article}}" data="{{favorite.product.article}}" name="btn"
-                    formaction="{% url 'products:basket_add' favorite.product.article %}" class="btn_favorites_to_cart"
+            <button class="btn_favorites_to_cart" form="{{favorite.product.article}}" data="{{favorite.product.article}}" name="btn"
+                    formaction="{% url 'products:basket_add' favorite.product.article %}"
                     type="submit">
-                <svg fill="#fff" width="35px" height="35px" viewBox="-2 -2 204.00 204.00"
+                <svg fill="#C0BFBF" width="35px" height="35px" viewBox="-2 -2 204.00 204.00"
                      data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -73,10 +74,10 @@
             {% endfor %}
         </div>
     </div>
+
     {% if favorites%}
     <div class=in-cart-block>
         <div class="cart-total-info">
-
             <div class="total-cart-qty"><span>Количество:</span>{{favorites.total_qty}} шт.</div>
             <div class="total-cart-amount-no-discount"><span>На сумму: </span>{{favorites.total_sum}} &#x20bd;</div>
             <div class="total-cart-discount"><span>Сумма скидки</span> 0 &#x20bd;</span></div>
@@ -84,8 +85,8 @@
         </div>
     </div>
     {% else%}
-    <div class=in-cart-block>
-        <div class="no_goods_message">У вас нет избранных товаров</div>
+    <div class="in-cart-block">
+        <div class="no-goods-message">У вас нет избранных товаров</div>
         <div class="cart-total-info">
             <div class="total-cart-qty"><span>Количество:</span>0 шт.</div>
             <div class="total-cart-amount-no-discount"><span>На сумму: </span>0 &#x20bd;</div>
@@ -143,5 +144,3 @@
       }
 </script>
 {% endblock %}
-
-
