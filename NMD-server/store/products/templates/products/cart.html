@@ -6,92 +6,123 @@
 
 
 {% block css%}
-    <link rel="stylesheet" href="{% static 'cart.css' %}">
-    <script type="text/javascript" src="{% static 'js/jquery-3.7.1.js' %}"></script>
+<link rel="stylesheet" href="{% static 'cart.css' %}">
+<script type="text/javascript" src="{% static 'js/jquery-3.7.1.js' %}"></script>
 {% endblock %}
 
 {% block logo %}
-    <a href="{% url 'products:products' %}">
-        <img  src="{% static 'images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
-    </a>
+<a href="{% url 'products:products' %}">
+    <img src="{% static 'images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
+</a>
 {% endblock %}
 
 {% block content%}
-    {% if baskets %}
-        <div class="cart_all_products">
-                   <div class="cart_title"><span class="cart_title_left">Ваша корзина</span>
-                       <a class="clean_cart"  href="{% url 'products:remove_all_user_baskets' %}">
-
-                            <svg class="garbage" viewBox="0 0 32 32" fill="#ececec" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M6 12v15c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3V12H6zm6 13a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zM27 6h-6V5c0-1.654-1.346-3-3-3h-4c-1.654 0-3 1.346-3 3v1H5c-1.103 0-2 .897-2 2v1a1 1 0 0 0 1 1h24a1 1 0 0 0 1-1V8c0-1.103-.897-2-2-2zM13 5c0-.551.449-1 1-1h4c.551 0 1 .449 1 1v1h-6V5z"  ></path></svg>
-                       Очистить корзину
-                       </a>
-                   </div>
-                    <div class="scroll_products">
-                    {% for basket in baskets %}
-                            <div class="cart_products">
-                               <div class="cart_img"><img width="135px" height="135px"  src="{{basket.product.img.url}}"></div>
-                               <div class="cart_info"><span style="float: left">{{basket.product.article}}</span> <span style="float: right">{{basket.product.price}} &#x20bd;</span></div>
-                               <div class="cart_info2"><span style="float: left">Размер: {{basket.size.size_name}}</span>
-                                   <div class="counter">
-                                          <a href="{% url 'products:cart_del_minus_one' basket.id  %}" class="counter_plus_minus">-</a>
-                                          <input class="counter_input" type="text" disabled value="{{basket.qty}}"></input>
-                                          <a href="{% url 'products:cart_add_plus_one' basket.product.article basket.size.size_name  %}" class="counter_plus_minus" >+</a>
-                                   </div>
-                               </div>
-                               <div class="cart_favorits_and_trash">
-                                   <a  name='heart_favorites' class="btn_favorites" href="{% url 'products:favorites_add' basket.product.article %}">
-                                   <svg data-is_favorite="{% get_favorites filter=request.user filter_2=basket.product%}" class="favorites_heart" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#ababab" width="64px" height="64px" viewBox="0 0 32 32" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16.0298 5.33C17.5998 3.88 19.6898 3 21.9998 3C26.9698 3 30.9998 7.03 30.9998 12C30.9998 20 20.9998 29 15.9998 31C10.9998 29 0.999817 20 0.999817 12C0.999817 7.03 5.02982 3 9.99982 3C12.3098 3 14.4098 3.88 15.9998 5.3L16.0298 5.33Z" ></path> <path d="M16 5.30451C14.407 3.87551 12.309 2.99951 10 2.99951C5.029 2.99951 1 7.02951 1 11.9995C1 19.9995 11 28.9995 16 30.9995C21 28.9995 31 19.9995 31 11.9995C31 7.02951 26.971 2.99951 22 2.99951C18.477 2.99951 15.479 5.05051 14 7.99951M27 11.9998C27 9.23781 24.762 6.99981 22 6.99981"  ></path> </g></svg>
-
-                                       Избранное
-                                   </a>
-                                   <a class="trash" href="{% url 'products:basket_remove' basket.id %}">
-                                       <svg class="little_garbage" viewBox="0 0 32 32" fill="#ececec" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M6 12v15c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3V12H6zm6 13a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zM27 6h-6V5c0-1.654-1.346-3-3-3h-4c-1.654 0-3 1.346-3 3v1H5c-1.103 0-2 .897-2 2v1a1 1 0 0 0 1 1h24a1 1 0 0 0 1-1V8c0-1.103-.897-2-2-2zM13 5c0-.551.449-1 1-1h4c.551 0 1 .449 1 1v1h-6V5z"  ></path></svg>
-                                   <span class="cart_icons">Удалить</span>
-                                   </a>
-                               </div>
-                            </div>
-                    {% endfor %}
-                    <script>
-                        let hearts = document.querySelectorAll('a[name^="heart_favorites"]');
-
-                        for (let heart of hearts) {
-
-                            var heart_child_elem = heart.children[0];
-
-                            if (heart_child_elem.getAttribute('data-is_favorite') == 'True') {
-                              heart_child_elem.setAttribute('class','favorites_heart_checked');
-                              heart.setAttribute('class','btn_favorites_visited');
-                            } else {
-                              heart_child_elem.setAttribute('class','favorites_heart');
-                              heart.setAttribute('class','btn_favorites');
-                            }
-                        };
-                    </script>
+{% if baskets %}
+<div class="cart-all-products">
+    <div class="cart_title"><span>Ваша корзина</span>
+        <a class="clean_cart" href="{% url 'products:remove_all_user_baskets' %}">
+            <svg class="garbage" viewBox="0 0 32 32" fill="#ececec" xml:space="preserve"
+                 xmlns="http://www.w3.org/2000/svg"><path d="M6 12v15c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3V12H6zm6 13a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zM27 6h-6V5c0-1.654-1.346-3-3-3h-4c-1.654 0-3 1.346-3 3v1H5c-1.103 0-2 .897-2 2v1a1 1 0 0 0 1 1h24a1 1 0 0 0 1-1V8c0-1.103-.897-2-2-2zM13 5c0-.551.449-1 1-1h4c.551 0 1 .449 1 1v1h-6V5z"  ></path></svg>
+            Очистить корзину
+        </a>
+    </div>
+    <div class="scroll-products">
+        {% for basket in baskets %}
+        <div class="cart_products">
+            <div class="cart_img"><img width="135px" height="135px" src="{{basket.product.img.url}}">
+                <div class="info-group">
+                    <div class="cart_info">{{basket.product.article}} <span>{{basket.product.price}} &#x20bd;</span>
                     </div>
+                    <div class="size-info">Размер: <span class="sizes">{{basket.size.size_name}}</span></div>
+                </div>
+            </div>
+
+            <div class="counter-group">
+
+                <div class="cart_favorits_and_trash">
+                    <a name='heart_favorites' class="btn_favorites"
+                       href="{% url 'products:favorites_add' basket.product.article %}">
+                        <svg data-is_favorite="{% get_favorites filter=request.user filter_2=basket.product%}"
+                             class="favorites_heart" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             stroke="#ababab" width="64px" height="64px" viewBox="0 0 32 32" fill="#ffffff"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path d="M16.0298 5.33C17.5998 3.88 19.6898 3 21.9998 3C26.9698 3 30.9998 7.03 30.9998 12C30.9998 20 20.9998 29 15.9998 31C10.9998 29 0.999817 20 0.999817 12C0.999817 7.03 5.02982 3 9.99982 3C12.3098 3 14.4098 3.88 15.9998 5.3L16.0298 5.33Z"></path>
+                                <path d="M16 5.30451C14.407 3.87551 12.309 2.99951 10 2.99951C5.029 2.99951 1 7.02951 1 11.9995C1 19.9995 11 28.9995 16 30.9995C21 28.9995 31 19.9995 31 11.9995C31 7.02951 26.971 2.99951 22 2.99951C18.477 2.99951 15.479 5.05051 14 7.99951M27 11.9998C27 9.23781 24.762 6.99981 22 6.99981"></path>
+                            </g>
+                        </svg>
+
+                        Избранное
+                    </a>
+                    <a class="trash" href="{% url 'products:basket_remove' basket.id %}">
+                        <svg class="little_garbage" viewBox="0 0 32 32" fill="#ececec" xml:space="preserve"
+                             xmlns="http://www.w3.org/2000/svg"><path d="M6 12v15c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3V12H6zm6 13a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zM27 6h-6V5c0-1.654-1.346-3-3-3h-4c-1.654 0-3 1.346-3 3v1H5c-1.103 0-2 .897-2 2v1a1 1 0 0 0 1 1h24a1 1 0 0 0 1-1V8c0-1.103-.897-2-2-2zM13 5c0-.551.449-1 1-1h4c.551 0 1 .449 1 1v1h-6V5z"  ></path></svg>
+                        <span class="cart_icons">Удалить</span>
+                    </a>
+                </div>
+
+                <div class="counter">
+                    <a href="{% url 'products:cart_del_minus_one' basket.id  %}" class="counter_plus_minus">-</a>
+                    <input class="counter_input" type="text" disabled value="{{basket.qty}}"></input>
+                    <a href="{% url 'products:cart_add_plus_one' basket.product.article basket.size.size_name  %}"
+                       class="counter_plus_minus">+</a>
+                </div>
+            </div>
         </div>
-                   <div class=confirm_order_group>
-                        <div class="cart_total_info">
-                            <div class="total_cart_amount"> <span style="float: left">ИТОГО:</span> <span style="float: right">{{baskets.total_sum}} &#x20bd;.</span></div>
-                            <div class="total_cart_qty"> <span style="float: left"> {{baskets.total_qty}} товаров на сумму:</span> <span style="float: right"> {{baskets.total_sum}} &#x20bd;</span></div>
-                            <div class="total_cart_discount"> <span style="float: left">Сумма скидки</span> <span style="float: right">0 &#x20bd;</span></div>
-                            <button class="btn_buy" type="submit">Оформить заказ</button>
-                        </div>
-                   </div>
-               </div>
-    {% else %}
-        <div class="cart_all_products">
-            <div class="cart_title"><span class="cart_title_left">Ваша корзина</span></div>
-            <div class="no_goods_message">В вашей корзине пока еще нет товаров</div>
-               </div>
-                   <div class=confirm_order_group>
-                        <div class="cart_total_info">
-                            <div class="total_cart_amount"> <span style="float: left">ИТОГО:</span> <span style="float: right">{{baskets.total_sum}} &#x20bd;.</span></div>
-                            <div class="total_cart_qty"> <span style="float: left"> {{baskets.total_qty}} товаров на сумму:</span> <span style="float: right"> {{baskets.total_sum}} &#x20bd;</span></div>
-                            <div class="total_cart_discount"> <span style="float: left">Сумма скидки</span> <span style="float: right">0 &#x20bd;</span></div>
-                            <button class="btn_disabled">Оформить заказ</button>
-                        </div>
-                   </div>
-               </div>
-    {% endif %}
+
+
+            {% endfor %}
+            <script>
+                let hearts = document.querySelectorAll('a[name^="heart_favorites"]');
+
+                for (let heart of hearts) {
+
+                    var heart_child_elem = heart.children[0];
+
+                    if (heart_child_elem.getAttribute('data-is_favorite') == 'True') {
+                      heart_child_elem.setAttribute('class','favorites_heart_checked');
+                      heart.setAttribute('class','btn_favorites_visited');
+                    } else {
+                      heart_child_elem.setAttribute('class','favorites_heart');
+                      heart.setAttribute('class','btn_favorites');
+                    }
+                };
+            </script>
+        </div>
+    </div>
+    <div class=confirm_order_group>
+        <div class="cart-total-info">
+
+            <div class="total_cart_qty"><span style="float: left"> {{baskets.total_qty}} товаров на сумму:</span> <span
+                    style="float: right"> {{baskets.total_sum}} &#x20bd;</span></div>
+            <div class="total_cart_discount"><span style="float: left">Сумма скидки</span> <span style="float: right">0 &#x20bd;</span></div>
+
+            <div class="total_cart_amount"><span style="float: left">ИТОГО:</span> <span style="float: right">{{baskets.total_sum}} &#x20bd;.</span>
+            </div>
+            <button class="btn_buy" type="submit">Оформить заказ</button>
+
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="cart_all_products">
+    <div class="cart_title"><span class="cart_title_left">Ваша корзина</span></div>
+    <div class="no_goods_message">В вашей корзине пока еще нет товаров</div>
+</div>
+<div class=confirm_order_group>
+    <div class="cart_total_info">
+        <div class="total_cart_amount"><span style="float: left">ИТОГО:</span> <span style="float: right">{{baskets.total_sum}} &#x20bd;.</span>
+        </div>
+        <div class="total_cart_qty"><span style="float: left"> {{baskets.total_qty}} товаров на сумму:</span> <span
+                style="float: right"> {{baskets.total_sum}} &#x20bd;</span></div>
+        <div class="total_cart_discount"><span style="float: left">Сумма скидки</span> <span style="float: right">0 &#x20bd;</span>
+        </div>
+        <button class="btn_disabled">Оформить заказ</button>
+    </div>
+</div>
+</div>
+{% endif %}
 {% endblock %}
 
