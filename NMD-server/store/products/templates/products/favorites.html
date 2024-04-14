@@ -17,8 +17,8 @@
 {% block content%}
 
 <div class="favorites-list">
-    <div class="cart_title">Избранные товары
-        <a name="clean_cart" class="clean_cart" href="{% url 'products:remove_all_user_favorites' %}">
+    <div class="cart-title">Избранные товары
+        <a class="clean-cart"  href="{% url 'products:remove_all_user_favorites' %}">
             <svg class="garbage" viewBox="0 0 32 32" fill="#ececec" xml:space="preserve"
                  xmlns="http://www.w3.org/2000/svg"><path d="M6 12v15c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3V12H6zm6 13a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zM27 6h-6V5c0-1.654-1.346-3-3-3h-4c-1.654 0-3 1.346-3 3v1H5c-1.103 0-2 .897-2 2v1a1 1 0 0 0 1 1h24a1 1 0 0 0 1-1V8c0-1.103-.897-2-2-2zM13 5c0-.551.449-1 1-1h4c.551 0 1 .449 1 1v1h-6V5z"  ></path></svg>
             Очистить все
@@ -52,12 +52,12 @@
             <div class="favorites-trash-group">
                 <a class="favorites-trash" id="{{favorite.product.favorite_article}}" name="trash"
                    href="{% url 'products:favorites_remove' favorite.id  %}">
-                    <svg class="little_garbage" viewBox="0 0 32 32" fill="#ececec" xml:space="preserve"
+                    <svg class="little-garbage" viewBox="0 0 32 32" fill="#ececec" xml:space="preserve"
                          xmlns="http://www.w3.org/2000/svg"><path d="M6 12v15c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3V12H6zm6 13a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zM27 6h-6V5c0-1.654-1.346-3-3-3h-4c-1.654 0-3 1.346-3 3v1H5c-1.103 0-2 .897-2 2v1a1 1 0 0 0 1 1h24a1 1 0 0 0 1-1V8c0-1.103-.897-2-2-2zM13 5c0-.551.449-1 1-1h4c.551 0 1 .449 1 1v1h-6V5z"  ></path></svg>
                     Удалить
                 </a>
             </div>
-            <button class="btn_favorites_to_cart" form="{{favorite.product.article}}" data="{{favorite.product.article}}" name="btn"
+            <button class="btn-favorites-to-cart" form="{{favorite.product.article}}" data="{{favorite.product.article}}" name="btn"
                     formaction="{% url 'products:basket_add' favorite.product.article %}"
                     type="submit">
                 <svg fill="#C0BFBF" width="35px" height="35px" viewBox="-2 -2 204.00 204.00"
@@ -76,22 +76,22 @@
     </div>
 
     {% if favorites%}
-    <div class=in-cart-block>
-        <div class="cart-total-info">
-            <div class="total-cart-qty"><span>Количество:</span>{{favorites.total_qty}} шт.</div>
-            <div class="total-cart-amount-no-discount"><span>На сумму: </span>{{favorites.total_sum}} &#x20bd;</div>
-            <div class="total-cart-discount"><span>Сумма скидки</span> 0 &#x20bd;</span></div>
-            <div class="total-cart-amount"><span>ИТОГО:</span> {{favorites.total_sum}} &#x20bd;</div>
+    <div class="in-favorites-block">
+        <div class="favorites-total-info">
+            <div class="total-favorites-qty"><span>Количество:</span>{{favorites.total_qty}} шт.</div>
+            <div class="total-favorites-amount-no-discount"><span>На сумму: </span>{{favorites.total_sum}} &#x20bd;</div>
+            <div class="total-favorites-discount"><span>Сумма скидки</span> 0 &#x20bd;</span></div>
+            <div class="total-favorites-amount"><span>ИТОГО:</span> {{favorites.total_sum}} &#x20bd;</div>
         </div>
     </div>
     {% else%}
-    <div class="in-cart-block">
+    <div class="in-favorites-block">
         <div class="no-goods-message">У вас нет избранных товаров</div>
-        <div class="cart-total-info">
-            <div class="total-cart-qty"><span>Количество:</span>0 шт.</div>
-            <div class="total-cart-amount-no-discount"><span>На сумму: </span>0 &#x20bd;</div>
-            <div class="total-cart-discount"><span>Сумма скидки</span> 0 &#x20bd;</span></div>
-            <div class="total-cart-amount"><span>ИТОГО:</span> 0 &#x20bd;</div>
+        <div class="favorites-total-info">
+            <div class="total-favorites-qty"><span>Количество:</span>0 шт.</div>
+            <div class="total-favorites-amount-no-discount"><span>На сумму: </span>0 &#x20bd;</div>
+            <div class="total-favorites-discount"><span>Сумма скидки</span> 0 &#x20bd;</span></div>
+            <div class="total-favorites-amount"><span>ИТОГО:</span> 0 &#x20bd;</div>
         </div>
     </div>
     {% endif%}
