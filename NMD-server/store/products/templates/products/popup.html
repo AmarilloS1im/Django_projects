@@ -6,7 +6,7 @@
             <div class="popup-title"> Выберите размер:</div>
 
                 {% if not fav %}
-                <div class="popup-sizes-group">
+                <div class="size-group">
                 <form action="" method="post">
                     {% csrf_token %}
                     {% for size in sizes %}
@@ -20,8 +20,7 @@
                     {% endif %}
                     {% endfor %}
 
-                </form>
-                    </div>
+
             <button class="btn_popup" onclick="isChecked()" data="{{product.article}}" name="btn2"
                             formaction="{% url 'products:basket_add' product.article  %}"
                             type="submit">
@@ -37,6 +36,8 @@
                         </svg>
                         В корзину
                     </button>
+                    </form>
+                    </div>
 
                 {% else %}
                 <div class="size-group">
