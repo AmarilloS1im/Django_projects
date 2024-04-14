@@ -21,7 +21,7 @@
                     {% endfor %}
 
 
-            <button class="btn_popup" onclick="isChecked()" data="{{product.article}}" name="btn2"
+            <button class="btn-popup" onclick="isChecked()" data="{{product.article}}" name="btn2"
                             formaction="{% url 'products:basket_add' product.article  %}"
                             type="submit">
                         <svg class="popup-button-cart" fill="#C0BFBF" width="64px" height="64px"
@@ -54,7 +54,7 @@
                     {% endif %}
                     {% endfor %}
 
-                    <button class="btn_popup" onclick="isChecked()" data="{{favorite.product.article}}" name="btn2"
+                    <button class="btn-popup" onclick="isChecked()" data="{{favorite.product.article}}" name="btn2"
                             formaction="{% url 'products:basket_add' favorite.product.article  %}"
                             type="submit">
                         <svg class="button-cart" fill="#C0BFBF" width="64px" height="64px"

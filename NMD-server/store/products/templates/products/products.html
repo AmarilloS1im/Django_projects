@@ -77,12 +77,12 @@
 
 
     </div>
-          <div class="filter_buttons_group">
-            <button form="1" formaction="{% url 'products:products' %}" class="btn_filter"
+          <div>
+            <button class="btn-filter" form="1" formaction="{% url 'products:products' %}"
                     type="submit">
                 Применить фильтры
             </button>
-            <a class="btn_filter" onclick="resetFilters()" href="{% url 'products:reset_filters' %}" >Сбросить фильтры</a>
+            <a class="btn-filter" onclick="resetFilters()" href="{% url 'products:reset_filters' %}" >Сбросить фильтры</a>
           </div>
     </div>
 
@@ -93,9 +93,9 @@
                 <a href="{% url 'products:item_info' product.article %}">
                     <img src="{{ product.img.url }}" alt="нет фото" width="256" height="256">
                 </a>
-                <a class="btn_favorites" name='heart_favorites'
+                <a class="btn-favorites" name='heart_favorites'
                    href="{% url 'products:favorites_add' product.article %}">
-                    <svg class="favorites_heart" data-is_favorite="{% get_favorites filter=request.user filter_2=product%}"
+                    <svg class="favorites-heart" data-is_favorite="{% get_favorites filter=request.user filter_2=product%}"
                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#ababab" width="64px"
                          height="64px"
                          viewBox="0 0 32 32" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
@@ -213,9 +213,9 @@
                     var heart_child_elem = heart.children[0];
 
                     if (heart_child_elem.getAttribute('data-is_favorite') == 'True') {
-                      heart_child_elem.setAttribute('class','favorites_heart_checked');
+                      heart_child_elem.setAttribute('class','favorites-heart-checked');
                     } else {
-                      heart_child_elem.setAttribute('class','favorites_heart');
+                      heart_child_elem.setAttribute('class','favorites-heart');
                     }
                 };
             </script>

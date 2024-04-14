@@ -35,10 +35,11 @@ a {
     flex-shrink: 0;
     border-top: 1rem #cdcecf solid;
     border-bottom: 1rem #cdcecf solid;
+    box-shadow: 0 .2rem .2rem 0 rgba(0, 0, 0, 0.25), 0 .2rem .2rem 0 rgba(0, 0, 0, 0.25);
+
     position: relative;
+
     background: #BC0D2E;
-    box-shadow: 0 .2rem .2rem 0 rgba(0, 0, 0, 0.25),
-    0 .2rem .2rem 0 rgba(0, 0, 0, 0.25);
 }
 
 .logo {
@@ -46,6 +47,7 @@ a {
     height: 4.25rem;
     box-shadow: .5rem 0 .75rem .1rem rgba(0, 0, 0, 0.4), -.5rem 0 .75rem .1rem rgba(0, 0, 0, 0.4);
     cursor: pointer;
+
     position: absolute;
     top: -1.3rem;
     left: 5rem;
@@ -70,6 +72,7 @@ a {
     justify-content: space-between;
     gap: .5rem;
     border-radius: .25rem;
+
     background: linear-gradient(180deg, #C0BFBF 26.04%, #F6F6F6 81.77%);
     box-shadow: 0 .2rem .2rem 0 rgba(0, 0, 0, 0.25);
     color: #BC0D2E;
@@ -81,6 +84,7 @@ a {
     font-weight: 700;
     line-height: normal;
     letter-spacing: .01rem;
+
     position: absolute;
     left: 13rem;
 }
@@ -113,6 +117,7 @@ a {
     border-radius: .25rem;
     outline: none;
     border: none;
+
     background: #FFF;
     color: rgba(0, 0, 0, 0.50);
     text-align: center;
@@ -121,6 +126,7 @@ a {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+
     position: absolute;
     left: 24.8rem;
 }
@@ -130,6 +136,7 @@ a {
     height: 1.5rem;
     margin: .2em;
     flex-shrink: 0;
+
     position: absolute;
     left: 55rem;
 }
@@ -153,6 +160,7 @@ a {
 .icons {
     width: 9rem;
     height: 2.4rem;
+
     position: absolute;
     left: 62rem;
 }
@@ -215,12 +223,14 @@ a {
     display: block;
     background: #eee;
     border-radius: .25rem;
+
     font-family: Montserrat;
     font-size: .8rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     letter-spacing: 0.2px;
+
     position: absolute;
     top: 2rem;
     right: -4.5rem;
@@ -230,6 +240,7 @@ a {
     display: block;
     padding-top: 0.45rem;
     padding-bottom: 0.35rem;
+
     text-align: center;
     color: black;
     text-decoration: none;
@@ -238,6 +249,7 @@ a {
 .dropdown:hover .dropdown-content .drop-row a {
     display: block;
     border-radius: .25rem;
+
     color: #BC0D2E;
     text-decoration: none;
     text-align: center;
@@ -270,7 +282,7 @@ a {
     background: #c5c4c4;
 }
 
-.counter-icon-group{
+.counter-icon-group {
     display: flex;
     gap: 1rem;
     width: 4rem;
@@ -278,15 +290,13 @@ a {
     position: relative;
     top: -2.5rem;
     left: 3.6rem;
-
-
-
 }
 
 .heart-counter {
     width: 1rem;
     height: 1rem;
     justify-content: center;
+
     font-weight: bold;
     font-size: .8rem;
     background: #c03;
@@ -296,8 +306,6 @@ a {
     box-shadow: 0 .1rem .1rem 0 rgba(0, 0, 0, 0.25);
 
     position: relative;
-
-
 }
 
 
@@ -306,6 +314,7 @@ a {
     width: 1rem;
     height: 1rem;
     justify-content: center;
+
     font-weight: bold;
     font-size: .8rem;
     background: white;
@@ -315,15 +324,14 @@ a {
     box-shadow: 0 .1rem .1rem 0 rgba(0, 0, 0, 0.25);
 
     position: absolute;
-
     left: 2.3rem;
-
 }
 
 .banner {
     width: 63.25rem;
     height: 11rem;
     margin: 2rem 5rem;
+
     border-radius: .5rem;
     border: 1px solid #000;
     background: #FFF;
@@ -357,13 +365,18 @@ a {
     border-radius: .25rem;
     margin-top: .35rem;
     margin-right: .65rem;
+
     overflow-x: hidden;
     overflow-y: auto;
+
     background: #FFF;
     box-shadow: -.2rem 0 .35rem 0 rgba(0, 0, 0, 0.25);
 }
 
 .filter-header {
+    margin-top: 1.75rem;
+    margin-left: .4rem;
+
     color: #000;
     text-align: left;
     font-family: Montserrat;
@@ -372,8 +385,6 @@ a {
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.2px;
-    margin-top: 1.75rem;
-    margin-left: .4rem;
 }
 
 .checkbox {
@@ -387,6 +398,7 @@ a {
     margin-left: .5rem;
     gap: .5rem;
     flex-shrink: 0;
+
     border-radius: .1rem;
     border: .15rem solid #C0BFBF;
     background: #FFF;
@@ -402,16 +414,14 @@ a {
     margin-top: .2rem;
     margin-left: .3rem;
     flex-shrink: 0;
+
     color: #000;
     font-family: Montserrat;
     font-size: 1rem;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-
 }
-
-
 
 .label:hover {
     color: #9c0925;
@@ -421,14 +431,11 @@ a {
     color: #790218;
 }
 
-.filter_buttons_group {
-}
-
 input[type=checkbox]:checked + label {
   color: #9c0925;
 }
 
-.btn_filter {
+.btn-filter {
     display: flex;
     width: 15.9rem;
     height: 1.7rem;
@@ -436,6 +443,7 @@ input[type=checkbox]:checked + label {
     justify-content: center;
     align-items: justify;
     flex-shrink: 0;
+
     border-radius: .5rem;
     background: #BC0D2E;
     color: #C0BFBF;
@@ -446,19 +454,20 @@ input[type=checkbox]:checked + label {
     font-weight: 700;
     line-height: normal;
     margin: .5rem 0;
+    box-shadow: 0 .5rem .75rem .1rem rgba(0, 0, 0, 0.5);
+
     outline: none;
     border: none;
-    box-shadow: 0 .5rem .75rem .1rem rgba(0, 0, 0, 0.5);
 }
 
-.btn_filter:hover {
+.btn-filter:hover {
     transition: .5s;
     color: white;
     background: #9c0925;
     box-shadow: 0 .25rem .5rem 0 rgba(0, 0, 0, 0.5);
 }
 
-.btn_filter:active {
+.btn-filter:active {
     background: #790218;
     box-shadow: inset 0 .5rem 1rem .1rem rgba(0, 0, 0, 0.25);
 }
@@ -480,6 +489,7 @@ input[type=checkbox]:checked + label {
     margin-left: .9rem;
     margin-bottom: .75rem;
     flex-shrink: 0;
+
     border-radius: .25rem;
     background: #FFF;
 }
@@ -489,41 +499,18 @@ input[type=checkbox]:checked + label {
     box-shadow: 0 -.2rem .35rem 0 rgba(0, 0, 0, 0.07), 0 .2rem .2rem 0 rgba(0, 0, 0, 0.38);
 }
 
-
-
-/*FAVORITES*/
-
-.favorites_checked[type="button"] {
-    display: none;
-}
-
-.favorites_checked[type="button"] + .title_checkbox {
+.favorites-heart {
     width: 2.05rem;
     height: 1.95rem;
     flex-shrink: 0;
 }
 
-.favorites_checked[type="button"]:hover + .title_checkbox {
-}
-
-.favorites_checked[type="button"]:checked + .title_checkbox {
-    stroke: #f3b1b1;
-    fill: #bd0d2e;
-    cursor: pointer;
-}
-
-.favorites_heart {
-    width: 2.05rem;
-    height: 1.95rem;
-    flex-shrink: 0;
-}
-
-.favorites_heart:hover {
+.favorites-heart:hover {
     stroke: #bd0d2e;
     cursor: pointer;
 }
 
-.favorites_heart_checked {
+.favorites-heart-checked {
     width: 2.05rem;
     height: 1.95rem;
     flex-shrink: 0;
@@ -532,7 +519,7 @@ input[type=checkbox]:checked + label {
     cursor: pointer;
 }
 
-.btn_favorites {
+.btn-favorites {
     display: flex;
     width: 0rem;
     height: 0rem;
@@ -543,8 +530,6 @@ input[type=checkbox]:checked + label {
     justify-content: left;
     background-color: white;
 }
-
-/*FAVORITES*/
 
 .shoe-photo {
     width: 12rem;
@@ -558,6 +543,8 @@ input[type=checkbox]:checked + label {
     width: 12rem;
     height: 2.5rem;
     flex-shrink: 0;
+    margin-left: 1.15rem;
+
     color: #000;
     font-family: Inter;
     font-size: 1rem;
@@ -565,38 +552,37 @@ input[type=checkbox]:checked + label {
     font-weight: 400;
     line-height: normal;
     text-align: left;
-    margin-left: 1.15rem;
 }
 
 .price {
     width: 10rem;
     height: 2.5rem;
+    padding-left: 1rem;
     flex-shrink: 0;
+
     color: #000;
     font-family: Inter;
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    padding-left: 1rem;
-
 }
-
 
 .description {
     display: flex;
     width: 12rem;
     height: 3.25rem;
+    margin-left: 1.15rem;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
+
     color: #000;
     font-family: Inter;
     font-size: .75rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-left: 1.15rem;
 }
 
 .sizes-group {
@@ -611,18 +597,20 @@ input[type=checkbox]:checked + label {
     padding-top: .5rem;
     padding-left: .2rem;
     margin-left: .95rem;
+
     overflow-x: hidden;
     overflow-y: auto;
 }
 
 .size {
+    margin: 0 .25rem;
+
     color: #000;
     font-family: Inter;
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin: 0 .25rem;
 }
 
 
@@ -631,6 +619,7 @@ input[type=checkbox]:checked + label {
     display: inline-block;
     padding: .25rem;
     margin-bottom: .3rem;
+
     font-size: 1rem;
     font-weight: 700;
 }
@@ -655,10 +644,14 @@ input[type=checkbox]:checked + label {
     display: flex;
     width: 12rem;
     height: 1.7rem;
+    margin-left: 1.15rem;
+    margin-top: 1.5rem;
+    margin-bottom: .5rem;
     padding: .1rem 1.95rem;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
+
     border-radius: .5rem;
     background: #BC0D2E;
     color: #C0BFBF;
@@ -668,12 +661,10 @@ input[type=checkbox]:checked + label {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    margin-left: 1.15rem;
-    margin-top: 1.5rem;
-    margin-bottom: .5rem;
+    box-shadow: 0 .5rem .75rem .1rem rgba(0, 0, 0, 0.5);
+
     outline: none;
     border: none;
-    box-shadow: 0 .5rem .75rem .1rem rgba(0, 0, 0, 0.5);
 }
 
 .btn:hover {
@@ -722,9 +713,12 @@ input[type=checkbox]:checked + label {
     height: 17.5rem;
     width: 25rem;
     max-width: 25rem;
+    padding: 2.5rem;
+
+    border-radius: .5rem;
     background-color: #fff;
     color: #000;
-    padding: 2.5rem;
+
     position: relative;
 }
 
@@ -736,14 +730,16 @@ input[type=checkbox]:checked + label {
 }
 
 .popup-close {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
+    padding-right: .25rem;
+
     font-size: 1rem;
     font-weight: 700;
     color: #000;
     text-decoration: none;
-    padding-right: .25rem;
+
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
 }
 
 .popup-sizes-group {
@@ -761,26 +757,28 @@ input[type=checkbox]:checked + label {
     overflow-y: auto;
 }
 
-.btn_popup {
+.btn-popup {
     display: flex;
     width: 20rem;
     height: 3rem;
+    margin: 2.5rem 0;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
+
     border-radius: .75rem;
     background: #BC0D2E;
     color: #C0BFBF;
     text-align: center;
     font-size: 1.5rem;
     font-weight: 700;
-    margin: 2.5rem 0;
+    box-shadow: 0 .5rem 1rem .25rem rgba(0, 0, 0, 0.5);
+
     outline: none;
     border: none;
-    box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.5);
 }
 
-.btn_popup:hover {
+.btn-popup:hover {
     transition-duration: .5s;
     color: white;
     svg {
@@ -788,10 +786,10 @@ input[type=checkbox]:checked + label {
       fill: white;
     }
     background: #9c0925;
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 .25rem .5rem 0 rgba(0, 0, 0, 0.5);
 }
 
-.btn_popup:active {
+.btn-popup:active {
     background: #790218;
     box-shadow: inset 0 .5rem 1rem .1rem rgba(0, 0, 0, 0.25);
 }
@@ -799,8 +797,8 @@ input[type=checkbox]:checked + label {
 .popup-button-cart {
     width: 2.55rem;
     height: 40.5rem;
-    flex-shrink: 0;
     margin-right: 1.5rem;
+    flex-shrink: 0;
 }
 
 /*POPUP*/
@@ -808,10 +806,11 @@ input[type=checkbox]:checked + label {
 /*POPUPS SIZES*/
 .title-popup-checkbox {
     display: inline-block;
+    margin-bottom: .25rem;
+    padding: .15rem;
+
     font-size: 1.5rem;
     font-weight: 700;
-    padding: .15rem;
-    margin-bottom: .25rem;
 }
 
 .size-popup-checkbox[type="checkbox"] {
@@ -829,7 +828,6 @@ input[type=checkbox]:checked + label {
     border-radius: .25rem;
     box-shadow: inset .1rem .1rem .1rem 0px rgba(0, 0, 0, 0.20),inset -.1rem -.1rem .1rem 0px rgba(0, 0, 0, 0.20);
 }
-
 /*POPUPS SIZES*/
 
 .pagination {
@@ -843,9 +841,10 @@ input[type=checkbox]:checked + label {
 .pagination a {
     color: black;
     padding: .4rem .8rem;
+    vertical-align: middle;
+
     text-decoration: none;
     transition: background-color .3s;
-    vertical-align: middle;
 }
 
 .pagination a:hover:not(.disabled) {
@@ -864,9 +863,9 @@ input[type=checkbox]:checked + label {
     height: 4rem;
     justify-content: center;
     align-items: center;
+
     background: #cdcecf;
-    box-shadow: 0 -.2rem .2rem 0 rgba(0, 0, 0, 0.25),
-    0 -.2rem .2rem 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 0 -.2rem .2rem 0 rgba(0, 0, 0, 0.25), 0 -.2rem .2rem 0 rgba(0, 0, 0, 0.25);
     color: #FFF;
     text-align: center;
     font-family: Montserrat;
