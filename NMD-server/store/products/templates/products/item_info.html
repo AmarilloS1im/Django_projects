@@ -10,7 +10,7 @@
 
 {% block logo %}
     <a href="{% url 'products:products' %}">
-        <img  src="{% static 'images/logo.png' %}" alt="альтернативный текст" widht="140px" height="100px">
+        <img  src="{% static 'images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
     </a>
 {% endblock %}
 
@@ -18,7 +18,7 @@
     <div class="item-label">{{product.description}}</div>
            <div class="item-content">
                <div class="item-photo">
-                   <img src="{{ product.img.url }}" alt="нет фото" width="600" height="523">
+                   <img src="{{ product.img.url }}" alt="нет фото" width="500" height="400">
                </div>
                <div class="info-group">
                    <div class="price">Цена {{product.price}} &#x20bd;</div>
