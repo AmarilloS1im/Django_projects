@@ -35,11 +35,10 @@ def index(request):
     context = {
         'title': "Вход/Регирстрация",
         'header': "Сайт предзаказа для сотрудников",
-        'form_label': "Authorization/Авторизация",
+        'form_label': "Авторизация",
         'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
         'footer_2': "Копирование материалов запрещено.",
         'form': form,
-
     }
 
     return render(request,'users/index.html',context)
@@ -60,9 +59,9 @@ def registration(request):
             return HttpResponseRedirect(reverse('users:registration_confirm'))
         else:
             context = {
-                'title': "Вход/Регирстрация",
+                'title': "Регирстрация",
                 'header': "Регистрация",
-                'form_label': "Registration/Регистрация",
+                'form_label': "Регистрация",
                 'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
                 'footer_2': "Копирование материалов запрещено.",
                 'form': form
@@ -71,9 +70,9 @@ def registration(request):
             return render(request, 'users/registration.html', context)
     form = UserRegistrationForm()
     context = {
-        'title': "Вход/Регирстрация",
+        'title': "Регирстрация",
         'header': "Регистрация",
-        'form_label': "Registration/Регистрация",
+        'form_label': "Регистрация",
         'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
         'footer_2': "Копирование материалов запрещено.",
         'form': form,
@@ -95,7 +94,7 @@ def recovery(request):
     context = {
         'title': "Восстановление данных",
         'header': "Восстановление данных",
-        'form_label': "Recover password/Восстановить пароль",
+        'form_label': "Восстановить пароль",
         'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
         'footer_2': "Копирование материалов запрещено."
     }

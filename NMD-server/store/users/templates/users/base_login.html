@@ -16,14 +16,14 @@
 <body>
    <div class="page">
        <header class="header">
-           <div class="through-line">
-               <div class="site-info-label">{{header}}</div>
                <div class="logo">
                    {% block logo %}
 
                    {% endblock %}
                </div>
-           </div>
+                {% block header-title%}
+
+                {% endblock %}
        </header>
        <main class="main">
            <div class="form">

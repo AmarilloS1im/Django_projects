@@ -8,17 +8,20 @@
 
 {% block logo %}
     <a href="{% url 'users:index' %}">
-        <img src="{% static 'images/logo.png' %}" alt="альтернативный текст">
+        <img src="{% static 'images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
     </a>
+{% endblock %}
+{% block header-title%}
+    <div class="header-title"> {{header}}</div>
 {% endblock %}
 
 {% block action_button %}
     <form action="/" method="post">
         <input class="input" type="email" name="email" placeholder="Email/Почта">
         <a href="recover-confirm.html">
-            <button  class="btn" type="button">Recover/Восстановить</button>
+            <button  class="btn" type="button">Восстановить</button>
         </a>
         <a href="{% url 'users:index' %}">
-            <button class="btn" type="button">Back/Назад</button>
+            <button class="btn" type="button">Назад</button>
         </a>
 {% endblock %}

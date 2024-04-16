@@ -1,6 +1,5 @@
 {% extends 'users/base_login.html'%}
 
-
 {% load static %}
 
 {% block css %}
@@ -9,8 +8,11 @@
 
 {% block logo %}
     <a href="{% url 'users:index' %}">
-        <img src="{% static 'images/logo.png' %}" alt="альтернативный текст">
+        <img src="{% static 'images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
     </a>
+{% endblock %}
+{% block header-title%}
+    <div class="header-title"> {{header}}</div>
 {% endblock %}
 
 {% block action_button %}
@@ -27,9 +29,9 @@
 <form action="{% url 'users:registration' %}" method="post">
     {% csrf_token %}
     {{ form.email}}
-    <button class="btn" type="submit">Sing up/Зарегистрироваться</button>
+    <button class="btn" type="submit">Зарегистрироваться</button>
     <a href="{% url 'users:index'%}">
-        <button class="btn" type="button">Back/Назад</button>
+        <button class="btn" type="button">Назад</button>
     </a>
 </form>
 

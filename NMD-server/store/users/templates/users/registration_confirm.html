@@ -8,13 +8,16 @@
 {% endblock%}
 {% block logo %}
     <a href="{% url 'users:index' %}">
-        <img src="{% static 'images/logo.png' %}" alt="альтернативный текст">
+        <img src="{% static 'images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
     </a>
+{% endblock %}
+{% block header-title%}
+    <div class="header-title"> {{header}}</div>
 {% endblock %}
 
 {% block action_button %}
     <a href="{% url 'users:index' %}">
-        <button class="btn" type="button">Main page/На главную</button>
+        <button class="btn" type="button">На главную</button>
     </a>
 {% endblock %}
 
