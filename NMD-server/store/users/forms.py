@@ -63,18 +63,19 @@ class UserLoginForm(AuthenticationForm):
 
 class UserProfileForm(UserChangeForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
-    'class':'form_input', 'type':'text', 'name':'username', 'placeholder':'Имя Пользователя'
+    'class':'form-input', 'type':'text', 'name':'username', 'placeholder':'Имя Пользователя'
     }), required=False)
     first_name = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form_input', 'type': 'text', 'name': 'first_name', 'placeholder': 'Имя'
+        'class': 'form-input', 'type': 'text', 'name': 'first_name', 'placeholder': 'Имя'
     }), required=False)
 
     last_name = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form_input', 'type': 'text', 'name': 'last_name', 'placeholder': 'Фамилия'
+        'class': 'form-input', 'type': 'text', 'name': 'last_name', 'placeholder': 'Фамилия'
     }), required=False)
 
     email = forms.EmailField(widget=forms.EmailInput(attrs={
-        'class': 'form_input', 'type': 'email', 'name': 'email', 'placeholder': 'Эл.Почта','readonly':True
+        'class': 'form-input', 'type': 'email', 'name': 'email', 'placeholder': 'Эл.Почта','readonly':True,
+        'style':'color:#C0BFBF;',
     }))
 
     image = forms.ImageField(widget=forms.FileInput(attrs={

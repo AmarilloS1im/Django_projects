@@ -16,11 +16,11 @@
 
 {% block content %}
     <div class="profile">
-        <div class="profile_title">Профиль</div>
-        <div class="profile_form_group">
+        <div class="profile-title">Профиль</div>
+        <div class="profile-form-group">
             <form action="{% url 'users:profile' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <div class="profile_image">
+                <div class="profile-image">
                     {% if user.image %}
                     <img src="{{user.image.url}}">
                     {% else %}
@@ -31,63 +31,19 @@
                     {{form.image}}
                     <span class="input-file-btn">Загрузить фото</span>
                 </label>
-                <div class=" input_group">
+                <div class="input-group">
                     {{form.first_name}}
                     {{form.last_name}}
                 </div>
-                <div class=" input_group">
+
+                <div class="input-group">
                     {{form.username}}
                     {{form.email}}
                 </div>
-                <button class="btn" type="submit">Сохранить</button>
+                <button class="btn-save" type="submit">Сохранить</button>
             </form>
         </div>
     </div>
-    {% if baskets %}
-        <div class=profile_cart>
-            <div class="profile_cart_title">Корзина</div>
-
-                <div class="profile_product_group">
-
-                    {% for basket in baskets %}
-                    <div class="profile_product_group_to_hover">
-                    <div class="profile_product_desc_group"><h1>{{basket.product.article}}</h1><img
-                            src="{{ basket.product.img.url }}">
-                    </div>
-                    <div class="profile_cart_description">{{basket.product.description}}</div>
-                    <div>size {{basket.size.size_name}}</div>
-                    <div> color {{basket.product.color}}</div>
-                    <div class="qty_and_amount_group">
-                        <div class="qty_count">{{basket.qty}}</div>
-                        <div class="amount">{{basket.sum}} &#x20bd;</div>
-                    </div>
-                    <div><a href="{% url 'products:basket_remove' basket.id %}">
-
-                        <svg class="garbage" viewBox="0 0 32 32" fill="#C0BFBF" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M6 12v15c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3V12H6zm6 13a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zm5 0a1 1 0 0 1-2 0v-9a1 1 0 0 1 2 0v9zM27 6h-6V5c0-1.654-1.346-3-3-3h-4c-1.654 0-3 1.346-3 3v1H5c-1.103 0-2 .897-2 2v1a1 1 0 0 0 1 1h24a1 1 0 0 0 1-1V8c0-1.103-.897-2-2-2zM13 5c0-.551.449-1 1-1h4c.551 0 1 .449 1 1v1h-6V5z"  ></path></svg>
-                    </a>
-                    </div>
-
-                    </div>
-                    {% endfor %}
-
-                </div>
-            <div class="profile_cart_summ_group">
-            <div class="profile_cart_total">Итого:</div>
-            <div class="profile_cart_total_sum"> {{baskets.total_sum}} &#x20bd;</div>
-            </div>
-            <button class="btn_buy" type="submit">Оформить заказ</button>
-        </div>
-        {% else %}
-            <div class=profile_cart>
-                <div class="profile_cart_title">Корзина</div>
-                <br><br><br><br><br><br>
-                <div class="profile_product_group">
-                    <div class="profile_product_desc_group"><h1><br><br>В корзине нет товаров</h1>
-                    </div>
-                </div>
-            </div>
-    {% endif %}
-
 {% endblock %}
 
 
