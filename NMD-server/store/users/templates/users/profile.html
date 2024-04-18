@@ -18,16 +18,16 @@
     <div class="profile">
         <div class="profile-title">Профиль</div>
         <div class="profile-form-group">
-            <form action="{% url 'users:profile' %}" method="post" enctype="multipart/form-data">
+            <form  action="{% url 'users:profile' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="profile-image">
                     {% if user.image %}
-                    <img src="{{user.image.url}}">
+                    <img id="output"  src="{{user.image.url}}">
                     {% else %}
-                    <img src="{% static 'images/default_avatar.png' %}">
+                    <img  src="{% static 'images/default_avatar.png' %}">
                     {% endif %}"
                 </div>
-                <label class="input-file">
+                <label  class="input-file">
                     {{form.image}}
                     <span class="input-file-btn">Загрузить фото</span>
                 </label>
@@ -44,6 +44,22 @@
             </form>
         </div>
     </div>
+<script>
+ let loadFile = function(event) {
+    let reader = new FileReader();
+      reader.onload = function(){
+      let output = document.getElementById('output');
+      output.src = reader.result;
+      let filename = event.target.files[0].type
+      filename = filename.split('/');
+		  if (filename[0] === 'image'){
+      }else{
+        alert("Пожалуйста выбирите изображение в формате .jpeg, .jpg, .png или .svg");
+      }
+    };
+      reader.readAsDataURL(event.target.files[0]);
+  };
+</script>
 {% endblock %}
 
 

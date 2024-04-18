@@ -107,6 +107,7 @@ def profile(request):
             form.save()
             return HttpResponseRedirect(reverse('users:profile'))
     else:
+        print('not post')
         form = UserProfileForm(instance=request.user)
     baskets = Basket.objects.filter(user=request.user)
     favorites = Favorites.objects.filter(user=request.user).order_by('product')

@@ -79,7 +79,7 @@ class UserProfileForm(UserChangeForm):
     }))
 
     image = forms.ImageField(widget=forms.FileInput(attrs={
-        'type':'file','name':'file','id':'file'
+        'type':'file','name':'file','onchange':'loadFile(event)','accept':'image/*',
     }), required=False)
 
     class Meta:
