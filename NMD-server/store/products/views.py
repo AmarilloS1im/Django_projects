@@ -1,9 +1,8 @@
-
 from products.context_processors import *
 from django.shortcuts import render
 from django.core.paginator import Paginator
-from django.views import View
 from django.views.generic import TemplateView
+from store.utils import *
 # Create your views here.
 
 def products(request,page=1):
@@ -133,14 +132,14 @@ def item_info(request, product_id):
 
 
 
-class CartView(TemplateView):
+class CartView(DataMixin, TemplateView):
     template_name = 'products/cart.html'
-    extra_context = {'title': "Корзина"}
+    title = "Корзина"
 
 
-class FavoritesView(TemplateView):
+class FavoritesView(DataMixin, TemplateView):
     template_name = 'products/favorites.html'
-    extra_context = {'title': "Избранные товары"}
+    title = "Избранные товары"
 
 
 def favorites_add(request, product_id):

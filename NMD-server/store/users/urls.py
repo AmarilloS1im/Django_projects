@@ -1,14 +1,14 @@
 
 from django.urls import path
-from users.views import index, registration, registration_confirm, recovery, profile,logout
-
+from users.views import *
+from django.contrib.auth.decorators import login_required
 app_name = 'users'
 urlpatterns = [
-    path('', index, name='index'),
-    path('registration/', registration, name='registration'),
-    path('registration_confirm/', registration_confirm, name='registration_confirm'),
-    path('recovery/', recovery, name='recovery'),
-    path('profile/', profile, name='profile'),
+    path('', IndexView.as_view(), name='index'),
+    path('registration/', RegistrationView.as_view(), name='registration'),
+    path('registration_confirm/', RegistrationConfirmView.as_view(), name='registration_confirm'),
+    path('recovery/', RecoveryView.as_view(), name='recovery'),
+    path('profile/<int:pk>', login_required(ProfileView.as_view()), name='profile'),
     path('logout/', logout, name='logout')
 ]
 
