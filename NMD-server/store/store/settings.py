@@ -78,6 +78,7 @@ TEMPLATES = [
                 'products.context_processors.footer_context',
                 'products.context_processors.sizes',
                 'products.context_processors.filter_data',
+                'products.context_processors.favorites',
 
 
             ],

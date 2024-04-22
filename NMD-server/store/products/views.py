@@ -47,28 +47,24 @@ def products(request,page=1):
             else:
                 return HttpResponseRedirect(request.META['HTTP_REFERER'])
         baskets = Basket.objects.filter(user=request.user)
-        favorites = Favorites.objects.filter(user=request.user).order_by('product')
         paginator = Paginator(products, per_page=3)
         products_paginator = paginator.page(page)
         context = {
             'title': "Магазин",
             'products': products_paginator,
             'baskets': baskets,
-            'favorites': favorites,
         }
 
         return render(request, 'products/products.html', context)
     else:
         products = Product.objects.all().order_by('article')
         baskets = Basket.objects.filter(user=request.user)
-        favorites = Favorites.objects.filter(user=request.user).order_by('product')
         paginator = Paginator(products, per_page=3)
         products_paginator = paginator.page(page)
         context = {
             'title': "Магазин",
             'products': products_paginator,
             'baskets': baskets,
-            'favorites': favorites,
         }
 
         return render(request, 'products/products.html', context)
@@ -78,7 +74,6 @@ def reset_filters(request):
     print('reset')
     request.session['filters']=[]
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
-
 
 
 
@@ -144,13 +139,11 @@ def item_info(request, product_id):
     product = Product.objects.get(article=product_id)
     products = Product.objects.filter(model_group=product.model_group)
     baskets = Basket.objects.filter(user=request.user)
-    favorites = Favorites.objects.filter(user=request.user).order_by('product')
     context = {
         'title': "Магазин",
         'product': product,
         'products': products,
         'baskets': baskets,
-        'favorites': favorites,
 
     }
     return render(request, 'products/item_info.html', context)
@@ -159,12 +152,10 @@ def item_info(request, product_id):
 def cart(request):
     baskets = Basket.objects.filter(user=request.user)
     products = Product.objects.all()
-    favorites  = Favorites.objects.filter(user=request.user).order_by('product')
     context = {
         'title': "Магазин",
         'products':products,
         'baskets': baskets,
-        'favorites': favorites,
     }
     return render(request, 'products/cart.html', context)
 
@@ -174,7 +165,6 @@ def favorites(request):
     context = {
         'title': "Магазин",
         'products': Product.objects.all(),
-        'favorites': Favorites.objects.filter(user=request.user),
         'baskets': baskets,
     }
 

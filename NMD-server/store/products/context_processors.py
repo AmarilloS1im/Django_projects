@@ -1,4 +1,5 @@
 from products.models import *
+from users.views import *
 def footer_context(request):
     return {'footer_info': '127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».',
             'footer_info_2':'Копирование материалов запрещено.'}
@@ -15,3 +16,9 @@ def filter_data(request):
            'ages': ages,'seasons': seasons}
 
 
+def favorites(request):
+    if request.user.is_authenticated:
+        favorites = Favorites.objects.filter(user=request.user).order_by('product')
+    else:
+        favorites = Favorites.objects.all()
+    return {'favorites': favorites}
