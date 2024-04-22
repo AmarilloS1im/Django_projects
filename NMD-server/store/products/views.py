@@ -157,14 +157,12 @@ def item_info(request, product_id):
 
 
 def cart(request):
-    form = CheckboxForm()
     baskets = Basket.objects.filter(user=request.user)
     products = Product.objects.all()
     favorites  = Favorites.objects.filter(user=request.user).order_by('product')
     context = {
         'title': "Магазин",
         'products':products,
-        'form': form,
         'baskets': baskets,
         'favorites': favorites,
     }
@@ -178,7 +176,6 @@ def favorites(request):
         'products': Product.objects.all(),
         'favorites': Favorites.objects.filter(user=request.user),
         'baskets': baskets,
-        'current_page': 'favorites_page',
     }
 
     return render(request, 'products/favorites.html', context)
@@ -197,11 +194,9 @@ def favorites_add(request, product_id):
 
 
 def favorites_remove(request, favorite_id):
-    favorite = Favorites.objects.get(id=favorite_id,user=request.user)
-    favorite.delete()
+    Favorites.objects.get(id=favorite_id,user=request.user).delete()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 def remove_all_user_favorites(request):
-    all_user_favorites = Favorites.objects.filter(user=request.user)
-    all_user_favorites.delete()
+    Favorites.objects.filter(user=request.user).delete()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
