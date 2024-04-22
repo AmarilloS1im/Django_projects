@@ -46,42 +46,36 @@ def products(request,page=1):
                     products = Product.objects.all().order_by('article')
             else:
                 return HttpResponseRedirect(request.META['HTTP_REFERER'])
-        baskets = Basket.objects.filter(user=request.user)
+
         paginator = Paginator(products, per_page=3)
         products_paginator = paginator.page(page)
         context = {
             'title': "Магазин",
             'products': products_paginator,
-            'baskets': baskets,
+
         }
 
         return render(request, 'products/products.html', context)
     else:
         products = Product.objects.all().order_by('article')
-        baskets = Basket.objects.filter(user=request.user)
         paginator = Paginator(products, per_page=3)
         products_paginator = paginator.page(page)
         context = {
             'title': "Магазин",
             'products': products_paginator,
-            'baskets': baskets,
         }
 
         return render(request, 'products/products.html', context)
 
 
 def reset_filters(request):
-    print('reset')
     request.session['filters']=[]
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
-
 def basket_add(request, product_id):
     product = Product.objects.get(article=product_id)
-
     if request.method == 'POST':
-        print('post')
         for article_size in request.POST.getlist('checked_size_id'):
             size = Size.objects.get(article_size=article_size)
             baskets = Basket.objects.filter(user=request.user, product=product, size=size)
@@ -93,9 +87,7 @@ def basket_add(request, product_id):
                 basket.save()
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
     else:
-        print('not post')
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
-
 
 
 def cart_add_plus_one(request, product_id, size_name):
@@ -117,57 +109,45 @@ def cart_del_minus_one(request, basket_id):
     basket.qty -= 1
     basket.save()
     if basket.qty == 0:
-        basket = Basket.objects.get(id=basket_id)
-        basket.delete()
+        Basket.objects.get(id=basket_id).delete()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 def basket_remove(request, basket_id):
-    basket = Basket.objects.get(id=basket_id)
-    basket.delete()
+    Basket.objects.get(id=basket_id).delete()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 def remove_all_user_baskets(request):
-    all_user_baskets = Basket.objects.filter(user=request.user)
-    all_user_baskets.delete()
+    Basket.objects.filter(user=request.user).delete()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 def item_info(request, product_id):
-
     product = Product.objects.get(article=product_id)
     products = Product.objects.filter(model_group=product.model_group)
-    baskets = Basket.objects.filter(user=request.user)
     context = {
         'title': "Магазин",
         'product': product,
         'products': products,
-        'baskets': baskets,
-
     }
     return render(request, 'products/item_info.html', context)
 
 
 def cart(request):
-    baskets = Basket.objects.filter(user=request.user)
     products = Product.objects.all()
     context = {
         'title': "Магазин",
-        'products':products,
-        'baskets': baskets,
+        'products': products,
     }
     return render(request, 'products/cart.html', context)
 
 
 def favorites(request):
-    baskets = Basket.objects.filter(user=request.user)
     context = {
         'title': "Магазин",
         'products': Product.objects.all(),
-        'baskets': baskets,
     }
-
     return render(request, 'products/favorites.html', context)
 
 

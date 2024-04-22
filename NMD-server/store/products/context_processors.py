@@ -22,3 +22,10 @@ def favorites(request):
     else:
         favorites = Favorites.objects.all()
     return {'favorites': favorites}
+
+def baskets(request):
+    if request.user.is_authenticated:
+        baskets = Basket.objects.filter(user=request.user)
+    else:
+        baskets = Basket.objects.all()
+    return {'baskets': baskets}

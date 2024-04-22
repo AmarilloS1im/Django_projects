@@ -79,6 +79,7 @@ TEMPLATES = [
                 'products.context_processors.sizes',
                 'products.context_processors.filter_data',
                 'products.context_processors.favorites',
+                'products.context_processors.baskets',
 
 
             ],
