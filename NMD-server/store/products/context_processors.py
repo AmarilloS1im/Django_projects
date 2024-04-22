@@ -29,3 +29,7 @@ def baskets(request):
     else:
         baskets = Basket.objects.all()
     return {'baskets': baskets}
+
+def products(request):
+    products = Product.objects.all().order_by('article')
+    return {'products': products}

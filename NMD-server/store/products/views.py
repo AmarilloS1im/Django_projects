@@ -52,7 +52,6 @@ def products(request,page=1):
         context = {
             'title': "Магазин",
             'products': products_paginator,
-
         }
 
         return render(request, 'products/products.html', context)
@@ -64,7 +63,6 @@ def products(request,page=1):
             'title': "Магазин",
             'products': products_paginator,
         }
-
         return render(request, 'products/products.html', context)
 
 
@@ -109,7 +107,8 @@ def cart_del_minus_one(request, basket_id):
     basket.qty -= 1
     basket.save()
     if basket.qty == 0:
-        Basket.objects.get(id=basket_id).delete()
+        basket = Basket.objects.get(id=basket_id)
+        basket.delete()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
@@ -135,18 +134,15 @@ def item_info(request, product_id):
 
 
 def cart(request):
-    products = Product.objects.all()
     context = {
         'title': "Магазин",
-        'products': products,
     }
     return render(request, 'products/cart.html', context)
 
 
 def favorites(request):
     context = {
-        'title': "Магазин",
-        'products': Product.objects.all(),
+        'title': "Избранные товары",
     }
     return render(request, 'products/favorites.html', context)
 
