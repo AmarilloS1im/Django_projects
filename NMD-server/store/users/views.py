@@ -36,8 +36,6 @@ def index(request):
         'title': "Вход/Регирстрация",
         'header': "Сайт предзаказа для сотрудников",
         'form_label': "Авторизация",
-        'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
-        'footer_2': "Копирование материалов запрещено.",
         'form': form,
     }
 
@@ -62,8 +60,6 @@ def registration(request):
                 'title': "Регирстрация",
                 'header': "Регистрация",
                 'form_label': "Регистрация",
-                'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
-                'footer_2': "Копирование материалов запрещено.",
                 'form': form
             }
             print(form.errors)
@@ -73,8 +69,6 @@ def registration(request):
         'title': "Регирстрация",
         'header': "Регистрация",
         'form_label': "Регистрация",
-        'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
-        'footer_2': "Копирование материалов запрещено.",
         'form': form,
     }
     return render(request, 'users/registration.html', context)
@@ -84,8 +78,6 @@ def registration_confirm(request):
         'title': "Подтверждение регистрации",
         'header': "Подтверждение регистрации",
         'form_label': "Вы успешно зарегистрированы. Пароль отправлен на вашу почту. Введите почту и пароль на главной странице для входа на сайт.",
-        'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
-        'footer_2': "Копирование материалов запрещено."
     }
     return render(request, 'users/registration_confirm.html', context)
 
@@ -95,8 +87,6 @@ def recovery(request):
         'title': "Восстановление данных",
         'header': "Восстановление данных",
         'form_label': "Восстановить пароль",
-        'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
-        'footer_2': "Копирование материалов запрещено."
     }
     return render(request, 'users/recovery.html', context)
 
@@ -113,8 +103,6 @@ def profile(request):
     favorites = Favorites.objects.filter(user=request.user).order_by('product')
     context = {
         'title': "Личный кабинет",
-        'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
-        'footer_2': "Копирование материалов запрещено.",
         'form': form,
         'baskets': baskets,
         'favorites': favorites,

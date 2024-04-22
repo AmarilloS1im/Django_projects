@@ -75,7 +75,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # 'products.context_processors.context_products',
+                'products.context_processors.footer_context',
+                'products.context_processors.sizes',
+                'products.context_processors.filter_data',
 
 
             ],

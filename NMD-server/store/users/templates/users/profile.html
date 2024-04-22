@@ -1,8 +1,6 @@
 {% extends 'products/base_products.html'%}
 
-
 {% load static %}
-
 
 {% block css%}
     <link rel="stylesheet" href="{% static 'profile.css' %}">
@@ -35,7 +33,6 @@
                     {{form.first_name}}
                     {{form.last_name}}
                 </div>
-
                 <div class="input-group">
                     {{form.username}}
                     {{form.email}}

@@ -5,21 +5,7 @@ from products.context_processors import *
 from django.shortcuts import render
 from django.core.paginator import Paginator
 
-
-
-
-
 # Create your views here.
-
-
-
-
-
-def reset_filters(request):
-    print('reset')
-    request.session['filters']=[]
-    return HttpResponseRedirect(request.META['HTTP_REFERER'])
-
 
 def products(request,page=1):
     filter_dict={'category__in':['Shoe','Clothes'],'product_type__in':
@@ -27,10 +13,9 @@ def products(request,page=1):
         'gender__in': ['Male', 'Female'],'season__in':['Winter','Summer'],'age__in':['Adult','Child'],
         }
 
-
     if request.method == 'POST':
         filters = request.POST.getlist('filter_id')
-        if len(filters)>0:
+        if len(filters) > 0:
             filter_param_list = []
             for items in filters:
                 for k,v in filter_dict.items():
@@ -43,11 +28,9 @@ def products(request,page=1):
             for param_name in filter_param_list:
                 param_dict[param_name] = current_filters
             products = Product.objects.filter(**param_dict).order_by('article')
-
         else:
             if 'filters' in request.session:
                 if request.session['filters']:
-                    print('ok')
                     filter_param_list = []
                     for items in request.session['filters']:
                         for k, v in filter_dict.items():
@@ -60,30 +43,18 @@ def products(request,page=1):
                         param_dict[param_name] = current_filters
                     products = Product.objects.filter(**param_dict).order_by('article')
                 else:
-                    pass
+                    products = Product.objects.all().order_by('article')
             else:
                 return HttpResponseRedirect(request.META['HTTP_REFERER'])
-
-
-
         baskets = Basket.objects.filter(user=request.user)
         favorites = Favorites.objects.filter(user=request.user).order_by('product')
-
         paginator = Paginator(products, per_page=3)
         products_paginator = paginator.page(page)
         context = {
             'title': "Магазин",
-            'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
-            'footer_2': "Копирование материалов запрещено.",
             'products': products_paginator,
-            'sizes': Size.objects.all(),
             'baskets': baskets,
             'favorites': favorites,
-            'categories': ProductCategory.objects.all(),
-            'product_types': ProductType.objects.all(),
-            'genders': ProductGender.objects.all(),
-            'ages': ProductAge.objects.all(),
-            'seasons': ProductSeason.objects.all(),
         }
 
         return render(request, 'products/products.html', context)
@@ -95,23 +66,18 @@ def products(request,page=1):
         products_paginator = paginator.page(page)
         context = {
             'title': "Магазин",
-            'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
-            'footer_2': "Копирование материалов запрещено.",
             'products': products_paginator,
-            'sizes': Size.objects.all(),
             'baskets': baskets,
             'favorites': favorites,
-            'categories': ProductCategory.objects.all(),
-            'product_types': ProductType.objects.all(),
-            'genders': ProductGender.objects.all(),
-            'ages': ProductAge.objects.all(),
-            'seasons': ProductSeason.objects.all(),
         }
 
         return render(request, 'products/products.html', context)
 
 
-
+def reset_filters(request):
+    print('reset')
+    request.session['filters']=[]
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 
@@ -181,11 +147,8 @@ def item_info(request, product_id):
     favorites = Favorites.objects.filter(user=request.user).order_by('product')
     context = {
         'title': "Магазин",
-        'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
-        'footer_2': "Копирование материалов запрещено.",
         'product': product,
         'products': products,
-        'sizes': Size.objects.all(),
         'baskets': baskets,
         'favorites': favorites,
 
@@ -200,10 +163,7 @@ def cart(request):
     favorites  = Favorites.objects.filter(user=request.user).order_by('product')
     context = {
         'title': "Магазин",
-        'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
-        'footer_2': "Копирование материалов запрещено.",
         'products':products,
-        'sizes': Size.objects.all(),
         'form': form,
         'baskets': baskets,
         'favorites': favorites,
@@ -215,10 +175,7 @@ def favorites(request):
     baskets = Basket.objects.filter(user=request.user)
     context = {
         'title': "Магазин",
-        'footer_1': "127015, Москва, Бумажный пр-д., д. 14, стр. 2 ООО «НИКАМЕД».",
-        'footer_2': "Копирование материалов запрещено.",
         'products': Product.objects.all(),
-        'sizes': Size.objects.all(),
         'favorites': Favorites.objects.filter(user=request.user),
         'baskets': baskets,
         'current_page': 'favorites_page',
@@ -247,17 +204,4 @@ def favorites_remove(request, favorite_id):
 def remove_all_user_favorites(request):
     all_user_favorites = Favorites.objects.filter(user=request.user)
     all_user_favorites.delete()
-
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
-
-
-
-
-
-
-
-
-
-
-
-
