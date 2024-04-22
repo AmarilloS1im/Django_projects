@@ -1,10 +1,9 @@
-from django.shortcuts import render, HttpResponse, HttpResponseRedirect,redirect
-from products.models import *
-from products.forms import CheckboxForm
+
 from products.context_processors import *
 from django.shortcuts import render
 from django.core.paginator import Paginator
-
+from django.views import View
+from django.views.generic import TemplateView
 # Create your views here.
 
 def products(request,page=1):
@@ -126,25 +125,22 @@ def item_info(request, product_id):
     product = Product.objects.get(article=product_id)
     products = Product.objects.filter(model_group=product.model_group)
     context = {
-        'title': "Магазин",
+        'title': "Информация о продукте",
         'product': product,
         'products': products,
     }
     return render(request, 'products/item_info.html', context)
 
 
-def cart(request):
-    context = {
-        'title': "Магазин",
-    }
-    return render(request, 'products/cart.html', context)
+
+class CartView(TemplateView):
+    template_name = 'products/cart.html'
+    extra_context = {'title': "Корзина"}
 
 
-def favorites(request):
-    context = {
-        'title': "Избранные товары",
-    }
-    return render(request, 'products/favorites.html', context)
+class FavoritesView(TemplateView):
+    template_name = 'products/favorites.html'
+    extra_context = {'title': "Избранные товары"}
 
 
 def favorites_add(request, product_id):

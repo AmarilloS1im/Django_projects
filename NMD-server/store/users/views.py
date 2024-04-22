@@ -1,20 +1,12 @@
-from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect
 from django.contrib import auth
 from django.urls import reverse
-
 from users.models import User
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
-
 from django.conf import settings
 from django.core.mail import send_mail
-from products.models import Basket,BasketQuerySet,Product,SizeSelected,Favorites,FavoritesQuerySet
-
-
-
-
 
 def index(request):
-
     if request.method == 'POST':
         form = UserLoginForm(data=request.POST)
         if form.is_valid():
@@ -29,7 +21,6 @@ def index(request):
             print(form.errors)
             print(form.non_field_errors())
             print(form.errors.as_data())
-
     else:
         form = UserLoginForm()
     context = {
@@ -97,15 +88,10 @@ def profile(request):
             form.save()
             return HttpResponseRedirect(reverse('users:profile'))
     else:
-        print('not post')
         form = UserProfileForm(instance=request.user)
-    baskets = Basket.objects.filter(user=request.user)
-    favorites = Favorites.objects.filter(user=request.user).order_by('product')
     context = {
         'title': "Личный кабинет",
         'form': form,
-        'baskets': baskets,
-        'favorites': favorites,
     }
     return render(request, 'users/profile.html', context)
 
