@@ -5,6 +5,8 @@ from django.views.generic import TemplateView
 from store.utils import *
 # Create your views here.
 
+
+
 def products(request,page=1):
     filter_dict={'category__in':['Shoe','Clothes'],'product_type__in':
         ['Boots','Longboots','Short_boots','Pullover','Sneakers'],
