@@ -1,24 +1,27 @@
-from products.context_processors import *
+from django.http import HttpResponseRedirect
+
+from products.context_processors import Product, Size, Basket, Favorites
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from django.views.generic import TemplateView
-from store.utils import *
+from store.utils import DataMixin
+
+
 # Create your views here.
 
 
-
-def products(request,page=1):
-    filter_dict={'category__in':['Shoe','Clothes'],'product_type__in':
-        ['Boots','Longboots','Short_boots','Pullover','Sneakers'],
-        'gender__in': ['Male', 'Female'],'season__in':['Winter','Summer'],'age__in':['Adult','Child'],
-        }
+def products(request, page=1):
+    filter_dict = {'category__in': ['Shoe', 'Clothes'],
+                   'product_type__in': ['Boots', 'Longboots', 'Short_boots', 'Pullover', 'Sneakers'],
+                   'gender__in': ['Male', 'Female'], 'season__in': ['Winter', 'Summer'],
+                   'age__in': ['Adult', 'Child'], }
 
     if request.method == 'POST':
         filters = request.POST.getlist('filter_id')
         if len(filters) > 0:
             filter_param_list = []
             for items in filters:
-                for k,v in filter_dict.items():
+                for k, v in filter_dict.items():
                     if items in filter_dict[k]:
                         filter_param_list.append(k)
                         break
@@ -67,7 +70,7 @@ def products(request,page=1):
 
 
 def reset_filters(request):
-    request.session['filters']=[]
+    request.session['filters'] = []
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
@@ -133,7 +136,6 @@ def item_info(request, product_id):
     return render(request, 'products/item_info.html', context)
 
 
-
 class CartView(DataMixin, TemplateView):
     template_name = 'products/cart.html'
     title = "Корзина"
@@ -148,17 +150,18 @@ def favorites_add(request, product_id):
     product = Product.objects.get(article=product_id)
     favorites = Favorites.objects.filter(user=request.user, product=product)
     if not favorites.exists():
-        favorite = Favorites.objects.create( user=request.user, product=product, qty=1, is_favorite=True)
+        favorite = Favorites.objects.create(user=request.user, product=product, qty=1, is_favorite=True)
         favorite.save()
     else:
-        favorite = Favorites.objects.get(product=product_id,user=request.user)
+        favorite = Favorites.objects.get(product=product_id, user=request.user)
         favorite.delete()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 def favorites_remove(request, favorite_id):
-    Favorites.objects.get(id=favorite_id,user=request.user).delete()
+    Favorites.objects.get(id=favorite_id, user=request.user).delete()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
 
 def remove_all_user_favorites(request):
     Favorites.objects.filter(user=request.user).delete()

@@ -1,11 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
-
 from users.models import User
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth import authenticate, get_user_model, password_validation
-
-from django.contrib import messages
+from django.contrib.auth import authenticate, password_validation
 
 
 class UserRegistrationForm(UserCreationForm):
@@ -32,16 +29,18 @@ class UserRegistrationForm(UserCreationForm):
         model = User
         fields = ('email',)
 
+
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField(required=False)
     email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={
-        'class': 'input', 'placeholder': 'Email/Почта', 'name':'email',
+        'class': 'input', 'placeholder': 'Email/Почта', 'name': 'email',
         'type': 'email'
     }))
     password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={
         'class': 'input', 'placeholder': 'Password/Пароль', 'name': 'password',
         'type': 'password'
     }))
+
     def clean(self):
         email = self.cleaned_data.get("email")
         password = self.cleaned_data.get("password")
@@ -56,14 +55,15 @@ class UserLoginForm(AuthenticationForm):
                 self.confirm_login_allowed(self.user_cache)
 
         return self.cleaned_data
+
     class Meta:
         model = User
-        fields = ('email','password')
+        fields = ('email', 'password')
 
 
 class UserProfileForm(UserChangeForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
-    'class':'form-input', 'type':'text', 'name':'username', 'placeholder':'Имя Пользователя'
+        'class': 'form-input', 'type': 'text', 'name': 'username', 'placeholder': 'Имя Пользователя'
     }), required=False)
     first_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-input', 'type': 'text', 'name': 'first_name', 'placeholder': 'Имя'
@@ -74,18 +74,14 @@ class UserProfileForm(UserChangeForm):
     }), required=False)
 
     email = forms.EmailField(widget=forms.EmailInput(attrs={
-        'class': 'form-input', 'type': 'email', 'name': 'email', 'placeholder': 'Эл.Почта','readonly':True,
-        'style':'color:#C0BFBF;',
+        'class': 'form-input', 'type': 'email', 'name': 'email', 'placeholder': 'Эл.Почта', 'readonly': True,
+        'style': 'color:#C0BFBF;',
     }))
 
     image = forms.ImageField(widget=forms.FileInput(attrs={
-        'type':'file','name':'file','onchange':'loadFile(event)','accept':'image/*',
+        'type': 'file', 'name': 'file', 'onchange': 'loadFile(event)', 'accept': 'image/*',
     }), required=False)
 
     class Meta:
         model = User
-        fields = ('username','first_name', 'last_name','email','image')
-
-
-
-
+        fields = ('username', 'first_name', 'last_name', 'email', 'image')

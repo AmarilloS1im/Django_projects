@@ -1,6 +1,5 @@
-
 from django.urls import path
-from users.views import *
+from users.views import IndexView, RegistrationView, RegistrationConfirmView, RecoveryView, ProfileView, logout
 from django.contrib.auth.decorators import login_required
 app_name = 'users'
 urlpatterns = [
@@ -11,4 +10,3 @@ urlpatterns = [
     path('profile/<int:pk>', login_required(ProfileView.as_view()), name='profile'),
     path('logout/', logout, name='logout')
 ]
-

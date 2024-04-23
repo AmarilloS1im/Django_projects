@@ -1,7 +1,7 @@
 from django.db import models
-
-from django.contrib.auth.models import AbstractBaseUser,AbstractUser, UnicodeUsernameValidator
+from django.contrib.auth.models import AbstractUser, UnicodeUsernameValidator
 from django.utils.translation import gettext_lazy as _
+
 
 class User(AbstractUser):
     username_validator = UnicodeUsernameValidator()
@@ -20,12 +20,8 @@ class User(AbstractUser):
         blank=True,
     )
     email = models.EmailField(_("email address"), unique=True)
-    image = models.ImageField(upload_to='users_images',blank=True, null=True)
+    image = models.ImageField(upload_to='users_images', blank=True, null=True)
 
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ['username']
-
-
-
-

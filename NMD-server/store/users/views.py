@@ -1,12 +1,13 @@
-from django.shortcuts import  HttpResponseRedirect
+from django.shortcuts import HttpResponseRedirect
 from django.contrib import auth
 from django.urls import reverse, reverse_lazy
 from users.models import User
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from django.conf import settings
 from django.core.mail import send_mail
-from django.views.generic import CreateView, UpdateView, TemplateView,FormView
-from store.utils import *
+from django.views.generic import CreateView, UpdateView, TemplateView, FormView
+from store.utils import DataMixin
+
 
 class IndexView(DataMixin, FormView):
     form_class = UserLoginForm
@@ -20,15 +21,8 @@ class IndexView(DataMixin, FormView):
         password = self.request.POST['password']
         user = auth.authenticate(email=email, password=password)
         if user:
-            auth.login(self.request,user)
+            auth.login(self.request, user)
             return HttpResponseRedirect(reverse('products:products'))
-        else:
-                print(form.cleaned_data)
-                print(form.errors)
-                print(form.non_field_errors())
-                print(form.errors.as_data())
-
-
 
 
 class RegistrationView(DataMixin, CreateView):
@@ -39,7 +33,6 @@ class RegistrationView(DataMixin, CreateView):
     header = title
     form_label = header
     success_url = reverse_lazy('users:registration_confirm')
-
 
     def form_valid(self, form):
         form.save()
@@ -61,7 +54,8 @@ class RegistrationConfirmView(DataMixin, TemplateView):
     template_name = 'users/registration_confirm.html'
     title = "Подтверждение регистрации"
     header = "Подтверждение регистрации"
-    form_label = "Вы успешно зарегистрированы. Пароль отправлен на вашу почту. Введите почту и пароль на главной странице для входа на сайт."
+    form_label = ("Вы успешно зарегистрированы. Пароль отправлен на вашу почту."
+                  " Введите почту и пароль на главной странице для входа на сайт.")
 
 
 class RecoveryView(DataMixin, TemplateView):
@@ -78,10 +72,9 @@ class ProfileView(DataMixin, UpdateView):
     title = "Личный кабинет"
 
     def get_success_url(self):
-        return reverse_lazy('users:profile',args=(self.object.id,))
+        return reverse_lazy('users:profile', args=(self.object.id,))
+
 
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse('users:index'))
-
-
