@@ -1,12 +1,13 @@
-from django.shortcuts import HttpResponseRedirect
-from django.contrib import auth
-from django.urls import reverse, reverse_lazy
-from users.models import User
-from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from django.conf import settings
+from django.contrib import auth
 from django.core.mail import send_mail
-from django.views.generic import CreateView, UpdateView, TemplateView, FormView
+from django.shortcuts import HttpResponseRedirect
+from django.urls import reverse, reverse_lazy
+from django.views.generic import CreateView, FormView, TemplateView, UpdateView
+
 from store.utils import DataMixin
+from users.forms import UserLoginForm, UserProfileForm, UserRegistrationForm
+from users.models import User
 
 
 class IndexView(DataMixin, FormView):

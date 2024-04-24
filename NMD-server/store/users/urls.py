@@ -1,6 +1,9 @@
-from django.urls import path
-from users.views import IndexView, RegistrationView, RegistrationConfirmView, RecoveryView, ProfileView, logout
 from django.contrib.auth.decorators import login_required
+from django.urls import path
+
+from users.views import (IndexView, ProfileView, RecoveryView,
+                         RegistrationConfirmView, RegistrationView, logout)
+
 app_name = 'users'
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),

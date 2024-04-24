@@ -1,7 +1,8 @@
 from django.contrib import admin
-from products.models import (Product, Size, Basket, Favorites,
-                             ProductCategory, ProductType, ProductGender, ProductAge, ProductSeason)
 
+from products.models import (Basket, Favorites, Product, ProductAge,
+                             ProductCategory, ProductGender, ProductSeason,
+                             ProductType, Size)
 
 admin.site.register(Product)
 admin.site.register(Size)

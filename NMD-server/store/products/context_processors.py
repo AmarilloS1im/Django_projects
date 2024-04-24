@@ -1,5 +1,6 @@
-from products.models import (Size, ProductCategory, ProductType, ProductGender,
-                             ProductAge, ProductSeason, Favorites, Basket, Product)
+from products.models import (Basket, Favorites, Product, ProductAge,
+                             ProductCategory, ProductGender, ProductSeason,
+                             ProductType, Size)
 
 
 def footer_context(request):

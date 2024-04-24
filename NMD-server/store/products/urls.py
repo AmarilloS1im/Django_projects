@@ -1,13 +1,16 @@
-from django.urls import path
-from products.views import (products, reset_filters, item_info, basket_add, basket_remove, CartView,
-                            remove_all_user_baskets, cart_add_plus_one, cart_del_minus_one, favorites_add,
-                            FavoritesView, favorites_remove, remove_all_user_favorites)
 from django.contrib.auth.decorators import login_required
+from django.urls import path
 
+from products.views import (CartView, FavoritesView, basket_add, basket_remove,
+                            cart_add_plus_one, cart_del_minus_one,
+                            favorites_add, favorites_remove, item_info,
+                            products, remove_all_user_baskets,
+                            remove_all_user_favorites, reset_filters)
+from django.views.decorators.cache import cache_page
 
 app_name = 'products'
 urlpatterns = [
-    path('', login_required(products), name='products'),
+    path('', cache_page(30)(login_required(products)), name='products'),
     path('page/<int:page>/', login_required(products), name='paginator'),
     path('reset/', login_required(reset_filters), name='reset_filters'),
     path('item_info/<str:product_id>', login_required(item_info), name='item_info'),

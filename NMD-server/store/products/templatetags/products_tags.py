@@ -1,6 +1,6 @@
 from django import template
-from products.views import Favorites
 
+from products.views import Favorites
 
 register = template.Library()
 
