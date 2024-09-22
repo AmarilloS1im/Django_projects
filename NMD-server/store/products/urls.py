@@ -10,7 +10,7 @@ from django.views.decorators.cache import cache_page
 
 app_name = 'products'
 urlpatterns = [
-    path('', cache_page(30)(login_required(products)), name='products'),
+    path('', login_required(products), name='products'),
     path('page/<int:page>/', login_required(products), name='paginator'),
     path('reset/', login_required(reset_filters), name='reset_filters'),
     path('item_info/<str:product_id>', login_required(item_info), name='item_info'),
