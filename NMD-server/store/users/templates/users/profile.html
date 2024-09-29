@@ -1,4 +1,5 @@
 {% extends 'products/base_products.html'%}
+{% load cropping %}
 
 {% load static %}
 
@@ -20,15 +21,22 @@
                 {% csrf_token %}
                 <div class="profile-image">
                     {% if user.image %}
-                    <img id="output"  src="{{user.image.url}}">
+                    <img id="output"  src="{% cropped_thumbnail user 'cropping' %}" >
                     {% else %}
                     <img  src="{% static 'images/default_avatar.png' %}">
                     {% endif %}"
                 </div>
+
+
                 <label  class="input-file">
+
                     {{form.image}}
+
                     <span class="input-file-btn">Загрузить фото</span>
                 </label>
+                <div>
+                    <img id="image" src="{% static 'images/default_avatar.png' %}">
+                </div>
                 <div class="input-group">
                     {{form.first_name}}
                     {{form.last_name}}
@@ -56,6 +64,31 @@
     };
       reader.readAsDataURL(event.target.files[0]);
   };
+
+
+
+var $ = require('jquery');
+require('cropper/dist/cropper.common.js');
+console.log('hello world')
+
+var $image = $('#image');
+
+$image.cropper({
+  aspectRatio: 16 / 9,
+  crop: function(event) {
+    console.log(event.detail.x);
+    console.log(event.detail.y);
+    console.log(event.detail.width);
+    console.log(event.detail.height);
+    console.log(event.detail.rotate);
+    console.log(event.detail.scaleX);
+    console.log(event.detail.scaleY);
+  }
+});
+
+// Get the Cropper.js instance after initialized
+var cropper = $image.data('cropper');
+
 </script>
 {% endblock %}
 

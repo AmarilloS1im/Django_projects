@@ -5,6 +5,8 @@ from django.contrib.auth.forms import (AuthenticationForm, UserChangeForm,
 from django.utils.translation import gettext_lazy as _
 
 from .models import User
+from django import forms
+from image_cropping import ImageCropWidget
 
 
 class UserRegistrationForm(UserCreationForm):
@@ -86,4 +88,4 @@ class UserProfileForm(UserChangeForm):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'image')
+        fields = ('username', 'first_name', 'last_name', 'email', 'image','cropping')

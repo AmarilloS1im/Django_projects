@@ -2,9 +2,10 @@ from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from .context_processors import Basket, Favorites, Product, Size
 
-from products.context_processors import Basket, Favorites, Product, Size
-from store.utils import DataMixin
+from store.utils import *
+
 
 # Create your views here.
 
@@ -81,25 +82,30 @@ def basket_add(request, product_id):
             baskets = Basket.objects.filter(user=request.user, product=product, size=size)
             if not baskets.exists():
                 Basket.objects.create(user=request.user, product=product, qty=1, size=size)
+                baskets = Basket.objects.all().order_by('-create_time_stamp')
+                for basket in baskets:
+                    basket.save()
             else:
                 basket = baskets.last()
                 basket.qty += 1
                 basket.save()
+                baskets = Basket.objects.all().order_by('-create_time_stamp')
+                for basket in baskets:
+                    basket.save()
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
     else:
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
-def cart_add_plus_one(request, product_id, size_name):
-    product = Product.objects.get(article=product_id)
-    size = Size.objects.get(size_name=size_name, to_article=product_id)
-    baskets = Basket.objects.filter(user=request.user, product=product, size=size)
-    if not baskets.exists():
-        Basket.objects.create(user=request.user, product=product, qty=1, size=size)
-    else:
-        basket = baskets.last()
-        basket.qty += 1
+def cart_add_plus_one(request, basket_id):
+    baskets = Basket.objects.filter(user=request.user, id=basket_id)
+    basket = baskets.last()
+    basket.qty += 1
+    basket.save()
+    baskets = Basket.objects.all().order_by('-create_time_stamp')
+    for basket in baskets:
         basket.save()
+
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
@@ -108,6 +114,9 @@ def cart_del_minus_one(request, basket_id):
     basket = baskets.last()
     basket.qty -= 1
     basket.save()
+    baskets = Basket.objects.all().order_by('-create_time_stamp')
+    for basket in baskets:
+        basket.save()
     if basket.qty == 0:
         basket = Basket.objects.get(id=basket_id)
         basket.delete()

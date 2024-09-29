@@ -1,4 +1,4 @@
-from products.models import (Basket, Favorites, Product, ProductAge,
+from .models import (Basket, Favorites, Product, ProductAge,
                              ProductCategory, ProductGender, ProductSeason,
                              ProductType, Size)
 

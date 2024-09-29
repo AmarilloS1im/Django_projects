@@ -9,35 +9,38 @@ from django.apps.registry import apps
 
 
 from .models import User
-from  .forms import UserLoginForm, UserProfileForm, UserRegistrationForm
+from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm
 
 
 
 def index(request):
-    if request.method == 'POST':
-        form = UserLoginForm(data=request.POST)
-        if form.is_valid():
-            email = request.POST['email']
-            password = request.POST['password']
-            user = auth.authenticate(email=email, password=password)
-            if user:
-                auth.login(request,user)
-                return HttpResponseRedirect(reverse('products:products'))
-        else:
-            print(form.cleaned_data)
-            print(form.errors)
-            print(form.non_field_errors())
-            print(form.errors.as_data())
+    if request.user.is_authenticated and request.user.id is not None:
+        return HttpResponseRedirect(reverse('products:products'))
     else:
-        form = UserLoginForm()
-    context = {
-        'title': "Вход/Регирстрация",
-        'header': "Сайт предзаказа для сотрудников",
-        'form_label': "Авторизация",
-        'form': form,
-    }
+        if request.method == 'POST':
+            form = UserLoginForm(data=request.POST)
+            if form.is_valid():
+                email = request.POST['email']
+                password = request.POST['password']
+                user = auth.authenticate(email=email, password=password)
+                if user:
+                    auth.login(request,user)
+                    return HttpResponseRedirect(reverse('products:products'))
+            else:
+                print(form.cleaned_data)
+                print(form.errors)
+                print(form.non_field_errors())
+                print(form.errors.as_data())
+        else:
+            form = UserLoginForm()
+        context = {
+            'title': "Вход/Регирстрация",
+            'header': "Сайт предзаказа для сотрудников",
+            'form_label': "Авторизация",
+            'form': form,
+        }
 
-    return render(request,'users/index.html',context)
+        return render(request,'users/index.html',context)
 
 
 def registration(request):
@@ -92,9 +95,10 @@ def recovery(request):
 def profile(request,pk):
     if request.method == 'POST':
         form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
+        print(request.FILES)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('users:profile'))
+            return HttpResponseRedirect(request.META['HTTP_REFERER'])
     else:
         form = UserProfileForm(instance=request.user)
     context = {
