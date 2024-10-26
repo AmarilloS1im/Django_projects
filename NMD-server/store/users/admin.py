@@ -1,10 +1,10 @@
+
 from django.contrib import admin
-from django.contrib import admin
-from image_cropping import ImageCroppingMixin
 
-from .models import User
 
-class MyModelAdmin(ImageCroppingMixin, admin.ModelAdmin):
-    pass
+from .models import User, Image
 
-admin.site.register(User,MyModelAdmin)
+
+
+admin.site.register(User)
+admin.site.register(Image)

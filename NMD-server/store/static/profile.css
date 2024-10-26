@@ -43,7 +43,7 @@
 .profile-form-group{
     display: block;
     width: 82%;
-    height: 49%;
+    height: 30%;
     flex-shrink: 0;
     margin: 0 auto;
 }
@@ -56,8 +56,9 @@
     border-radius: 9rem;
     background: url(), lightgray -2.1rem 0 / 166.584% 100% no-repeat;
 
-    margin: 1.2rem auto;
+
     overflow: hidden;
+
 }
 
 #__________________
@@ -202,6 +203,60 @@ form{
 /*Main block*/
 
 
-img {
-  max-width: 100%; /* This rule is very important, please do not ignore this! */
+
+.not-visible{
+    display: none;
+    margin: 0 auto;
+
+}
+
+.image-box{
+    display: flex;
+    justify-content:center;
+    margin:0 auto;
+
+    width: 280px;
+    height: 180px;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+
+.cropper-confirm-btn{
+    display: flex;
+    margin:1rem auto;
+
+
+
+
+    width: 8.5rem;
+    height: 1.5rem;
+
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    color: #FFF;
+
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    border-radius: .5rem;
+    background: #BD0D2E;
+    box-shadow: 0 .2rem .2rem 0 rgba(0, 0, 0, 0.25);
+
+
+    outline:none;
+    border:none;
+    cursor: pointer;
+}
+
+.cropper-confirm-btn:hover{
+background-color: #a60f2c;}
+
+.cropper-confirm-btn:active{
+background-color: #8c0b23;
 }

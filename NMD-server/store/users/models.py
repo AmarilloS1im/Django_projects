@@ -26,9 +26,9 @@ class User(AbstractUser):
         blank=True,
     )
     email = models.EmailField(_("email address"), unique=True)
-    # image = models.ImageField(upload_to='users_images', blank=True, null=True)
-    image = ImageCropField(blank=True, upload_to='users_images', null= True)
-    cropping = ImageRatioField('image', '180x180')
+    image = models.ImageField(upload_to='users_images', blank=True, null=True)
+    # image = ImageCropField(blank=True, upload_to='users_images', null= True)
+
 
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "email"
@@ -48,3 +48,8 @@ class User(AbstractUser):
     #
     #         img.thumbnail(new_img)
     #         img.save(self.image.path)
+
+
+class Image(models.Model):
+    file = models.ImageField(upload_to='users_images')
+    uploaded = models.DateTimeField(auto_now_add=True)

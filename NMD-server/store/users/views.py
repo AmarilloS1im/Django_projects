@@ -6,9 +6,15 @@ from django.urls import reverse, reverse_lazy
 from django.shortcuts import render
 from django.views.generic import CreateView, FormView, TemplateView, UpdateView
 from django.apps.registry import apps
+from users.forms import ImageForm
+from django.http import JsonResponse
+import psycopg2
+from psycopg2 import extras
 
 
-from .models import User
+
+
+from .models import User, Image
 from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm
 
 
@@ -94,6 +100,7 @@ def recovery(request):
 
 def profile(request,pk):
     if request.method == 'POST':
+
         form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
         print(request.FILES)
         if form.is_valid():
@@ -104,6 +111,8 @@ def profile(request,pk):
     context = {
         'title': "Личный кабинет",
         'form': form,
+
+
     }
     return render(request, 'users/profile.html', context)
 

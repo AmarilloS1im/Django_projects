@@ -11,5 +11,6 @@ urlpatterns = [
     path('registration_confirm/', registration_confirm, name='registration_confirm'),
     path('recovery/', recovery, name='recovery'),
     path('profile/<int:pk>',profile, name='profile'),
-    path('logout/', logout, name='logout')
+    path('logout/', logout, name='logout'),
+
 ]

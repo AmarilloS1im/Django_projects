@@ -4,92 +4,86 @@
 {% load static %}
 
 {% block css%}
-    <link rel="stylesheet" href="{% static 'profile.css' %}">
+<link rel="stylesheet" href="{% static 'profile.css' %}">
 {% endblock %}
 
 {% block logo %}
-    <a href="{% url 'products:products' %}">
-        <img  src="{% static 'images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
-    </a>
+<a href="{% url 'products:products' %}">
+    <img src="{% static 'images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
+</a>
 {% endblock %}
+
 
 {% block content %}
-    <div class="profile">
-        <div class="profile-title">Профиль</div>
-        <div class="profile-form-group">
-            <form  action="{% url 'users:profile' user.id %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="profile-image">
-                    {% if user.image %}
-                    <img id="output"  src="{% cropped_thumbnail user 'cropping' %}" >
-                    {% else %}
-                    <img  src="{% static 'images/default_avatar.png' %}">
-                    {% endif %}"
-                </div>
+
+<div class="profile">
+
+    <div class="profile-title">Профиль</div>
+    <div class="profile-form-group">
+
+        <form id="profile_form" action="{% url 'users:profile' user.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
 
 
-                <label  class="input-file">
+            <div id="image-box" class="image-box">
+                <div class="profile-image" id="profile_image">
 
-                    {{form.image}}
+                {% if user.image %}
+                <img id="output" src="{{ user.image.url }}">
+                {% else %}
+                <img src="{% static 'images/default_avatar.png' %}">
+                {% endif %}"
 
-                    <span class="input-file-btn">Загрузить фото</span>
-                </label>
-                <div>
-                    <img id="image" src="{% static 'images/default_avatar.png' %}">
-                </div>
-                <div class="input-group">
-                    {{form.first_name}}
-                    {{form.last_name}}
-                </div>
-                <div class="input-group">
-                    {{form.username}}
-                    {{form.email}}
-                </div>
-                <button class="btn-save" type="submit">Сохранить</button>
-            </form>
-        </div>
+            </div>
+
+            </div>
+
+            <button class="not-visible" id="confirm-btn">Подтвердить</button>
+
+
+
+
+
+
+            <div class="input-group">
+                {{form.first_name}}
+                {{form.last_name}}
+            </div>
+            <div class="input-group">
+                {{form.username}}
+                {{form.email}}
+            </div>
+            <button class="btn-save" type="submit" id="btn_save">Сохранить</button>
+
+        </form>
+
+          <label class="input-file">
+
+                {{form.image}}
+
+                <span class="input-file-btn">Загрузить фото</span>
+            </label>
+
+
+
     </div>
+</div>
 <script>
- let loadFile = function(event) {
-    let reader = new FileReader();
-      reader.onload = function(){
-      let output = document.getElementById('output');
-      output.src = reader.result;
-      let filename = event.target.files[0].type
-      filename = filename.split('/');
-		  if (filename[0] === 'image'){
-      }else{
-        alert("Пожалуйста выбирите изображение в формате .jpeg, .jpg, .png или .svg");
-      }
-    };
-      reader.readAsDataURL(event.target.files[0]);
-  };
-
-
-
-var $ = require('jquery');
-require('cropper/dist/cropper.common.js');
-console.log('hello world')
-
-var $image = $('#image');
-
-$image.cropper({
-  aspectRatio: 16 / 9,
-  crop: function(event) {
-    console.log(event.detail.x);
-    console.log(event.detail.y);
-    console.log(event.detail.width);
-    console.log(event.detail.height);
-    console.log(event.detail.rotate);
-    console.log(event.detail.scaleX);
-    console.log(event.detail.scaleY);
-  }
-});
-
-// Get the Cropper.js instance after initialized
-var cropper = $image.data('cropper');
+    let loadFile = function(event) {
+       let reader = new FileReader();
+         reader.onload = function(){
+         let output = document.getElementById('output');
+         output.src = reader.result;
+         let filename = event.target.files[0].type
+         filename = filename.split('/');
+             if (filename[0] === 'image'){
+         }else{
+           alert("Пожалуйста выбирите изображение в формате .jpeg, .jpg, .png или .svg");
+         }
+       };
+         reader.readAsDataURL(event.target.files[0]);
+     };
 
 </script>
+<script src="{% static 'js/main_cropper.js' %}"></script>
 {% endblock %}
-
-
