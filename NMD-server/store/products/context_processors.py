@@ -25,7 +25,7 @@ def filter_data(request):
 
 def favorites(request):
     if request.user.is_authenticated:
-        favorites = Favorites.objects.filter(user=request.user).order_by('product')
+        favorites = Favorites.objects.filter(user=request.user).order_by('-create_time_stamp')
     else:
         favorites = Favorites.objects.all()
     return {'favorites': favorites}

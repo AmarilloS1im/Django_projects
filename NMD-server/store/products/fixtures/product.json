@@ -1,0 +1,170 @@
+[
+  {
+    "model": "products.product",
+    "pk": "1.1.1",
+    "fields": {
+      "model_name": "Romina",
+      "model_group": "1.1",
+      "img": "products_images/Allegro2_KtjgQVE_tFSTSrn.jpg",
+      "price": "234.00",
+      "description": "привет",
+      "color": "Черная ночь",
+      "sizes": "1.1.1_43",
+      "category": "Shoe",
+      "product_type": "Sneakers",
+      "gender": "Female",
+      "season": "Summer",
+      "age": "Adult"
+    }
+  },
+  {
+    "model": "products.productage",
+    "pk": "Adult",
+    "fields": {
+      "userfrendly_name": "????????"
+    }
+  },
+  {
+    "model": "products.productseason",
+    "pk": "Summer",
+    "fields": {
+      "userfrendly_name": "????"
+    }
+  },
+  {
+    "model": "products.productgender",
+    "pk": "Female",
+    "fields": {
+      "userfrendly_name": "???????"
+    }
+  },
+  {
+    "model": "products.productgender",
+    "pk": "Male",
+    "fields": {
+      "userfrendly_name": "???????"
+    }
+  },
+  {
+    "model": "products.productcategory",
+    "pk": "Shoe",
+    "fields": {
+      "userfrendly_name": "?????"
+    }
+  },
+  {
+    "model": "products.producttype",
+    "pk": "Sneakers",
+    "fields": {
+      "userfrendly_name": "?????????"
+    }
+  },
+  {
+    "model": "products.size",
+    "pk": "1.1.1_43",
+    "fields": {
+      "size_name": "43",
+      "qty": 23,
+      "to_article": "1.1.1"
+    }
+  },
+  {
+    "model": "products.size",
+    "pk": "1.1.2_45",
+    "fields": {
+      "size_name": "45",
+      "qty": 32,
+      "to_article": "1.1.2"
+    }
+  },
+  {
+    "model": "products.size",
+    "pk": "1.2.1_36",
+    "fields": {
+      "size_name": "36",
+      "qty": 534,
+      "to_article": "1.2.1"
+    }
+  },
+  {
+    "model": "products.size",
+    "pk": "1.2.1_37",
+    "fields": {
+      "size_name": "37",
+      "qty": 22,
+      "to_article": "1.2.1"
+    }
+  },
+  {
+    "model": "products.size",
+    "pk": "1.2.1_38",
+    "fields": {
+      "size_name": "38",
+      "qty": 222,
+      "to_article": "1.2.1"
+    }
+  },
+  {
+    "model": "products.size",
+    "pk": "1.2.1_39",
+    "fields": {
+      "size_name": "39",
+      "qty": 22,
+      "to_article": "1.2.1"
+    }
+  },
+  {
+    "model": "products.size",
+    "pk": "1.2.1_40",
+    "fields": {
+      "size_name": "40",
+      "qty": 33,
+      "to_article": "1.2.1"
+    }
+  },
+  {
+    "model": "products.size",
+    "pk": "1.2.1_41",
+    "fields": {
+      "size_name": "41",
+      "qty": 22,
+      "to_article": "1.2.1"
+    }
+  },
+  {
+    "model": "products.size",
+    "pk": "1.2.1_50",
+    "fields": {
+      "size_name": "50",
+      "qty": 323,
+      "to_article": "1.2.1"
+    }
+  },
+  {
+    "model": "products.size",
+    "pk": "1.2.1_51",
+    "fields": {
+      "size_name": "51",
+      "qty": 33,
+      "to_article": "1.2.1"
+    }
+  },
+  {
+    "model": "products.size",
+    "pk": "1.2.2_38",
+    "fields": {
+      "size_name": "38",
+      "qty": 44,
+      "to_article": "1.2.2"
+    }
+  },
+  {
+    "model": "products.size",
+    "pk": "1.2.3_37",
+    "fields": {
+      "size_name": "37",
+      "qty": 44,
+      "to_article": "1.2.3"
+    }
+  }
+]

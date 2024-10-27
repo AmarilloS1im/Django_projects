@@ -89,6 +89,10 @@
     background: #BD0D2E;
     box-shadow: 0 .2rem .2rem 0 rgba(0, 0, 0, 0.25);
 
+    position: relative;
+    top: -330px;
+    margin-top: 20px;
+
 
     outline:none;
     border:none;
@@ -137,6 +141,7 @@ form{
     width: auto;
     height: auto;
     margin: 2rem auto;
+
 }
 
 .form-input{
@@ -217,13 +222,13 @@ form{
 
     width: 280px;
     height: 180px;
-    margin-bottom: 2rem;
+    margin-bottom: .7rem;
     margin-top: 1rem;
 }
 
 .cropper-confirm-btn{
     display: flex;
-    margin:1rem auto;
+    margin:0 auto;
 
 
 
@@ -259,4 +264,33 @@ background-color: #a60f2c;}
 
 .cropper-confirm-btn:active{
 background-color: #8c0b23;
+}
+
+.cropper-confirm-no-btn{
+    display: flex;
+    margin:0 auto;
+
+
+
+
+    width: 8.5rem;
+    height: 1.5rem;
+
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    color: #FFF;
+
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+
+
+
+
 }

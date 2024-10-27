@@ -1,0 +1,4 @@
+Что бы корректно загрузить, а потом выгрузить фикстуры и не потерять кириллицу, вместо:
+python manage.py dumpdata YourApp > some_path/fixtures/your_file_name.json
+при дампе нужно использовать:
+python -Xutf8 manage.py dumpdata YourApp --output some_path/fixtures/your_file_name.json

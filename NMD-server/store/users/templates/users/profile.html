@@ -28,21 +28,17 @@
             <div id="image-box" class="image-box">
                 <div class="profile-image" id="profile_image">
 
-                {% if user.image %}
-                <img id="output" src="{{ user.image.url }}">
-                {% else %}
-                <img src="{% static 'images/default_avatar.png' %}">
-                {% endif %}"
+                    {% if user.image %}
+                    <img id="output" src="{{ user.image.url }}">
+                    {% else %}
+                    <img src="{% static 'images/default_avatar.png' %}">
+                    {% endif %}"
+
+                </div>
 
             </div>
-
-            </div>
-
+            <div class="cropper-confirm-no-btn" id="confirm-no-btn"></div>
             <button class="not-visible" id="confirm-btn">Подтвердить</button>
-
-
-
-
 
 
             <div class="input-group">
@@ -57,13 +53,12 @@
 
         </form>
 
-          <label class="input-file">
+        <label class="input-file">
 
-                {{form.image}}
+            {{form.image}}
 
-                <span class="input-file-btn">Загрузить фото</span>
-            </label>
-
+            <span class="input-file-btn">Загрузить фото</span>
+        </label>
 
 
     </div>

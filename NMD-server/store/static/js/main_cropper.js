@@ -7,6 +7,7 @@ const user_last_name_fild = document.getElementById('last_name_id').value
 const user_email_fild = document.getElementById('user_email_id')
 const ProfileForm = document.getElementById('profile_form')
 const confirmBtn = document.getElementById('confirm-btn')
+const confirmNoBtn = document.getElementById('confirm-no-btn')
 const input = document.getElementById('id_file')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 
@@ -16,6 +17,8 @@ const csrf = document.getElementsByName('csrfmiddlewaretoken')
 input.addEventListener('change', ()=>{
     confirmBtn.classList.remove('not-visible')
     confirmBtn.classList.add('cropper-confirm-btn')
+    confirmNoBtn.classList.remove('cropper-confirm-no-btn')
+    confirmNoBtn.classList.add('not-visible')
     confirmBtn.focus()
 
 
