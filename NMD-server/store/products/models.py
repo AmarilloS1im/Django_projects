@@ -10,6 +10,7 @@ class Product(models.Model):
     img = models.ImageField(upload_to='products_images')
     price = models.DecimalField(max_digits=9, decimal_places=2)
     description = models.TextField(null=True, blank=True)
+    full_description = models.TextField(null=True, blank=True)
     color = models.CharField(max_length=24, null=False)
     sizes = models.ForeignKey(to='Size', on_delete=models.CASCADE, to_field='article_size')
     category = models.ForeignKey(to='ProductCategory', on_delete=models.PROTECT, to_field='name')

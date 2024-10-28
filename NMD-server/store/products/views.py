@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .context_processors import Basket, Favorites, Product, Size
+from django.urls import reverse, reverse_lazy
 
 from store.utils import *
 
@@ -12,8 +13,8 @@ from store.utils import *
 
 def products(request, page=1):
     filter_dict = {'category__in': ['Shoe', 'Clothes'],
-                   'product_type__in': ['Boots', 'Longboots', 'Short_boots', 'Pullover', 'Sneakers'],
-                   'gender__in': ['Male', 'Female'], 'season__in': ['Winter', 'Summer'],
+                   'product_type__in': ['Boots', 'Longboots', 'Short_boots', 'Pullover', 'Sneakers','Gaiters'],
+                   'gender__in': ['Male', 'Female'], 'season__in': ['Winter', 'Summer','Fall','Spring','Demi'],
                    'age__in': ['Adult', 'Child'], }
 
     if request.method == 'POST':
@@ -50,7 +51,24 @@ def products(request, page=1):
             else:
                 return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
-        paginator = Paginator(products, per_page=3)
+    if 'filters' in request.session:
+        if request.session['filters']:
+            filter_param_list = []
+            for items in request.session['filters']:
+                for k, v in filter_dict.items():
+                    if items in filter_dict[k]:
+                        filter_param_list.append(k)
+                        break
+            current_filters = request.session['filters']
+            param_dict = {}
+            for param_name in filter_param_list:
+                param_dict[param_name] = current_filters
+            products = Product.objects.filter(**param_dict).order_by('article')
+        else:
+            products = Product.objects.all().order_by('article')
+
+
+        paginator = Paginator(products, per_page=6)
         products_paginator = paginator.page(page)
         context = {
             'title': "Магазин",
@@ -59,8 +77,8 @@ def products(request, page=1):
 
         return render(request, 'products/products.html', context)
     else:
-        products = Product.objects.all().order_by('article')
-        paginator = Paginator(products, per_page=3)
+        # products = Product.objects.all().order_by('article')
+        paginator = Paginator(products, per_page=6)
         products_paginator = paginator.page(page)
         context = {
             'title': "Магазин",
@@ -71,7 +89,7 @@ def products(request, page=1):
 
 def reset_filters(request):
     request.session['filters'] = []
-    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+    return HttpResponseRedirect(reverse('products:products'))
 
 
 def basket_add(request, product_id):
