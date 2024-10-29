@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .context_processors import Basket, Favorites, Product, Size
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 
 from store.utils import *
 
@@ -77,7 +77,7 @@ def products(request, page=1):
 
         return render(request, 'products/products.html', context)
     else:
-        # products = Product.objects.all().order_by('article')
+        products = Product.objects.all().order_by('article')
         paginator = Paginator(products, per_page=6)
         products_paginator = paginator.page(page)
         context = {

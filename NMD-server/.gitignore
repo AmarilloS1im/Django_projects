@@ -1,0 +1,5 @@
+/store/.env
+/venv
+/.idea
+/store/docker/env/.env
+/store/docker/env/

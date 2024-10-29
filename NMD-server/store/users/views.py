@@ -2,14 +2,9 @@ from django.conf import settings
 from django.contrib import auth
 from django.core.mail import send_mail
 from django.shortcuts import HttpResponseRedirect
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from django.shortcuts import render
-from django.views.generic import CreateView, FormView, TemplateView, UpdateView
-from django.apps.registry import apps
-from users.forms import ImageForm
-from django.http import JsonResponse
-import psycopg2
-from psycopg2 import extras
+
 
 
 

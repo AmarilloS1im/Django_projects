@@ -59,19 +59,21 @@
         </div>
         <div class="sizes-label">Размеры:</div>
         <div class="sizes-group">
-            {% for size in sizes %}
-            {% if product.article == size.to_article %}
+
             <form id="{{product.article}}" action="" method="post">
+                {% for size in sizes %}
+                {% if product.article == size.to_article %}
                 <label>
                     {% csrf_token %}
                     <input class="size_checkbox" data="{{product.article}}" type="checkbox" name="checked_size_id"
                            value="{{size}}">
                     <div class="title_checkbox">{{size.size_name}}</div>
                 </label>
+                {%else%}
+                {%endif%}
+                {% endfor %}
             </form>
-            {%else%}
-            {%endif%}
-            {% endfor %}
+
         </div>
         <button class="btn" form="{{product.article}}" data="{{product.article}}"
                 formaction="{% url 'products:basket_add' product.article %}" name="btn" type="submit">
