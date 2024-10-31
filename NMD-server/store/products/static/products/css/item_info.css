@@ -1,0 +1,306 @@
+@import url("products.css");
+
+/*Main block*/
+.main {
+    width: auto;
+    height: 100vh;
+    background: #fff;
+}
+
+.page {
+    margin: 0;
+    width: auto;
+    max-width: 80rem;
+    min-width: 73rem;
+    height: 45rem;
+    background: #fff;
+}
+
+.item-label {
+    display: block;
+    margin: 2rem auto;
+    align-items: center;
+
+    color: #000;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.item-content {
+    display: flex;
+    width: auto;
+    height: 35rem;
+    justify-content: space-between;
+}
+
+.item-photo {
+    display: flex;
+    width: 35.5rem;
+    height: 30rem;
+    margin: .5rem auto;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: .5rem;
+    box-shadow: 0 .5rem 1rem .25rem rgba(0, 0, 0, 0.5);
+}
+
+.favorites-heart {
+    width: 3rem;
+    height: 2.7rem;
+    flex-shrink: 0;
+
+    position: relative;
+    left: 18rem;
+}
+
+.favorites-heart:hover {
+    width: 3rem;
+    height: 2.7rem;
+    flex-shrink: 0;
+
+    position: relative;
+    left: 18rem;
+    stroke: #bd0d2e;
+    cursor: pointer;
+}
+
+.favorites-heart-checked {
+    width: 3rem;
+    height: 2.7rem;
+    flex-shrink: 0;
+
+    position: relative;
+    left: 18rem;
+    flex-shrink: 0;
+    stroke: #f3b1b1;
+    fill: #bd0d2e;
+    cursor: pointer;
+}
+
+.big-img {
+    width: 32.5rem;
+    height: 30rem;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: .5rem;
+}
+
+.info-group {
+    display: block;
+    width: auto;
+    height: 100%;
+    flex-shrink: 0;
+    margin: .5rem auto;
+}
+
+.price {
+    display: flex;
+    width: 20rem;
+    height: 2rem;
+    align-items: center;
+
+    color: #000;
+    font-family: Montserrat;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 0;
+    margin-bottom: .5rem;
+}
+
+.description {
+    display: block;
+    width: 21rem;
+    height: 6rem;
+    margin: 0;
+    flex-direction: column;
+    justify-content: center;
+
+    color: #000;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    overflow-y: scroll;
+    padding-top:10px;
+}
+
+.color {
+    width: 20rem;
+    height: 2.5rem;
+    margin-top: 0.5rem;
+
+    color: #000;
+    font-family: Montserrat;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.color-pictures-group {
+    display: flex;
+}
+
+.color-pictures {
+    display: flex;
+    flex-wrap: wrap;
+    width: 20rem;
+    height: 5rem;
+    align-items: center;
+
+    overflow-y: auto;
+}
+
+.colors-image {
+    display: block;
+    width: 4rem;
+    height: 3.75rem;
+    margin: 0 .75rem;
+    margin-left: .15rem;
+    border-radius: 0.25rem;
+    padding: .35rem;
+}
+
+.colors-image:hover {
+    border-radius: 0.25rem;
+    box-shadow: 0 -.2rem .5rem 0 rgba(0, 0, 0, 0.25), 0 .2rem .2rem 0 rgba(0, 0, 0, 0.25);
+}
+
+.colors-image:active {
+    border-radius: 0.25rem;
+
+    border-radius: .25rem;
+    box-shadow: inset .1rem .1rem .1rem 0 rgba(0, 0, 0, 0.20),inset -.1rem -.1rem .1rem 0 rgba(0, 0, 0, 0.20);
+    transition: .5s;
+}
+
+
+.sizes-label {
+    display: flex;
+    width: 9.25rem;
+    height: 2.25rem;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #000;
+    font-family: Montserrat;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.sizes-group {
+    display: flex;
+    width: 20rem;
+    min-width: 100%;
+    height: 5rem;
+    align-items: left;
+    justify-content: left;
+    align-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+    margin-top: 1rem;
+    padding: .25rem .25rem;
+    padding: 0;
+    overflow-y: scroll;
+
+}
+.item-size-form{
+    display: flex;
+
+}
+
+.title_checkbox {
+    width: 3rem;
+    height: 2rem;
+    padding: .35rem .35rem;
+    margin: 0 .2rem;
+    margin-left: .1rem;
+    margin-top: .25rem;
+
+
+    border-radius: 5px;
+    color: #000;
+    text-align: center;
+    font-family: Kaushan Script;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 700;
+
+    box-shadow: .1rem .1rem .15rem .1rem rgba(0, 0, 0, 0.4);
+}
+
+
+.size_checkbox[type="checkbox"] {
+   display: none;
+}
+
+.size_checkbox[type="checkbox"]:hover + .title_checkbox {
+    border-radius: .25rem;
+    box-shadow: 0 0 .08rem .08rem rgba(0, 0, 0, 0.2);
+    transition: .25s;
+}
+
+.size_checkbox[type="checkbox"]:checked + .title_checkbox {
+    border-radius: .25rem;
+    box-shadow: inset .1rem .1rem .1rem 0 rgba(0, 0, 0, 0.20),inset -.1rem -.1rem .1rem 0 rgba(0, 0, 0, 0.20);
+    transition: .5s;
+}
+
+.btn {
+    display: flex;
+    width: 20.75rem;
+    height: 3rem;
+    margin: 0;
+    margin-top: 2.2rem;
+    padding: 1rem 4rem;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    color: #C0BFBF;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: .5rem;
+    background: #BC0D2E;
+
+    box-shadow: 0 .5rem 1rem .25rem rgba(0, 0, 0, 0.5);
+
+    outline:none;
+    border:none;
+}
+
+.btn:hover {
+    background: #9c0925;
+}
+
+.btn:active {
+    background: #790218;
+}
+
+.button-cart{
+    width: 3.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    margin-right: 2rem;
+}
+/*Main block*/
+
+
+
+

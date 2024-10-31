@@ -4,12 +4,12 @@
 {% load static %}
 
 {% block css%}
-<link rel="stylesheet" href="{% static 'profile.css' %}">
+<link rel="stylesheet" href="{% static 'users/css/profile.css' %}">
 {% endblock %}
 
 {% block logo %}
 <a href="{% url 'products:products' %}">
-    <img src="{% static 'images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
+    <img src="{% static 'users/images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
 </a>
 {% endblock %}
 
@@ -31,7 +31,7 @@
                     {% if user.image %}
                     <img id="output" src="{{ user.image.url }}">
                     {% else %}
-                    <img src="{% static 'images/default_avatar.png' %}">
+                    <img src="{% static 'users/images/default_avatar.png' %}">
                     {% endif %}"
 
                 </div>
@@ -80,5 +80,5 @@
      };
 
 </script>
-<script src="{% static 'js/main_cropper.js' %}"></script>
+<script src="{% static 'users/js/main_cropper.js' %}"></script>
 {% endblock %}

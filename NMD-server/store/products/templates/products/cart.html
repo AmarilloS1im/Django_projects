@@ -6,13 +6,13 @@
 
 
 {% block css%}
-<link rel="stylesheet" href="{% static 'cart.css' %}">
-<script type="text/javascript" src="{% static 'js/jquery-3.7.1.js' %}"></script>
+<link rel="stylesheet" href="{% static 'products/css/cart.css' %}">
+<script type="text/javascript" src="{% static 'products/js/jquery-3.7.1.js' %}"></script>
 {% endblock %}
 
 {% block logo %}
 <a href="{% url 'products:products' %}">
-    <img src="{% static 'images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
+    <img src="{% static 'products/images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
 </a>
 {% endblock %}
 
@@ -31,7 +31,7 @@
         <div class="cart-products">
             <div class="cart-img"><img width="135px" height="135px" src="{{basket.product.img.url}}">
                 <div class="info-group">
-                    <div class="cart-info">{{basket.product.article}} <span>{{basket.product.price}} &#x20bd;</span>
+                    <div class="cart-info">{{basket.product.model_name}} <span>{{basket.product.price}} &#x20bd;</span>
                     </div>
                     <div class="size-info">Размер: <span class="sizes">{{basket.size.size_name}}</span></div>
                 </div>

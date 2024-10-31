@@ -4,13 +4,13 @@
 
 
 {% block css%}
-<link rel="stylesheet" href="{% static 'favorites.css' %}">
-<script type="text/javascript" src="{% static 'js/jquery-3.7.1.js' %}"></script>
+<link rel="stylesheet" href="{% static 'products/css/favorites.css' %}">
+<script type="text/javascript" src="{% static 'products/js/jquery-3.7.1.js' %}"></script>
 {% endblock %}
 
 {% block logo %}
 <a href="{% url 'products:products' %}">
-    <img src="{% static 'images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
+    <img src="{% static 'products/images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
 </a>
 {% endblock %}
 

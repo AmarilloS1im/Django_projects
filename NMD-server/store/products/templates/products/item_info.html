@@ -5,12 +5,12 @@
 {% load products_tags %}
 
 {% block css%}
-<link rel="stylesheet" href="{% static 'item_info.css' %}">
+<link rel="stylesheet" href="{% static 'products/css/item_info.css' %}">
 {% endblock %}
 
 {% block logo %}
 <a href="{% url 'products:products' %}">
-    <img src="{% static 'images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
+    <img src="{% static 'products/images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
 </a>
 {% endblock %}
 
@@ -60,7 +60,7 @@
         <div class="sizes-label">Размеры:</div>
         <div class="sizes-group">
 
-            <form id="{{product.article}}" action="" method="post">
+            <form id="{{product.article}}" action="" method="post" class="item-size-form">
                 {% for size in sizes %}
                 {% if product.article == size.to_article %}
                 <label>

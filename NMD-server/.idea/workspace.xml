@@ -1,19 +1,298 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="8589ce16-c02d-47df-99ae-76a32dd73211" name="Changes" comment="" />
+    <list default="true" id="8589ce16-c02d-47df-99ae-76a32dd73211" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/store/users/static/users/images/NMD_logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/users/static/users/images/banner.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/users/static/users/images/default_avatar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/users/static/users/images/garbage.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/users/static/users/images/line.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/users/static/users/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/users/static/users/images/trash.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/NMD-server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/NMD-server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/docker/nginx/nmd.conf" beforeDir="false" afterPath="$PROJECT_DIR$/store/docker/nginx/nmd.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/products/templates/products/base_products.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/products/templates/products/base_products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/products/templates/products/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/products/templates/products/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/products/templates/products/favorites.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/products/templates/products/favorites.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/products/templates/products/item_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/products/templates/products/item_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/products/templates/products/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/products/templates/products/products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/store/products/static/products/css/cart.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/cropper.css" beforeDir="false" afterPath="$PROJECT_DIR$/store/users/static/users/css/cropper.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/favorites.css" beforeDir="false" afterPath="$PROJECT_DIR$/store/products/static/products/css/favorites.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/images/NMD_logo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/store/products/static/products/images/NMD_logo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/images/banner.png" beforeDir="false" afterPath="$PROJECT_DIR$/store/products/static/products/images/banner.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/images/big_shoe_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/images/colors_item.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/images/default_avatar.png" beforeDir="false" afterPath="$PROJECT_DIR$/store/products/static/products/images/default_avatar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/images/garbage.svg" beforeDir="false" afterPath="$PROJECT_DIR$/store/products/static/products/images/garbage.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/images/line.png" beforeDir="false" afterPath="$PROJECT_DIR$/store/products/static/products/images/line.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/store/products/static/products/images/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/images/profile_photo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/images/shoe_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/images/shoe_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/images/shoe_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/images/trash.svg" beforeDir="false" afterPath="$PROJECT_DIR$/store/products/static/products/images/trash.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/store/users/static/users/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/item_info.css" beforeDir="false" afterPath="$PROJECT_DIR$/store/products/static/products/css/item_info.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/js/cropper.js" beforeDir="false" afterPath="$PROJECT_DIR$/store/users/static/users/js/cropper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/js/jquery-3.7.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/store/products/static/products/js/jquery-3.7.1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/js/main_cropper.js" beforeDir="false" afterPath="$PROJECT_DIR$/store/users/static/users/js/main_cropper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/.package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropper/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropper/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropper/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropper/dist/cropper.common.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropper/dist/cropper.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropper/dist/cropper.esm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropper/dist/cropper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropper/dist/cropper.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropper/dist/cropper.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropper/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropper/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropper/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/dist/cropper.common.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/dist/cropper.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/dist/cropper.esm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/dist/cropper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/dist/cropper.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/dist/cropper.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/src/css/cropper.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/src/css/cropper.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/src/images/bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/src/index.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/src/js/change.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/src/js/constants.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/src/js/cropper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/src/js/defaults.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/src/js/events.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/src/js/handlers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/src/js/methods.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/src/js/preview.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/src/js/render.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/src/js/template.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/src/js/utilities.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/cropperjs/types/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/AUTHORS.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/dist/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/dist/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/store/users/static/users/js/jquery-3.7.1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/dist/jquery.min.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/dist/jquery.slim.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/dist/jquery.slim.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/dist/jquery.slim.min.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/ajax.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/ajax/jsonp.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/ajax/load.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/ajax/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/ajax/var/location.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/ajax/var/nonce.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/ajax/var/rquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/ajax/xhr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/attributes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/attributes/attr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/attributes/classes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/attributes/prop.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/attributes/support.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/attributes/val.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/callbacks.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/core.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/core/DOMEval.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/core/access.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/core/camelCase.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/core/init.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/core/isAttached.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/core/nodeName.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/core/parseHTML.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/core/parseXML.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/core/ready-no-deferred.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/core/ready.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/core/readyException.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/core/stripAndCollapse.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/core/support.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/core/toType.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/core/var/rhtml.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/core/var/rsingleTag.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/css.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/css/addGetHookIf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/css/adjustCSS.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/css/curCSS.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/css/finalPropName.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/css/hiddenVisibleSelectors.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/css/showHide.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/css/support.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/css/var/cssExpand.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/css/var/getStyles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/css/var/isHiddenWithinTree.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/css/var/rboxStyle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/css/var/rcustomProp.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/css/var/rnumnonpx.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/css/var/swap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/data.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/data/Data.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/data/var/acceptData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/data/var/dataPriv.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/data/var/dataUser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/deferred.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/deferred/exceptionHook.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/deprecated.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/deprecated/ajax-event-alias.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/deprecated/event.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/dimensions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/effects.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/effects/Tween.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/effects/animatedSelector.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/event.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/event/trigger.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/exports/amd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/exports/global.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/manipulation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/manipulation/_evalUrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/manipulation/buildFragment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/manipulation/getAll.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/manipulation/setGlobalEval.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/manipulation/support.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/manipulation/var/rscriptType.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/manipulation/var/rtagName.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/manipulation/wrapMap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/offset.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/queue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/queue/delay.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/selector-native.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/selector.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/selector/contains.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/selector/escapeSelector.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/serialize.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/traversing.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/traversing/findFilter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/traversing/var/dir.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/traversing/var/rneedsContext.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/traversing/var/siblings.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/ObjectFunctionString.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/arr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/class2type.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/document.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/documentElement.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/flat.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/fnToString.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/getProto.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/hasOwn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/indexOf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/isFunction.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/isWindow.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/pnum.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/pop.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/push.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/rcheckableType.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/rcssNum.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/rnothtmlwhite.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/rtrimCSS.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/slice.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/sort.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/splice.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/support.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/toString.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/var/whitespace.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/node_modules/jquery/src/wrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/products.css" beforeDir="false" afterPath="$PROJECT_DIR$/store/products/static/products/css/products.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/store/users/static/users/css/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/recovery.css" beforeDir="false" afterPath="$PROJECT_DIR$/store/users/static/users/css/recovery.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/registration.css" beforeDir="false" afterPath="$PROJECT_DIR$/store/users/static/users/css/registration.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/registration_confirm.css" beforeDir="false" afterPath="$PROJECT_DIR$/store/users/static/users/css/registration_confirm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/static/test.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/store/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/store/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/users/templates/users/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/users/templates/users/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/users/templates/users/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/users/templates/users/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/users/templates/users/recovery.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/users/templates/users/recovery.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/users/templates/users/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/users/templates/users/registration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/users/templates/users/registration_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/users/templates/users/registration_confirm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/users/templates/users/test.html" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dockerfile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2g9l7omxzH4GAJMcbf9Wothct6i" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.manage.executor&quot;: &quot;Run&quot;,
+    &quot;Python.products_tags.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Python/Web/Django_projects/NMD-server/store/users/static/users/css&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Python\Web\Django_projects\NMD-server\store\users\static\users\css" />
+      <recent name="E:\Python\Web\Django_projects\NMD-server\store\products\static\products\css" />
+      <recent name="E:\Python\Web\Django_projects\NMD-server\store\users\static\users" />
+      <recent name="E:\Python\Web\Django_projects\NMD-server\store\products\static\products" />
+      <recent name="E:\Python\Web\Django_projects\NMD-server\store\products\static\products\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Python\Web\Django_projects\NMD-server\store" />
+      <recent name="E:\Python\Web\Django_projects\NMD-server" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="NMD-server" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (Web)" />
+      <option name="WORKING_DIRECTORY" value="E:\Python\Web\Django_projects\NMD-server" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/store/manage.py" />
+      <option name="PARAMETERS" value="runserver" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -32,5 +311,9 @@
       <updated>1715117509588</updated>
     </task>
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.conf" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
   </component>
 </project>

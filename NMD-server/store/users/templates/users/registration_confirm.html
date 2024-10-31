@@ -4,11 +4,11 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'registration_confirm.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/registration_confirm.css' %}">
 {% endblock%}
 {% block logo %}
     <a href="{% url 'users:index' %}">
-        <img src="{% static 'images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
+        <img src="{% static 'users/images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
     </a>
 {% endblock %}
 {% block header-title%}

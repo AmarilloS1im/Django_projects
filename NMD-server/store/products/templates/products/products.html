@@ -6,21 +6,21 @@
 
 
 {% block css%}
-<link rel="stylesheet" href="{% static 'products.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'products/css/products.css' %}">
 
 
 {% endblock %}
 
 {% block logo %}
 <a  href="{% url 'products:products' %}">
-    <img  src="{% static 'images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
+    <img  src="{% static 'products/images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
 </a>
 {% endblock %}
 
 {% block content%}
 
 <div class="banner">
-    <img src="{% static 'images/banner.png'%}" width="1265px" height="220px">
+    <img src="{% static 'products/images/banner.png'%}" width="1265px" height="220px">
 </div>
 
 
