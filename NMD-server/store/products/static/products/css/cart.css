@@ -442,11 +442,13 @@
 
     outline:none;
     border:none;
+    cursor: pointer;
 }
 
 .btn-buy:hover {
     transition-duration: .5s;
     color: white;
+    cursor: pointer;
     svg {
       transition-duration: .5s;
       fill: white;
@@ -458,6 +460,11 @@
 .btn-buy:active {
     background: #790218;
     box-shadow: inset 0 .5rem 1rem .1rem rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
 }
 
 .cart-title-no-goods {

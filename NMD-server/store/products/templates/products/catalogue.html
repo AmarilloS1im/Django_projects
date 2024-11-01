@@ -1,0 +1,37 @@
+{% extends 'products/base_products.html'%}
+
+{% load static %}
+
+{% load products_tags %}
+
+
+{% block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'products/css/products.css' %}">
+
+
+{% endblock %}
+
+{% block logo %}
+<a href="{% url 'products:products' %}">
+    <img src="{% static 'products/images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
+</a>
+{% endblock %}
+
+{% block content%}
+<div class="content">
+    <div class="catalogue-info">
+        <div>
+            <h3>Когда-нибудь, здесь будет красивый каталог, но не сегодня:)</h3>
+        </div>
+        <div class="catalogue-back-btn">
+            <a class="btn-filter" href="{% url 'products:products' %}">Нажми меня</a>
+
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
+
+

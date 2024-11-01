@@ -1,0 +1,23 @@
+@import url("index.css");
+
+.header-title {
+    display: block;
+    width: auto;
+    margin: .25rem auto;
+    align-item: center;
+}
+
+.main {
+    height: 30rem;
+}
+
+.form {
+    display: flex;
+    width: 22rem;
+    height: 16rem;
+    margin: 10rem auto;
+}
+
+.form-header{
+    margin-top: 1.5rem;
+}

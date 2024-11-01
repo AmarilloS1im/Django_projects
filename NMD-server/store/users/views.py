@@ -1,8 +1,9 @@
 from django.conf import settings
 from django.contrib import auth
+from django.contrib.auth.views import PasswordChangeView
 from django.core.mail import send_mail
 from django.shortcuts import HttpResponseRedirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.shortcuts import render
 
 
@@ -10,8 +11,7 @@ from django.shortcuts import render
 
 
 from .models import User, Image
-from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm
-
+from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm, UserPasswordChangeForm
 
 
 def index(request):
@@ -114,3 +114,9 @@ def profile(request,pk):
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse('users:index'))
+class UserPasswordChange(PasswordChangeView):
+    form_class = UserPasswordChangeForm
+    success_url = reverse_lazy("users:password_change_done")
+    template_name = "users/password_change_form.html"
+    extra_context = {'title': "Изменение пароля",
+                     'form_label':'Изменение пароля'}

@@ -89,9 +89,9 @@ input.addEventListener('change', ()=>{
 
 
         })
-
+        location.reload()
     })
-    btn_save.click()
+
 
 })
 

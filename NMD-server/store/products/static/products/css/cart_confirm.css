@@ -1,0 +1,16 @@
+@import url("index.css");
+@import url("registration.css");
+@import url("registration_confirm.css");
+
+.cart-confirm-info{
+    display: flex;
+    justify-content: center;
+    justify-item
+
+    font-size: 1rem;
+    font-family: Montserrat;
+
+    font-weight: 700;
+    line-height: 1.95rem;
+    text-align: center;
+}

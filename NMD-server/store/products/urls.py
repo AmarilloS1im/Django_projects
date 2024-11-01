@@ -5,7 +5,7 @@ from products.views import (CartView, FavoritesView, basket_add, basket_remove,
                             cart_add_plus_one, cart_del_minus_one,
                             favorites_add, favorites_remove, item_info,
                             products, remove_all_user_baskets,
-                            remove_all_user_favorites, reset_filters)
+                            remove_all_user_favorites, reset_filters,cart_confirm,catalogue)
 from django.views.decorators.cache import cache_page
 
 app_name = 'products'
@@ -24,4 +24,6 @@ urlpatterns = [
     path('favorites/', login_required(FavoritesView.as_view()), name='favorites'),
     path('favorites/remove/<int:favorite_id>/', favorites_remove, name='favorites_remove'),
     path('favorites/remove/', remove_all_user_favorites, name='remove_all_user_favorites'),
+    path('cart/cart_confirm/', cart_confirm,name='cart_confirm'),
+    path('catalogue/',catalogue,name='catalogue')
 ]

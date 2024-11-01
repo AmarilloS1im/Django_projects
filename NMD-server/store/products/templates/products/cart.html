@@ -98,7 +98,7 @@
         <div class="total-cart-amount">ИТОГО: <span>{{baskets.total_sum}} &#x20bd;</span>
         </div>
 
-        <button class="btn-buy" type="submit">Оформить заказ</button>
+        <a href="{% url 'products:cart_confirm'%}"><button class="btn-buy" >Оформить заказ</button></a>
     </div>
 </div>
 </div>

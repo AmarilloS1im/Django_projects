@@ -260,17 +260,14 @@ a {
     font-weight: 600;
     line-height: normal;
     margin-left: .25rem;
-    cursor: pointer;
 }
 
 .label:hover {
     color: #9c0925;
-    cursor: pointer;
 }
 
 .label:active {
     color: #790218;
-    cursor: pointer;
 }
 
 .under-signup {
@@ -283,17 +280,14 @@ a {
     line-height: normal;
     margin-left: .75rem;
     margin-right: 1.5rem;
-    cursor: pointer;
 }
 
 .under-singup:hover {
     color: #9c0925;
-    cursor: pointer;
 }
 
 .under-singup:active {
     color: #790218;
-    cursor: pointer;
 }
 
 .footer {
@@ -312,69 +306,4 @@ a {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-}
-
-.adjust-change-pass{
-    display: flex;
-    justify-content: center;
-}
-
-.catalogue-back-btn{
-    display: flex;
-    justify-content: center;
-    margin: auto;
-}
-
-.btn-filter {
-    display: flex;
-    width: 15.9rem;
-    height: 1.7rem;
-    padding: .1rem 1.5rem;
-    justify-content: center;
-    align-items: justify;
-    flex-shrink: 0;
-
-    border-radius: .5rem;
-    background: #BC0D2E;
-    color: #C0BFBF;
-    text-align: center;
-    font-family: Montserrat;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    margin: .5rem 0;
-    box-shadow: 0 .5rem .75rem .1rem rgba(0, 0, 0, 0.5);
-
-    outline: none;
-    border: none;
-}
-
-.btn-filter:hover {
-    transition: .5s;
-    color: white;
-    background: #9c0925;
-    box-shadow: 0 .25rem .5rem 0 rgba(0, 0, 0, 0.5);
-}
-
-.btn-filter:active {
-    background: #790218;
-    box-shadow: inset 0 .5rem 1rem .1rem rgba(0, 0, 0, 0.25);
-    cursor: pointer;
-}
-
-.form-errors{
-    display: flex;
-    justify-content: center;
-    width: 400px;
-    height: 80px;
-    overflow-y: auto;
-    font-size: .8rem;
-    margin:0;
-}
-
-.pass_change_errors_msg{
-display: block;
-justify-content: center;
-
 }

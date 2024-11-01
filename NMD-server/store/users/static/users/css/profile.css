@@ -97,6 +97,7 @@
     outline:none;
     border:none;
     margin: 0 auto;
+    cursor: pointer;
 }
 
 .input-file input[type=file] {
@@ -194,16 +195,18 @@ form{
 
     outline:none;
     border:none;
-
+    cursor: pointer;
 
 }
 
 .btn-save:hover{
     background: #9c0925;
+    cursor: pointer;
 }
 
 .btn-save:active{
     background: #790218;
+    cursor: pointer;
 }
 /*Main block*/
 

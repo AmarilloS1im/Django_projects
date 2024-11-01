@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import authenticate, password_validation
 from django.contrib.auth.forms import (AuthenticationForm, UserChangeForm,
-                                       UserCreationForm)
+                                       UserCreationForm, PasswordChangeForm)
 from django.utils.translation import gettext_lazy as _
 
 from .models import User, Image
@@ -67,23 +67,24 @@ class UserLoginForm(AuthenticationForm):
 
 class UserProfileForm(UserChangeForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-input', 'type': 'text', 'name': 'username', 'placeholder': 'Имя Пользователя','id':'username_id'
+        'class': 'form-input', 'type': 'text', 'name': 'username', 'placeholder': 'Имя Пользователя',
+        'id': 'username_id'
     }), required=False)
     first_name = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-input', 'type': 'text', 'name': 'first_name', 'placeholder': 'Имя','id':'first_name_id'
+        'class': 'form-input', 'type': 'text', 'name': 'first_name', 'placeholder': 'Имя', 'id': 'first_name_id'
     }), required=False)
 
     last_name = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-input', 'type': 'text', 'name': 'last_name', 'placeholder': 'Фамилия','id':'last_name_id'
+        'class': 'form-input', 'type': 'text', 'name': 'last_name', 'placeholder': 'Фамилия', 'id': 'last_name_id'
     }), required=False)
 
     email = forms.EmailField(widget=forms.EmailInput(attrs={
         'class': 'form-input', 'type': 'email', 'name': 'email', 'placeholder': 'Эл.Почта', 'readonly': True,
-        'style': 'color:#C0BFBF;','id':'user_email_id',
+        'style': 'color:#C0BFBF;', 'id': 'user_email_id',
     }))
 
     image = forms.ImageField(widget=forms.FileInput(attrs={
-        'type': 'file', 'name': 'file','accept': 'image/*','id':'id_file',
+        'type': 'file', 'name': 'file', 'accept': 'image/*', 'id': 'id_file',
     }), required=False)
 
     class Meta:
@@ -95,3 +96,12 @@ class ImageForm(forms.ModelForm):
     class Meta:
         model = Image
         fields = ('file',)
+
+
+class UserPasswordChangeForm(PasswordChangeForm):
+    old_password = forms.CharField(label="Старый пароль", widget=forms.PasswordInput(
+        attrs={'class': 'input', 'placeholder': 'Старый пароль'}))
+    new_password1 = forms.CharField(label="Новый пароль", widget=forms.PasswordInput(
+        attrs={'class': 'input', 'placeholder': 'Новый пароль'}))
+    new_password2 = forms.CharField(label="Подтверждение пароля", widget=forms.PasswordInput(
+        attrs={'class': 'input', 'placeholder': 'Новый пароль еще раз'}))

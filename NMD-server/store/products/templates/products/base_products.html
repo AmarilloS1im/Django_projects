@@ -36,13 +36,13 @@
         </div>
 
         <div class="nav-bar-group">
-            <a href="index.html">
+            <a href="{% url 'products:catalogue'%}">
                 <div class="catalogue"><img src="{% static 'products/images/line.png' %}">
                     </svg>КАТАЛОГ
                 </div>
             </a>
 
-            <form action="/" method="post">
+            <form action="#" method="get">
                 <input class="search-field" type="search" name="search" placeholder="Поиск">
                 <svg class="magnifier" width="64px" height="64px" viewBox="0 0 24 24" fill="none"
                      xmlns="http://www.w3.org/2000/svg" stroke="#C0BFBF">
@@ -70,6 +70,7 @@
                             {% if user.is_superuser or user.is_stuff %}
                             <div class="drop-row"><a href="{% url 'users:profile' user.id %}">Профиль</a></div>
                             <div class="drop-row"><a href="{% url 'admin:index' %}">Admin</a></div>
+                            <div class="drop-row"><a href="{% url 'users:password_change' %}">Сменить пароль</a></div>
                             <div class="drop-row"><a href="{% url 'users:logout' %}">Выйти</a></div>
                             {% else %}
                             <div class="drop-row"><a href="{% url 'users:profile' user.id %}">Профиль</a></div>

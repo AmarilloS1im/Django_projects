@@ -192,3 +192,21 @@ def favorites_remove(request, favorite_id):
 def remove_all_user_favorites(request):
     Favorites.objects.filter(user=request.user).delete()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+def cart_confirm(request):
+    Basket.objects.filter(user=request.user).delete()
+    context = {
+        'title': "Заказ подтвержден",
+
+    }
+    return render(request, 'products/cart_confirm.html', context)
+
+def catalogue(request):
+
+    context = {
+        'title': "Каталог",
+
+    }
+    return render(request, 'products/catalogue.html', context)
+
+

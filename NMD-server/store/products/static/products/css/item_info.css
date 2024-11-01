@@ -239,6 +239,7 @@
     font-weight: 700;
 
     box-shadow: .1rem .1rem .15rem .1rem rgba(0, 0, 0, 0.4);
+    cursor: pointer;
 }
 
 
@@ -250,12 +251,14 @@
     border-radius: .25rem;
     box-shadow: 0 0 .08rem .08rem rgba(0, 0, 0, 0.2);
     transition: .25s;
+    cursor: pointer;
 }
 
 .size_checkbox[type="checkbox"]:checked + .title_checkbox {
     border-radius: .25rem;
     box-shadow: inset .1rem .1rem .1rem 0 rgba(0, 0, 0, 0.20),inset -.1rem -.1rem .1rem 0 rgba(0, 0, 0, 0.20);
     transition: .5s;
+    cursor: pointer;
 }
 
 .btn {
@@ -283,14 +286,17 @@
 
     outline:none;
     border:none;
+    cursor: pointer;
 }
 
 .btn:hover {
     background: #9c0925;
+    cursor: pointer;
 }
 
 .btn:active {
     background: #790218;
+    cursor: pointer;
 }
 
 .button-cart{

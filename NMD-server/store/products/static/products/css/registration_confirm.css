@@ -1,0 +1,27 @@
+@import url("index.css");
+@import url("registration.css");
+
+
+.form {
+    display: flex;
+    width: 24rem;
+
+}
+.form-header {
+    display: flex;
+    width: auto;
+    height: auto;
+    margin: 3rem 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+
+    color: #BC0D2E;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+

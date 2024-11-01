@@ -421,14 +421,17 @@ a {
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    cursor: pointer;
 }
 
 .label:hover {
     color: #9c0925;
+    cursor: pointer;
 }
 
 .label:active {
     color: #790218;
+    cursor: pointer;
 }
 
 input[type=checkbox]:checked + label {
@@ -458,6 +461,7 @@ input[type=checkbox]:checked + label {
 
     outline: none;
     border: none;
+    cursor: pointer;
 }
 
 .btn-filter:hover {
@@ -465,11 +469,13 @@ input[type=checkbox]:checked + label {
     color: white;
     background: #9c0925;
     box-shadow: 0 .25rem .5rem 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }
 
 .btn-filter:active {
     background: #790218;
     box-shadow: inset 0 .5rem 1rem .1rem rgba(0, 0, 0, 0.25);
+    cursor: pointer;
 }
 
 .goods-group {
@@ -622,6 +628,7 @@ input[type=checkbox]:checked + label {
 
     font-size: 1rem;
     font-weight: 700;
+    cursor: pointer;
 }
 
 .size-checkbox[type="checkbox"] {
@@ -632,12 +639,14 @@ input[type=checkbox]:checked + label {
     border-radius: .25rem;
     background: #FFF;
     box-shadow: 0 -.2rem .35rem 0 rgba(0, 0, 0, 0.07), 0 .2rem .2rem 0 rgba(0, 0, 0, 0.38);
+    cursor: pointer;
 }
 
 .size-checkbox[type="checkbox"]:checked + .title-checkbox {
     border-radius: .25rem;
     box-shadow: inset .1rem .1rem .1rem 0 rgba(0, 0, 0, 0.20),inset -.1rem -.1rem .1rem 0 rgba(0, 0, 0, 0.20);
     transition: .5s;
+    cursor: pointer;
 }
 
 .btn {
@@ -665,6 +674,7 @@ input[type=checkbox]:checked + label {
 
     outline: none;
     border: none;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -776,6 +786,7 @@ input[type=checkbox]:checked + label {
 
     outline: none;
     border: none;
+    cursor: pointer;
 }
 
 .btn-popup:hover {
@@ -787,11 +798,13 @@ input[type=checkbox]:checked + label {
     }
     background: #9c0925;
     box-shadow: 0 .25rem .5rem 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }
 
 .btn-popup:active {
     background: #790218;
     box-shadow: inset 0 .5rem 1rem .1rem rgba(0, 0, 0, 0.25);
+    cursor: pointer;
 }
 
 .popup-button-cart {
@@ -799,6 +812,7 @@ input[type=checkbox]:checked + label {
     height: 40.5rem;
     margin-right: 1.5rem;
     flex-shrink: 0;
+    cursor: pointer;
 }
 
 /*POPUP*/
@@ -811,6 +825,7 @@ input[type=checkbox]:checked + label {
 
     font-size: 1.5rem;
     font-weight: 700;
+    cursor: pointer;
 }
 
 .size-popup-checkbox[type="checkbox"] {
@@ -822,11 +837,13 @@ input[type=checkbox]:checked + label {
     background: #FFF;
     box-shadow: 0 -.2rem .35rem 0 rgba(0, 0, 0, 0.07), 0 .2rem .2rem 0 rgba(0, 0, 0, 0.38);
     transition: .5s;
+    cursor: pointer;
 }
 
 .size-popup-checkbox[type="checkbox"]:checked + .title-popup-checkbox {
     border-radius: .25rem;
     box-shadow: inset .1rem .1rem .1rem 0px rgba(0, 0, 0, 0.20),inset -.1rem -.1rem .1rem 0px rgba(0, 0, 0, 0.20);
+    cursor: pointer;
 }
 /*POPUPS SIZES*/
 
@@ -873,4 +890,16 @@ input[type=checkbox]:checked + label {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+}
+
+.catalogue-info{
+    display: block;
+    justify-content: center;
+    margin: auto;
+}
+
+.catalogue-back-btn{
+    display: flex;
+    justify-content: center;
+    margin: auto;
 }

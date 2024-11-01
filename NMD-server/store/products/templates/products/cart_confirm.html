@@ -1,0 +1,26 @@
+{% extends 'products/registration_confirm.html'%}
+
+{% load static %}
+
+{% load products_tags %}
+
+{% block css%}
+<link rel="stylesheet" href="{% static 'products/css/cart_confirm.css' %}">
+<script type="text/javascript" src="{% static 'products/js/jquery-3.7.1.js' %}"></script>
+{% endblock %}
+
+
+{% block logo %}
+<a href="{% url 'products:products' %}">
+    <img src="{% static 'products/images/NMD_logo.jpg' %}" alt="альтернативный текст" width="95px" height="86px">
+</a>
+{% endblock %}
+
+
+{% block action_button %}
+<div class="cart-confirm-info">Ваш заказ успешно оформлен</div>
+<a href="{% url 'products:products' %}">
+        <button class="btn" type="button">На главную</button>
+    </a>
+
+{% endblock %}
